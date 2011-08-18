@@ -11,6 +11,7 @@
     // Aplicar QuickSearch a la tabla y la lista
     var map;
     var markers = [];
+    var foo_1 = [];
     $(document).ready(function () {
         var lista_modelos = [{%for modelo in lista_modelos%}'{{modelo}}'{% if forloop.last %}{% else %},{% endif %}{%endfor%}];        
         var infowindow = new google.maps.InfoWindow();
@@ -45,12 +46,11 @@
                 var markerCluster = new MarkerClusterer(map, markers);
             });
         });        
-    });
-    var ib;
+    });     
     function attachInfowindow(marker, id, item, nombre) {
         var boxText = document.createElement("div");
         boxText.style.cssText = "border: 1px solid #92B900; background:#fff; padding: 5px; overflow: auto;";
-        boxText.innerHTML =  "<div class='infobox'><ul><li><a href='/mapeo/ficha/" + item + "/" + id + "'>"+nombre+"</a></li></ul></div>";
+        boxText.innerHTML =  "<div class='infobox'><ul><li><a href='/mapeo/ficha/" + marker.item + "/" + id + "'>"+marker.title+"</a></li></ul></div>";
 
         var myOptions = {
             content: boxText,
@@ -71,13 +71,12 @@
             enableEventPropagation: false
         };
 
-
-        ib = new InfoBox(myOptions);        
+        var ib = new InfoBox(myOptions);        
         google.maps.event.addListener(marker, 'mouseover', function() {
             try{
-                infowindow.close();
-            }catch(err){}
-            ib.open(map, marker);
+            	infowindow.close();            	
+            }catch(err){console.log(err);}
+            ib.open(map, marker);            
         });        
     }
 
