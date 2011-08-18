@@ -11,7 +11,7 @@
     // Aplicar QuickSearch a la tabla y la lista
     var map;
     var markers = [];
-    var foo_1 = [];
+    var ibs = new Array();
     $(document).ready(function () {
         var lista_modelos = [{%for modelo in lista_modelos%}'{{modelo}}'{% if forloop.last %}{% else %},{% endif %}{%endfor%}];        
         var infowindow = new google.maps.InfoWindow();
@@ -40,18 +40,18 @@
                         item: item,
                         id: elemento.id                        
                     });
-                    attachInfowindow(marker, elemento.id, item, elemento.nombre);
+                    attachInfowindow(marker, elemento.id, item, elemento.nombre);                    
                     markers.push(marker);                    
                 });
                 var markerCluster = new MarkerClusterer(map, markers);
             });
         });        
-    });     
+    });    
     function attachInfowindow(marker, id, item, nombre) {
+    	var ib;
         var boxText = document.createElement("div");
         boxText.style.cssText = "border: 1px solid #92B900; background:#fff; padding: 5px; overflow: auto;";
-        boxText.innerHTML =  "<div class='infobox'><ul><li><a href='/mapeo/ficha/" + marker.item + "/" + id + "'>"+marker.title+"</a></li></ul></div>";
-
+        boxText.innerHTML =  "<div class='infobox'><ul><li><a href='/mapeo/ficha/" + marker.item + "/" + id + "'>"+marker.title+"</a></li></ul></div>";		
         var myOptions = {
             content: boxText,
             disableAutoPan: false,
@@ -69,16 +69,20 @@
             isHidden: false,
             pane: "floatPane",
             enableEventPropagation: false
-        };
-
-        var ib = new InfoBox(myOptions);        
+        };        
+        ib = new InfoBox(myOptions);
+        ibs.push(ib);        
         google.maps.event.addListener(marker, 'mouseover', function() {
             try{
-            	infowindow.close();            	
-            }catch(err){console.log(err);}
-            ib.open(map, marker);            
-        });        
+            	infowindow.close();
+                for(var i=0;i<ibs.length;i++){
+                    ibs[i].close();
+                }
+            }catch(err){}
+            ib.open(map, marker);
+        });
     }
+    
 
 </script>
 {% endblock %}
