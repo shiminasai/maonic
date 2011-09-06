@@ -6,3 +6,6 @@ nbproject/
 media/galeria/
 *.db
 *.pl
+*.sql
+.ropeproject/
+.ninjaproject/*.*

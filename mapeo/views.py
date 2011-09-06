@@ -7,7 +7,17 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from decorators import session_required
 from django.template import RequestContext
 from django.core.exceptions import ViewDoesNotExist, ValidationError
-from forms import FilterForm 
+from forms import FilterForm
+from django.views.generic.simple import direct_to_template
+
+def index(request):
+    familias = Familia.objects.all().count()
+    cooperativas = Cooperativa.objects.all().count()
+    e_comerciales = ComProducto.objects.all().count()
+    certificadoras = Certificadora.objects.all().count()
+    e_financiera = Financiera.objects.all().count()
+
+    return direct_to_template(request, 'index.html', locals())
 
 model_dict = {
     'familia': Familia,
@@ -23,9 +33,9 @@ model_dict = {
 
 @session_required
 def obtener_lista_paginada(request, modelo):
-    '''Vista ajax para obtener lista de elementos en 
+    '''Vista ajax para obtener lista de elementos en
     la vista luego del filtrado, modelo es una cadena
-    definida dentro del diccionario model_dict en las 
+    definida dentro del diccionario model_dict en las
     primeras lineas de este archivo
     '''
     if request.is_ajax():
@@ -44,10 +54,10 @@ def obtener_lista_paginada(request, modelo):
             objetos = paginator.page(paginator.num_pages)
 
         #se le agrega el tipo de modelo para construir la url
-        lista_objetos = [dict(objeto, modelo = modelo) for objeto 
+        lista_objetos = [dict(objeto, modelo = modelo) for objeto
                 in objetos.object_list.values('id', 'nombre')]
-        resultados = dict(enlaces = lista_objetos, 
-                          sig = objetos.next_page_number(), 
+        resultados = dict(enlaces = lista_objetos,
+                          sig = objetos.next_page_number(),
                           ant = objetos.previous_page_number())
         return HttpResponse(simplejson.dumps(resultados), mimetype="application/json")
 
@@ -58,12 +68,12 @@ def obtener_lista(request, modelo):
         params = _get_params(request.session)
         for objeto in _get_model(modelo).objects.filter(**params):
             if objeto.lat and objeto.lon:
-                dicc = dict(nombre=objeto.nombre, id=objeto.id, 
+                dicc = dict(nombre=objeto.nombre, id=objeto.id,
                             lon=foat(objeto.lon) , lat=float(objeto.lat),
                             modelo= modelo)
             else:
-                dicc = dict(nombre=objeto.nombre, id=objeto.id, 
-                            lon=float(objeto.municipio.longitud) , 
+                dicc = dict(nombre=objeto.nombre, id=objeto.id,
+                            lon=float(objeto.municipio.longitud) ,
                             lat=float(objeto.municipio.latitud),
                             modelo= modelo)
             lista.append(dicc)
@@ -79,37 +89,37 @@ def formulario(request):
             for key in model_dict.keys():
                 if form.cleaned_data[key] == 'on':
                     lista_modelos.append(key)
-            
+
             request.session['lista_modelos'] = lista_modelos
             #validar aca!
 
-            #aburriiiiiiiiiido 
-            for coso in ('semillas', 'materia_procesada', 'buenas_practicas', 
+            #aburriiiiiiiiiido
+            for coso in ('semillas', 'materia_procesada', 'buenas_practicas',
                     'arboles', 'cultivos', 'animales',
                     'tipo_organizacion', 'certificacion', 'area_trabajo'):
                 request.session[coso] = form.cleaned_data[coso]
             #TODO:hacer un flash al estilo rails redigirir a mapita
             request.session['activo'] = True
-            return HttpResponseRedirect('/mapeo/mapa') 
+            return HttpResponseRedirect('/mapeo/mapa')
     else:
         form = FilterForm()
 
-    return render_to_response('mapeo/formulario.html', 
+    return render_to_response('mapeo/formulario.html',
             {'form': form},
             context_instance=RequestContext(request))
 
 
 def _get_params(session):
-    '''funcion interna para devolver parametros 
+    '''funcion interna para devolver parametros
     del formulario de busqueda'''
-    keys = ('semillas', 'materia_procesada', 'buenas_practicas', 
+    keys = ('semillas', 'materia_procesada', 'buenas_practicas',
             'arboles', 'cultivos', 'animales',
             'tipo_organizacion', 'certificacion', 'area_trabajo')
     params = {}
     for key in keys:
         param_key = key + '__in'
         if session[key] != []:
-            params[param_key] = session[key] 
+            params[param_key] = session[key]
 
     return params
 
@@ -128,7 +138,7 @@ def _get_model(model, session=None):
 
 @session_required
 def mapa(request):
-    return render_to_response('mapeo/mapa.html', 
+    return render_to_response('mapeo/mapa.html',
             {'lista_modelos': request.session['lista_modelos']},
             context_instance=RequestContext(request))
 
@@ -161,8 +171,8 @@ def lista(request):
         'orgpublica': 0,
     }
     for modelo in lista_modelos:
-        dicc[modelo] = _get_model(modelo).objects.filter(**params).distinct().count() 
+        dicc[modelo] = _get_model(modelo).objects.filter(**params).distinct().count()
 
-    return render_to_response('mapeo/lista.html', 
+    return render_to_response('mapeo/lista.html',
             dicc,
             context_instance=RequestContext(request))
