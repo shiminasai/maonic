@@ -17,48 +17,50 @@ class MaonicAdmin(admin.ModelAdmin):
             form = super(MaonicAdmin, self).get_form(request, ** kwargs)
             form.base_fields['user'].queryset = User.objects.filter(pk=request.user.pk)
         return form
+    def save_model(self, request, obj, form, change):
+        instance = form.save(commit=False)
+        instance.user = request.user
 
+    exclude = ['user']
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
 
 class FamiliaAdmin(MaonicAdmin):
-    filter_horizontal = ('tipo_org','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
-
-class CooperativaAdmin(MaonicAdmin):
-    filter_horizontal = ('area_trabajo','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
-
-class CentralesAdmin(MaonicAdmin):
-    filter_horizontal = ('area_trabajo','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
+    filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
 
 class AsistenciaTecnicaAdmin(MaonicAdmin):
-    filter_horizontal = ('tipo_org','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
+    filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
+    
+class CooperativaAdmin(MaonicAdmin):
+    filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+
+class CentralesAdmin(MaonicAdmin):
+    filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+
+class UnionesAdmin(MaonicAdmin):
+    filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
 
 class ComInsumoAdmin(MaonicAdmin):
-    filter_horizontal = ('tipo_cliente','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
-
+    filter_horizontal = ('tipo_cliente','animales','cultivos','semillas','materia_procesada','certificacion')
+    
 class ComProductoAdmin(MaonicAdmin):
-    filter_horizontal = ('tipo_prov','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
-
+    filter_horizontal = ('animales','cultivos','semillas','materia_procesada','certificacion')
+    
 class CertificadoraAdmin(MaonicAdmin):
-    filter_horizontal = ('tipo_cliente','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
+    filter_horizontal = ('tipo_cliente','animales','cultivos','semillas','materia_procesada','certificacion')
 
 class FinancieraAdmin(MaonicAdmin):
-    filter_horizontal = ('tipo_cliente','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
-
-class OrgPublicaAdmin(MaonicAdmin):
-    filter_horizontal = ('area_trabajo','arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
+    filter_horizontal = ('tipo_cliente','animales','cultivos','semillas','materia_procesada','certificacion')
     
-    #def get_form(self, request, obj=None, ** kwargs):
-    #    if request.user.is_superuser:
-    #        form = super(MaonicAdmin, self).get_form(self, request, ** kwargs)
-    #    else:
-    #        form = super(MaonicAdmin, self).get_form(self, request, ** kwargs)
-    #        form.base_fields['user'].queryset = User.objects.filter(pk=request.user.pk)
-    #    return form
+class OrgPublicaAdmin(MaonicAdmin):
+    filter_horizontal = ('animales','cultivos','semillas','materia_procesada','certificacion')
+
 #admin.site.register(Familia, MaonicAdmin)
 admin.site.register(Familia,FamiliaAdmin)
 
 #admin.site.register(Cooperativa, MaonicAdmin)
 admin.site.register(Cooperativa,CooperativaAdmin)
+
+admin.site.register(Uniones,UnionesAdmin)
 
 #admin.site.register(Centrales, MaonicAdmin)
 admin.site.register(Centrales,CentralesAdmin)
@@ -84,6 +86,7 @@ admin.site.register(OrgPublica,OrgPublicaAdmin)
 admin.site.register(RubroCultivo)
 admin.site.register(RubroArboles)
 admin.site.register(RubroAnimales)
+admin.site.register(Rubros)
 admin.site.register(Semilla)
 admin.site.register(MateriaProcesada)
 admin.site.register(BuenasPracticas)
