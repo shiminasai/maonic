@@ -79,6 +79,7 @@ INSTALLED_APPS = (
     'registration',
     'maonic.lugar',
     'south',
+    'smart_selects',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
