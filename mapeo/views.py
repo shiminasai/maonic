@@ -85,7 +85,7 @@ def formulario(request):
     if request.method == 'POST':
         form = FilterForm(request.POST)
         if form.is_valid():
-            lista_modelos = [] #ojala fueran chavalas y no tablas :-(
+            lista_modelos = []
             for key in model_dict.keys():
                 if form.cleaned_data[key] == 'on':
                     lista_modelos.append(key)
@@ -93,7 +93,6 @@ def formulario(request):
             request.session['lista_modelos'] = lista_modelos
             #validar aca!
 
-            #aburriiiiiiiiiido
             for coso in ('semillas', 'materia_procesada', 'buenas_practicas',
                     'arboles', 'cultivos', 'animales',
                     'tipo_organizacion', 'certificacion', 'area_trabajo'):
@@ -176,3 +175,36 @@ def lista(request):
     return render_to_response('mapeo/lista.html',
             dicc,
             context_instance=RequestContext(request))
+
+@session_required
+def territorio(request, id=None):
+    """
+    Mapeo por Territorio, muestra lista de actores ubicados en un departamento.
+    """
+    if id:
+        lista_modelos = request.session['lista_modelos']
+        dicc = {'lista_modelos': lista_modelos,
+            'familia': 0,
+            'cooperativa': 0,
+            'centrales': 0,
+            'asistencia': 0,
+            'insumo': 0,
+            'producto': 0,
+            'certificadora': 0,
+            'financiera': 0,
+            'orgpublica': 0,
+        }
+        for modelo in lista_modelos:
+            dicc[modelo] = _get_model(modelo).objects.filter(
+                    municipio__departamento__id=id).distinct().count()
+
+        return render_to_response('mapeo/lista.html',
+            dicc,
+            context_instance=RequestContext(request)
+        )
+        
+    else:
+        return render_to_response('mapeo/territorio.html',         
+            context_instance=RequestContext(request)
+        )
+        
