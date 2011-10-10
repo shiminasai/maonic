@@ -186,7 +186,8 @@ class Cooperativa(FichaBaseAsociaciones):
             chained_field='tipo_org',
             chained_model_field='tipo_org',
             show_all=False,
-            auto_choose=True
+            auto_choose=True,
+            blank=True
     )
 
     class Meta:
@@ -204,7 +205,8 @@ class Familia(FichaBaseProductores):
             chained_field='tipo_org',
             chained_model_field='tipo_org',
             show_all=False,
-            auto_choose=True
+            auto_choose=True,
+            blank=True
     ) 
 
     def __unicode__(self):
