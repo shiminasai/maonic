@@ -176,7 +176,7 @@ def lista(request):
             dicc,
             context_instance=RequestContext(request))
 
-@session_required
+#@session_required
 def territorio(request, id=None):
     """
     Mapeo por Territorio, muestra lista de actores ubicados en un departamento.
