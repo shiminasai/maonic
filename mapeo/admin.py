@@ -20,6 +20,8 @@ class MaonicAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         instance = form.save(commit=False)
         instance.user = request.user
+        instance.save()
+        return instance
 
     exclude = ['user']
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')

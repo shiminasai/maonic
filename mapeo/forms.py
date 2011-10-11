@@ -2,25 +2,11 @@
 from django import forms
 from models import *
 
-class FilterForm(forms.Form):
+class ProductoresForm(forms.Form):
     #columna de la izq
     familia = forms.CharField(label='Familia', 
             widget = forms.CheckboxInput)
-    cooperativa = forms.CharField(label='Cooperativa', 
-            widget = forms.CheckboxInput)
-    centrales = forms.CharField(label='Centrales', 
-            widget = forms.CheckboxInput)
     asistencia = forms.CharField(label='Asistencia', 
-            widget = forms.CheckboxInput)
-    insumo = forms.CharField(label='Empresa de Insumos', 
-            widget = forms.CheckboxInput)
-    producto = forms.CharField(label='Empresa de productos.', 
-            widget = forms.CheckboxInput)
-    certificadora = forms.CharField(label='Empresa certificadora', 
-            widget = forms.CheckboxInput)
-    financiera = forms.CharField(label='Empresa Financiera', 
-            widget = forms.CheckboxInput)
-    orgpublica = forms.CharField(label='Organización Pública', 
             widget = forms.CheckboxInput)
 
     #rubros
@@ -50,6 +36,38 @@ class FilterForm(forms.Form):
     certificacion = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
             queryset=Certificacion.objects.all(), label='Certificación', 
             required=False)
-    area_trabajo= forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
-            queryset=AreaTrabajo.objects.all(), label='Area de trabajo', 
+
+class AsociacionesForm(forms.Form):
+    #columna de la izq
+    cooperativa = forms.CharField(label='Cooperativa', 
+            widget = forms.CheckboxInput)
+    centrales = forms.CharField(label='Centrales', 
+            widget = forms.CheckboxInput)
+
+    #rubros
+    rubros = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=Rubros.objects.all(), label='Rubros', 
+            required=False)
+    animales = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=RubroAnimales.objects.all(), label='Rubro Animales', 
+            required=False)
+    arboles = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=RubroArboles.objects.all(), label='Rubro Arboles',
+            required=False)
+
+    #otros filtros
+    semillas = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=Semilla.objects.all(), label='Semilla',
+            required=False)
+    materia_procesada = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=MateriaProcesada.objects.all(), label='Materia Procesada', 
+            required=False)
+    buenas_practicas = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=BuenasPracticas.objects.all(), label='Buenas prácticas',
+            required=False)
+    tipo_organizacion = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=TipoOrganizacion.objects.all(), label='Tipo organización',
+            required=False)
+    certificacion = forms.ModelMultipleChoiceField(widget=forms.SelectMultiple,
+            queryset=Certificacion.objects.all(), label='Certificación', 
             required=False)
