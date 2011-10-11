@@ -206,7 +206,8 @@ class Familia(FichaBaseProductores):
             chained_model_field='tipo_org',
             show_all=False,
             auto_choose=True,
-            blank=True
+            blank=True,
+            null=True
     ) 
 
     def __unicode__(self):
