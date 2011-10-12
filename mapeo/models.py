@@ -211,7 +211,8 @@ class Familia(FichaBaseProductores):
     ) 
 
     def __unicode__(self):
-        return '%s - %s' % (self.nombre_finca, self.nombre)
+        return self.nombre
+        #return '%s - %s' % (self.nombre_finca, self.nombre)
 
 class AsistenciaTecnica(FichaBaseProductores):
     desde= models.IntegerField('desde cuando provee asistencia')
