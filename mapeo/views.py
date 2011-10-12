@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from decorators import session_required
 from django.template import RequestContext
 from django.core.exceptions import ViewDoesNotExist, ValidationError
-from forms import FilterForm
+from forms import ProductoresForm, AsociacionesForm
 from django.views.generic.simple import direct_to_template
 
 def index(request):
@@ -83,7 +83,7 @@ def obtener_lista(request, modelo):
 
 def formulario(request):
     if request.method == 'POST':
-        form = FilterForm(request.POST)
+        form = ProductoresForm(request.POST)
         if form.is_valid():
             lista_modelos = []
             for key in model_dict.keys():
@@ -101,7 +101,7 @@ def formulario(request):
             request.session['activo'] = True
             return HttpResponseRedirect('/mapeo/mapa')
     else:
-        form = FilterForm()
+        form = ProductoresForm()
 
     return render_to_response('mapeo/formulario.html',
             {'form': form},
@@ -176,7 +176,7 @@ def lista(request):
             dicc,
             context_instance=RequestContext(request))
 
-@session_required
+#@session_required
 def territorio(request, id=None):
     """
     Mapeo por Territorio, muestra lista de actores ubicados en un departamento.
@@ -202,9 +202,7 @@ def territorio(request, id=None):
             dicc,
             context_instance=RequestContext(request)
         )
-        
     else:
-        return render_to_response('mapeo/territorio.html',         
+        return render_to_response('mapeo/territorio.html',
             context_instance=RequestContext(request)
         )
-        

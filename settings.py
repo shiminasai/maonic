@@ -76,7 +76,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'maonic.mapeo',
     'maonic.monitoreo',
-    'registration',
+#    'registration',
     'maonic.lugar',
     'south',
     'smart_selects',

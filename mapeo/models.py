@@ -202,6 +202,7 @@ class Asociacion(FichaBaseAsociaciones):
             chained_model_field='tipo_org',
             show_all=False,
             auto_choose=True,
+<<<<<<< HEAD
             blank=True
     )
 
@@ -218,6 +219,11 @@ class Familia(FichaBaseProductores):
     cooperativa = models.ForeignKey(Cooperativa, blank=True, null=True)
     #asociacion fk
     asociacion = models.ForeignKey(Asociacion, blank=True, null=True) 
+=======
+            blank=True,
+            null=True
+    ) 
+>>>>>>> b3e888d8ff3b225d3848c5a1f1d3045408f46f49
 
     def __unicode__(self):
         return u'%s - %s' % (self.nombre_finca, self.nombre)
