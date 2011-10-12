@@ -42,7 +42,9 @@ class BuenasPracticas(SelectorBase):
     pass
 
 class TipoOrganizacion(SelectorBase):
-    pass
+    class Meta:
+        verbose_name = u'Tipo de organización'
+        verbose_name_plural = u'Tipos de organización'
 
 class Certificacion(SelectorBase):
     pass
