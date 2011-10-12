@@ -181,16 +181,9 @@ class Uniones(FichaBaseAsociaciones):
         verbose_name_plural = 'uniones'
         verbose_name = 'unión'
 
-class Cooperativa(FichaBaseAsociaciones):
-    # FIXME: El modelos debe ser dinámico: Centrales\Uniones
-    nombre_org = ChainedForeignKey(
-            Centrales,
-            chained_field='tipo_org',
-            chained_model_field='tipo_org',
-            show_all=False,
-            auto_choose=True,
-            blank=True
-    )
+class Cooperativa(FichaBaseAsociaciones):    
+    central = models.ForeignKey(Centrales, blank=True, null=True)
+    union = models.ForeignKey(Uniones, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'cooperativas'
@@ -198,7 +191,7 @@ class Cooperativa(FichaBaseAsociaciones):
 
 class Asociacion(FichaBaseAsociaciones):
     # FIXME: El modelos debe ser dinámico: Centrales\Uniones
-    nombre_org = models.ForeignKey(Centrales)
+    central = models.ForeignKey(Centrales)
 
     class Meta:
         verbose_name_plural = u'asociaciones'
