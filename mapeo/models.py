@@ -193,24 +193,34 @@ class Cooperativa(FichaBaseAsociaciones):
     class Meta:
         verbose_name_plural = 'cooperativas'
         verbose_name = 'cooperativa'
- 
-class Familia(FichaBaseProductores):
-    nombre_finca = models.CharField('Nombre de finca', max_length=50)
-    area_finca = models.DecimalField('Area de la finca en Manzanas', 
-            decimal_places=2, max_digits=8)
-    tipo_org = models.ForeignKey(TipoOrganizacion)
-    # FIXME: El modelos debe ser dinámico: Cooperativa\Uniones???
+
+class Asociacion(FichaBaseAsociaciones):
+    # FIXME: El modelos debe ser dinámico: Centrales\Uniones
     nombre_org = ChainedForeignKey(
-            Cooperativa,
+            Centrales,
             chained_field='tipo_org',
             chained_model_field='tipo_org',
             show_all=False,
             auto_choose=True,
             blank=True
-    ) 
+    )
+
+    class Meta:
+        verbose_name_plural = u'asociaciones'
+        verbose_name = u'asociación'
+
+class Familia(FichaBaseProductores):
+    nombre_finca = models.CharField('Nombre de finca', max_length=50)
+    area_finca = models.DecimalField('Area de la finca en Manzanas', 
+            decimal_places=2, max_digits=8)
+    tipo_org = models.ForeignKey(TipoOrganizacion)    
+    #cooperativa fk
+    cooperativa = models.ForeignKey(Cooperativa, blank=True, null=True)
+    #asociacion fk
+    asociacion = models.ForeignKey(Asociacion, blank=True, null=True) 
 
     def __unicode__(self):
-        return '%s - %s' % (self.nombre_finca, self.nombre)
+        return u'%s - %s' % (self.nombre_finca, self.nombre)
 
 class AsistenciaTecnica(FichaBaseProductores):
     desde= models.IntegerField('desde cuando provee asistencia')

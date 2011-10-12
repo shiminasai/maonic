@@ -32,6 +32,9 @@ class AsistenciaTecnicaAdmin(MaonicAdmin):
     
 class CooperativaAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+    
+class AsociacionAdmin(MaonicAdmin):
+    filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
 
 class CentralesAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
@@ -59,6 +62,8 @@ admin.site.register(Familia,FamiliaAdmin)
 
 #admin.site.register(Cooperativa, MaonicAdmin)
 admin.site.register(Cooperativa,CooperativaAdmin)
+
+admin.site.register(Asociacion, AsociacionAdmin)
 
 admin.site.register(Uniones,UnionesAdmin)
 
