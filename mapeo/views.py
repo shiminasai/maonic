@@ -61,6 +61,35 @@ def obtener_lista_paginada(request, modelo):
                           ant = objetos.previous_page_number())
         return HttpResponse(simplejson.dumps(resultados), mimetype="application/json")
 
+def obtener_lista_territorio(request, modelo):
+    '''Vista ajax para obtener lista de elementos en
+    la vista luego del filtrado, modelo es una cadena
+    definida dentro del diccionario model_dict en las
+    primeras lineas de este archivo
+    '''
+    if request.is_ajax():
+        lista_objetos = _get_model(modelo).objects.filter(
+                municipio__departamento__id = request.session['departamento'])
+        paginator = Paginator(lista_objetos, 25)
+
+        try:
+            page = int(request.GET.get('page', '1'))
+        except ValueError:
+            page = 1
+
+        try:
+            objetos = paginator.page(page)
+        except  (EmptyPage, InvalidPage):
+            objetos = paginator.page(paginator.num_pages)
+
+        #se le agrega el tipo de modelo para construir la url
+        lista_objetos = [dict(objeto, modelo = modelo) for objeto
+                in objetos.object_list.values('id', 'nombre')]
+        resultados = dict(enlaces = lista_objetos,
+                          sig = objetos.next_page_number(),
+                          ant = objetos.previous_page_number())
+        return HttpResponse(simplejson.dumps(resultados), mimetype="application/json")
+
 @session_required
 def obtener_lista(request, modelo):
     if request.is_ajax():
@@ -182,7 +211,8 @@ def territorio(request, id=None):
     Mapeo por Territorio, muestra lista de actores ubicados en un departamento.
     """
     if id:
-        lista_modelos = request.session['lista_modelos']
+        request.session['departamento'] = id
+        lista_modelos = [model for model in model_dict]
         dicc = {'lista_modelos': lista_modelos,
             'familia': 0,
             'cooperativa': 0,
@@ -198,7 +228,7 @@ def territorio(request, id=None):
             dicc[modelo] = _get_model(modelo).objects.filter(
                     municipio__departamento__id=id).distinct().count()
 
-        return render_to_response('mapeo/lista.html',
+        return render_to_response('mapeo/lista_territorio.html',
             dicc,
             context_instance=RequestContext(request)
         )
