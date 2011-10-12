@@ -32,11 +32,8 @@ class FamiliaAdmin(MaonicAdmin):
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
     
     def get_form(self, request, obj=None, ** kwargs):
-        if request.user.is_superuser:
-            form = super(FamiliaAdmin, self).get_form(request, ** kwargs)
-        else:
-            form = super(FamiliaAdmin, self).get_form(request, ** kwargs)
-            form.base_fields['tipo_org'].queryset = TipoOrganizacion.objects.filter(id__in=[1, 2, 5])
+        form = super(FamiliaAdmin, self).get_form(request, ** kwargs)
+        form.base_fields['tipo_org'].queryset = TipoOrganizacion.objects.filter(id__in=[1, 2, 5])
         return form
 
 class AsistenciaTecnicaAdmin(MaonicAdmin):
