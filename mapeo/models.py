@@ -196,15 +196,7 @@ class Cooperativa(FichaBaseAsociaciones):
 
 class Asociacion(FichaBaseAsociaciones):
     # FIXME: El modelos debe ser dinámico: Centrales\Uniones
-    nombre_org = ChainedForeignKey(
-            Centrales,
-            chained_field='tipo_org',
-            chained_model_field='tipo_org',
-            show_all=False,
-            auto_choose=True,
-<<<<<<< HEAD
-            blank=True
-    )
+    nombre_org = models.ForeignKey(Centrales)
 
     class Meta:
         verbose_name_plural = u'asociaciones'
@@ -218,12 +210,7 @@ class Familia(FichaBaseProductores):
     #cooperativa fk
     cooperativa = models.ForeignKey(Cooperativa, blank=True, null=True)
     #asociacion fk
-    asociacion = models.ForeignKey(Asociacion, blank=True, null=True) 
-=======
-            blank=True,
-            null=True
-    ) 
->>>>>>> b3e888d8ff3b225d3848c5a1f1d3045408f46f49
+    asociacion = models.ForeignKey(Asociacion, blank=True, null=True)
 
     def __unicode__(self):
         return u'%s - %s' % (self.nombre_finca, self.nombre)
