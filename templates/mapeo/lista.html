@@ -7,7 +7,7 @@
     function cargar_elemento(modelo, page){
       $.getJSON('/mapeo/lista/' + modelo + '/?page=' + page, function(data){
           $('#ajustado').html('');
-          if (data.length == 0){
+          if (data.enlaces.length == 0){
              $('#ajustado').html('No hay datos');
            }else{
             $.each(data.enlaces, function(i, elemento){
