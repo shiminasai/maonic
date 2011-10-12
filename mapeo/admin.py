@@ -10,6 +10,7 @@ class MaonicAdmin(admin.ModelAdmin):
             return self.model.objects.all()
         elif request.user.is_staff:
             return self.model.objects.filter(user=request.user)
+        
     def get_form(self, request, obj=None, ** kwargs):
         if request.user.is_superuser:
             form = super(MaonicAdmin, self).get_form(request, ** kwargs)
@@ -17,6 +18,7 @@ class MaonicAdmin(admin.ModelAdmin):
             form = super(MaonicAdmin, self).get_form(request, ** kwargs)
             form.base_fields['user'].queryset = User.objects.filter(pk=request.user.pk)
         return form
+    
     def save_model(self, request, obj, form, change):
         instance = form.save(commit=False)
         instance.user = request.user
@@ -29,12 +31,36 @@ class MaonicAdmin(admin.ModelAdmin):
 class FamiliaAdmin(MaonicAdmin):
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
     search_fields = ['nombre',]
+    
+    def get_form(self, request, obj=None, ** kwargs):
+        form = super(FamiliaAdmin, self).get_form(request, ** kwargs)
+        form.base_fields['tipo_org'].queryset = TipoOrganizacion.objects.filter(id__in=[1, 2, 5])
+        return form
+    
+    class Media:
+        js = ['/files/js/familia.js', ]
 
 class AsistenciaTecnicaAdmin(MaonicAdmin):
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
     
 class CooperativaAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+    
+    def get_form(self, request, obj=None, ** kwargs):
+        form = super(CooperativaAdmin, self).get_form(request, ** kwargs)
+        form.base_fields['tipo_org'].queryset = TipoOrganizacion.objects.filter(id__in=[3, 4])
+        return form
+    
+    class Media:
+        js = ['/files/js/cooperativa.js', ]
+    
+class AsociacionAdmin(MaonicAdmin):
+    filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+    
+    def get_form(self, request, obj=None, ** kwargs):
+        form = super(AsociacionAdmin, self).get_form(request, ** kwargs)
+        form.base_fields['tipo_org'].queryset = TipoOrganizacion.objects.filter(id__in=[4])
+        return form
 
 class CentralesAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
@@ -58,10 +84,12 @@ class OrgPublicaAdmin(MaonicAdmin):
     filter_horizontal = ('animales','cultivos','semillas','materia_procesada','certificacion')
 
 #admin.site.register(Familia, MaonicAdmin)
-admin.site.register(Familia,FamiliaAdmin)
+admin.site.register(Familia, FamiliaAdmin)
 
 #admin.site.register(Cooperativa, MaonicAdmin)
-admin.site.register(Cooperativa,CooperativaAdmin)
+admin.site.register(Cooperativa, CooperativaAdmin)
+
+admin.site.register(Asociacion, AsociacionAdmin)
 
 admin.site.register(Uniones,UnionesAdmin)
 
