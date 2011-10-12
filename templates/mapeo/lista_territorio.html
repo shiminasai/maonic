@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block extratitle %}
+| Mapeo | Lista
+{% endblock %}
+{% block extrahead %}
+<script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.1.js"></script>
+<script type="text/javascript">
+    function cargar_elemento(modelo, page){
+      $.getJSON('/mapeo/territorio/lista/' + modelo + '/?page=' + page, function(data){
+          $('#ajustado').html('');
+          if (data.enlaces.length == 0){
+             $('#ajustado').html('No hay datos');
+           }else{
+            $.each(data.enlaces, function(i, elemento){
+               var link = '<li><a href="/mapeo/ficha/' + elemento.modelo + 
+               '/' + elemento.id + '/">' + elemento.nombre + '</a></li>';
+               $('#ajustado').append(link);
+              }); 
+             var paginador = '<a href="#"' + 
+                             ' onClick=\'cargar_elemento("' + modelo + 
+                             '", ' +  data.ant + ')\'"> Anterior</a> |' +
+                             '<a href="#"' +
+                             ' onClick=\'cargar_elemento("' + modelo + 
+                             '", ' +  data.sig + ')\'"> Siguiente</a>'; 
+             $('#ajustado').append(paginador);
+            }
+        });
+    }
+    $(document).ready(function(){
+       var lista_modelos = [{%for modelo in lista_modelos%}'{{modelo}}',{%endfor%}];
+       $('.elemento_lista .change').click(function(){
+          var id = $(this).parent().attr('id');
+          cargar_elemento(id, 1);
+       });
+    });
+</script>
+{% endblock %}
+{% block top %}
+<div class="nombre_modulo">
+    M&oacute;dulo de Mapeo
+</div>
+{% include "links.html" %}
+{% endblock %}
+{% block contenido %}
+<div class="full">
+    <div class="elemento_lista" id="familia">
+        <div class="actor_title">{{familia}}</div>
+        <div class="change">Familias <br>Productoras</div>
+    </div>
+    <div class="elemento_lista" id="cooperativa">
+        <div class="actor_title">{{cooperativa}}</div>
+        <div class="change">Cooperativas</div>
+    </div>
+    <div class="elemento_lista" id="centrales">
+        <div class="actor_title">{{centrales}}</div>
+        <div class="change">Centrales de<br>Cooperativas</div>
+    </div>
+    <div class="elemento_lista" id="asistencia">
+        <div class="actor_title">{{asistencia}}</div>
+        <div class="change">Agentes de<br>Asistencia T&eacute;cnica</div>
+    </div>
+    <div class="elemento_lista" id="insumo">
+        <div class="actor_title">{{insumo}}</div>
+        <div class="change">Empresas<br>Comerciales<br>de Insumos</div>
+    </div>
+    <div class="elemento_lista" id="producto">
+        <div class="actor_title">{{producto}}</div>
+        <div class="change">Empresas<br>Comerciales<br>de Productos</div>
+    </div>
+    <div class="elemento_lista" id="certificadora">
+        <div class="actor_title">{{certificadora}}</div>
+        <div class="change">Empresas<br>Certificadoras</div>
+    </div>
+    <div class="elemento_lista" id="financiera">
+        <div class="actor_title">{{financiera}}</div>
+        <div class="change">Empresas<br>Financieras</div>
+    </div>
+    <div class="elemento_lista" id="orgpublica">
+        <div class="actor_title">{{orgpublica}}</div>
+        <div class="change">Organizaci&oacute;n<br>P&uacute;blica</div>
+    </div>
+    <div class="clean"></div>
+</div>
+<div id="ajustado" class="ajustado">
+</div>
+{% endblock %}
