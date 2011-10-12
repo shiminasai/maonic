@@ -116,7 +116,7 @@ def formulario(request):
         if form.is_valid():
             lista_modelos = []
             for key in model_dict.keys():
-                if form.cleaned_data[key] == 'on':
+                if key in form.cleaned_data and form.cleaned_data[key] == 'on':
                     lista_modelos.append(key)
 
             request.session['lista_modelos'] = lista_modelos
@@ -125,7 +125,8 @@ def formulario(request):
             for coso in ('semillas', 'materia_procesada', 'buenas_practicas',
                     'arboles', 'cultivos', 'animales',
                     'tipo_organizacion', 'certificacion', 'area_trabajo'):
-                request.session[coso] = form.cleaned_data[coso]
+                if coso in form.cleaned_data:
+                    request.session[coso] = form.cleaned_data[coso]
             #TODO:hacer un flash al estilo rails redigirir a mapita
             request.session['activo'] = True
             return HttpResponseRedirect('/mapeo/mapa')
@@ -142,13 +143,16 @@ def _get_params(session):
     del formulario de busqueda'''
     keys = ('semillas', 'materia_procesada', 'buenas_practicas',
             'arboles', 'cultivos', 'animales',
-            'tipo_organizacion', 'certificacion', 'area_trabajo')
+            'tipo_org', 'certificacion', 'area_trabajo')
     params = {}
     for key in keys:
         param_key = key + '__in'
-        if session[key] != []:
+        #if session[key] != []:
+        #    params[param_key] = session[key]
+        try:
             params[param_key] = session[key]
-
+        except KeyError:
+            pass
     return params
 
 def _get_model(model, session=None):
