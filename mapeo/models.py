@@ -42,7 +42,9 @@ class BuenasPracticas(SelectorBase):
     pass
 
 class TipoOrganizacion(SelectorBase):
-    pass
+    class Meta:
+        verbose_name = u'Tipo de organización'
+        verbose_name_plural = u'Tipos de organización'
 
 class Certificacion(SelectorBase):
     pass
@@ -179,39 +181,34 @@ class Uniones(FichaBaseAsociaciones):
         verbose_name_plural = 'uniones'
         verbose_name = 'unión'
 
-class Cooperativa(FichaBaseAsociaciones):
-    # FIXME: El modelos debe ser dinámico: Centrales\Uniones
-    nombre_org = ChainedForeignKey(
-            Centrales,
-            chained_field='tipo_org',
-            chained_model_field='tipo_org',
-            show_all=False,
-            auto_choose=True,
-            blank=True
-    )
+class Cooperativa(FichaBaseAsociaciones):    
+    central = models.ForeignKey(Centrales, blank=True, null=True)
+    union = models.ForeignKey(Uniones, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'cooperativas'
         verbose_name = 'cooperativa'
- 
+
+class Asociacion(FichaBaseAsociaciones):
+    # FIXME: El modelos debe ser dinámico: Centrales\Uniones
+    central = models.ForeignKey(Centrales)
+
+    class Meta:
+        verbose_name_plural = u'asociaciones'
+        verbose_name = u'asociación'
+
 class Familia(FichaBaseProductores):
     nombre_finca = models.CharField('Nombre de finca', max_length=50)
     area_finca = models.DecimalField('Area de la finca en Manzanas', 
             decimal_places=2, max_digits=8)
-    tipo_org = models.ForeignKey(TipoOrganizacion)
-    # FIXME: El modelos debe ser dinámico: Cooperativa\Uniones???
-    nombre_org = ChainedForeignKey(
-            Cooperativa,
-            chained_field='tipo_org',
-            chained_model_field='tipo_org',
-            show_all=False,
-            auto_choose=True,
-            blank=True,
-            null=True
-    ) 
+    tipo_org = models.ForeignKey(TipoOrganizacion)    
+    #cooperativa fk
+    cooperativa = models.ForeignKey(Cooperativa, blank=True, null=True)
+    #asociacion fk
+    asociacion = models.ForeignKey(Asociacion, blank=True, null=True)
 
     def __unicode__(self):
-        return '%s - %s' % (self.nombre_finca, self.nombre)
+        return u'%s - %s' % (self.nombre_finca, self.nombre)
 
 class AsistenciaTecnica(FichaBaseProductores):
     desde= models.IntegerField('desde cuando provee asistencia')

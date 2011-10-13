@@ -75,11 +75,26 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'maonic.mapeo',
-    'maonic.monitoreo',
+#    'maonic.monitoreo',
 #    'registration',
     'maonic.lugar',
     'south',
     'smart_selects',
+    #app del monitoreo
+    'maonic.encuestas',
+    'maonic.organizacion',
+    'maonic.tierra',
+    'maonic.animales',
+    'maonic.cultivos',
+    'maonic.opciones_agroecologico',
+    'maonic.semilla',
+    'maonic.suelo',
+    'maonic.inversiones',
+    'maonic.ingresos',
+    'maonic.propiedades',
+    'maonic.credito',
+    'maonic.seguridad',
+    'maonic.riesgo',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 3
