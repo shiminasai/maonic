@@ -97,8 +97,8 @@ class FichaBaseProductores(models.Model):
 class FichaBaseAsociaciones(models.Model):
     """Modelo Abstracto para Asociaciones, Uniones y Centrales de Cooperativas"""
     nombre = models.CharField('Nombre', max_length=150)
-    fecha_est = models.DateField('fecha de establecimiento')
-    direccion = models.TextField()
+    fecha_est = models.DateField('fecha de establecimiento', blank=True, null=True)
+    direccion = models.TextField(blank=True, null=True)
     municipio = models.ForeignKey(Municipio)
     lat = models.DecimalField(blank=True, max_digits=8,
             decimal_places=2, verbose_name='latitud', null=True)
@@ -108,14 +108,14 @@ class FichaBaseAsociaciones(models.Model):
     celular = models.CharField(max_length=8, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     pagina_web = models.URLField(blank=True, null=True)
-    representante_legal = models.CharField(max_length=100)
-    representante_tecnico = models.CharField(max_length=100)
-    num_hombres = models.IntegerField('numero de miembros hombres')
-    num_mujeres = models.IntegerField('numero de miembros mujeres')
+    representante_legal = models.CharField(max_length=100, blank=True, null=True)
+    representante_tecnico = models.CharField(max_length=100, blank=True, null=True)
+    num_hombres = models.IntegerField('numero de miembros hombres', blank=True, null=True)
+    num_mujeres = models.IntegerField('numero de miembros mujeres', blank=True, null=True)
 
     # Campos de control y seguridad
     user = models.ForeignKey(User) #usuario que creó el registro
-    tipo_org = models.ForeignKey(TipoOrganizacion)
+    tipo_org = models.ForeignKey(TipoOrganizacion, blank=True, null=True)
     fecha_agregado = models.DateTimeField(auto_now_add=True)
     fecha_actualizado = models.DateTimeField(auto_now=True)
 
@@ -220,7 +220,8 @@ class AsistenciaTecnica(FichaBaseProductores):
             chained_field='tipo_org',
             chained_model_field='tipo_org',
             show_all=False,
-            auto_choose=True
+            auto_choose=True,
+            null=True
     )
 
     class Meta:

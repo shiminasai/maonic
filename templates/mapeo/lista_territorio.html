@@ -3,9 +3,10 @@
 | Mapeo | Lista
 {% endblock %}
 {% block extrahead %}
+<script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.1.js"></script>
 <script type="text/javascript">
     function cargar_elemento(modelo, page){
-      $.getJSON('/mapeo/lista/' + modelo + '/?page=' + page, function(data){
+      $.getJSON('/mapeo/territorio/lista/' + modelo + '/?page=' + page, function(data){
           $('#ajustado').html('');
           if (data.enlaces.length == 0){
              $('#ajustado').html('No hay datos');
