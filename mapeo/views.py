@@ -95,7 +95,7 @@ def obtener_lista(request, modelo):
     if request.is_ajax():
         lista = []
         params = _get_params(request.session)
-        for objeto in _get_model(modelo).objects.filter(**params):
+        for objeto in _get_model(modelo).objects.filter(** params):
             if objeto.lat and objeto.lon:
                 dicc = dict(nombre=objeto.nombre, id=objeto.id,
                             lon=foat(objeto.lon) , lat=float(objeto.lat),
@@ -119,6 +119,32 @@ def formulario(request):
                 if key in form.cleaned_data and form.cleaned_data[key] == 'on':
                     lista_modelos.append(key)
 
+            request.session['lista_modelos'] = lista_modelos           
+
+            for coso in ('semillas', 'materia_procesada', 'buenas_practicas',
+                    'arboles', 'cultivos', 'animales',
+                    'tipo_organizacion', 'certificacion', 'area_trabajo'):
+                if coso in form.cleaned_data:
+                    request.session[coso] = form.cleaned_data[coso]
+                                
+            request.session['activo'] = True
+            return HttpResponseRedirect('/mapeo/mapa')            
+    else:
+        form = ProductoresForm()
+
+    return render_to_response('mapeo/formulario.html',
+            {'form': form},
+            context_instance=RequestContext(request))
+
+def formulario_asociaciones(request):
+    if request.method == 'POST':
+        form = AsociacionesForm(request.POST)
+        if form.is_valid():
+            lista_modelos = []
+            for key in model_dict.keys():
+                if key in form.cleaned_data and form.cleaned_data[key] == 'on':
+                    lista_modelos.append(key)
+
             request.session['lista_modelos'] = lista_modelos
             #validar aca!
 
@@ -131,12 +157,11 @@ def formulario(request):
             request.session['activo'] = True
             return HttpResponseRedirect('/mapeo/mapa')
     else:
-        form = ProductoresForm()
+        form = AsociacionesForm()
 
-    return render_to_response('mapeo/formulario.html',
+    return render_to_response('mapeo/formulario_asociaciones.html',
             {'form': form},
             context_instance=RequestContext(request))
-
 
 def _get_params(session):
     '''funcion interna para devolver parametros
@@ -147,12 +172,12 @@ def _get_params(session):
     params = {}
     for key in keys:
         param_key = key + '__in'
-        #if session[key] != []:
-        #    params[param_key] = session[key]
         try:
-            params[param_key] = session[key]
-        except KeyError:
-            pass
+            if session[key] != []:
+                params[param_key] = session[key]
+        except:
+            pass                             
+        
     return params
 
 def _get_model(model, session=None):
