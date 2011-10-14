@@ -43,3 +43,12 @@ class Encuesta(models.Model):
         verbose_name_plural = "Encuestas monitoreo MAONIC"
     def __unicode__(self):
         return self.productor.nombre
+        
+    def departamentos(self):
+        return self.productor.municipio
+    departamentos.short_description = 'Departamento - Municipio'
+    
+    def finca(self):
+        return self.productor.nombre_finca
+    finca.short_description = "Nombre de la finca"
+        
