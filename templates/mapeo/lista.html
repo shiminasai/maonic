@@ -11,8 +11,7 @@
              $('#ajustado').html('No hay datos');
            }else{
             $.each(data.enlaces, function(i, elemento){
-               var link = '<li><a href="/mapeo/ficha/' + elemento.modelo + 
-               '/' + elemento.id + '/">' + elemento.nombre + '</a></li>';
+               var link = '<li><a href="/mapeo/ficha/' + elemento.modelo + '/' + elemento.id + '/">' + elemento.nombre + '</a></li>';
                $('#ajustado').append(link);
               }); 
              var paginador = '<a href="#"' + 
