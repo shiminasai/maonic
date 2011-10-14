@@ -32,6 +32,12 @@ class Encuesta(models.Model):
     edad = models.IntegerField('Edad del productor')
     #usuario que va a digitar la encuestas
     usuario = models.ForeignKey(User)
+    #year para hacer las consulta por varios años
+    year = models.IntegerField(editable=False)
+    
+    def save(self):
+        self.year = self.fecha.year
+        super(Encuesta, self).save()
     
     class Meta:
         verbose_name_plural = "Encuestas monitoreo MAONIC"

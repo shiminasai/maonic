@@ -46,7 +46,7 @@ class RubrosI(models.Model):
 class IngresoFamiliar(models.Model):
     ''' Modelo Ingreso familiar. venta de rubros
     '''
-    rubro = models.ForeignKey(Rubros)
+    rubro = models.ForeignKey(RubrosI)
     cantidad = models.IntegerField('Cantidad vendida en el año pasado',null=True, blank=True)
     precio = models.IntegerField('Precio de venta por unidad C$',null=True, blank=True)
     quien_vendio = models.ForeignKey(IngresoVendio,verbose_name='¿A quien vendio?',null=True, blank=True)
