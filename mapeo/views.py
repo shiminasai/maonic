@@ -95,7 +95,6 @@ def obtener_lista(request, modelo):
     if request.is_ajax():
         lista = []
         params = _get_params(request.session)
-        
         for objeto in _get_model(modelo).objects.filter(** params):
             if objeto.lat and objeto.lon:
                 dicc = dict(nombre=objeto.nombre, id=objeto.id,
@@ -137,6 +136,32 @@ def formulario(request):
             {'form': form},
             context_instance=RequestContext(request))
 
+def formulario_asociaciones(request):
+    if request.method == 'POST':
+        form = AsociacionesForm(request.POST)
+        if form.is_valid():
+            lista_modelos = []
+            for key in model_dict.keys():
+                if key in form.cleaned_data and form.cleaned_data[key] == 'on':
+                    lista_modelos.append(key)
+
+            request.session['lista_modelos'] = lista_modelos
+            #validar aca!
+
+            for coso in ('semillas', 'materia_procesada', 'buenas_practicas',
+                    'arboles', 'cultivos', 'animales',
+                    'tipo_organizacion', 'certificacion', 'area_trabajo'):
+                if coso in form.cleaned_data:
+                    request.session[coso] = form.cleaned_data[coso]
+            #TODO:hacer un flash al estilo rails redigirir a mapita
+            request.session['activo'] = True
+            return HttpResponseRedirect('/mapeo/mapa')
+    else:
+        form = AsociacionesForm()
+
+    return render_to_response('mapeo/formulario_asociaciones.html',
+            {'form': form},
+            context_instance=RequestContext(request))
 
 def _get_params(session):
     '''funcion interna para devolver parametros
