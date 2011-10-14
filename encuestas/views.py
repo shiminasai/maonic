@@ -1072,6 +1072,101 @@ def mitigariesgos(request):
 
                                
 #utilitarios
+def obtener_lista(request):
+    if request.is_ajax():
+        lista = []
+        for objeto in Encuesta.objects.all():
+            dicc = dict(nombre=objeto.nombre, id=objeto.id,
+                        lon=float(objeto.comunidad.municipio.longitud) ,
+                        lat=float(objeto.comunidad.municipio.latitud)
+                        )
+            lista.append(dicc)
+
+        serializado = simplejson.dumps(lista)
+        return HttpResponse(serializado, mimetype='application/json')
+# Vistas para obtener los municipios, comunidades, etc..
+
+def get_munis(request):
+    '''Metodo para obtener los municipios via Ajax segun los departamentos selectos'''
+    ids = request.GET.get('ids', '')
+    dicc = {}
+    resultado = []
+    if ids:
+        lista = ids.split(',')
+        for id in lista:
+            try:
+                departamento = Departamento.objects.get(pk=id)
+                municipios = Municipio.objects.filter(departamento__id=departamento.pk).order_by('nombre')
+                lista1 = []
+                for municipio in municipios:
+                    muni = {}
+                    muni['id'] = municipio.pk
+                    muni['nombre'] = municipio.nombre
+                    lista1.append(muni)
+                    dicc[departamento.nombre] = lista1
+            except:
+                pass
+
+    #filtrar segun la organizacion seleccionada
+    org_ids = request.GET.get('org_ids', '')
+    if org_ids:
+        lista = org_ids.split(',')
+        municipios = [encuesta.municipio for encuesta in Encuesta.objects.filter(organizacion__id__in=lista)]
+        #crear los keys en el dicc para evitar KeyError
+        for municipio in municipios:
+            dicc[municipio.departamento.nombre] = []
+
+        #agrupar municipios por departamento padre
+        for municipio in municipios:
+            muni = {'id': municipio.id, 'nombre': municipio.nombre}
+            if not muni in dicc[municipio.departamento.nombre]:
+                dicc[municipio.departamento.nombre].append(muni)
+
+    resultado.append(dicc)
+
+    return HttpResponse(simplejson.dumps(resultado), mimetype='application/json')
+
+def get_comunies(request):
+    ids = request.GET.get('ids', '')
+    if ids:
+        lista = ids.split(',')
+    results = []
+    comunies = Comunidad.objects.filter(municipio__pk__in=lista).order_by('nombre').values('id', 'nombre')
+
+    return HttpResponse(simplejson.dumps(list(comunies)), mimetype='application/json')
+
+def get_organi(request):
+    ids = request.GET.get('ids', '')
+    if ids:
+        lista = ids.split(',')
+#    municipios = Municipio.objects.filter(departamento__pk__in=lista)
+#    orgs_id_list = [encuesta.organizacion.all().values_list('id', flat=True) for encuesta in Encuesta.objects.filter(comunidad__municipio__in=municipios)]
+#    print 'MMMMMMMMM'
+#    print orgs_id_list
+#    organizaciones = Organizaciones.objects.filter(pk__in=orgs_id_list).order_by('nombre').values('id', 'nombre')
+    organizaciones = Organizaciones.objects.filter(departamento__id__in = lista).order_by('nombre').values('id', 'nombre')
+
+
+    return HttpResponse(simplejson.dumps(list(organizaciones)), mimetype='application/json')
+
+######viejo codigo#############################
+
+def get_municipios(request, departamento):
+    municipios = Municipio.objects.filter(departamento = departamento)
+    lista = [(municipio.id, municipio.nombre) for municipio in municipios]
+    return HttpResponse(simplejson.dumps(lista), mimetype='application/javascript')
+
+def get_organizacion(request, departamento):
+    organizaciones = Organizaciones.objects.filter(departamento = departamento)
+    lista = [(organizacion.id, organizacion.nombre) for organizacion in organizaciones]
+    return HttpResponse(simplejson.dumps(lista), mimetype='application/javascript')
+
+def get_comunidad(request, municipio):
+    comunidades = Comunidad.objects.filter(municipio = municipio )
+    lista = [(comunidad.id, comunidad.nombre) for comunidad in comunidades]
+    return HttpResponse(simplejson.dumps(lista), mimetype='application/javascript')
+
+# Funciones utilitarias para cualquier proposito
 #TODO: completar esto
 VALID_VIEWS = {
         'fincas':fincas,
