@@ -132,7 +132,7 @@ class ForeignKeySearchInput(forms.TextInput):
         }
         js = (
             'js/jquery.min.js',
-            'js//jquery.autocomplete.js',
+            'js/jquery.autocomplete.js',
         )
     input_type = 'hidden'
 

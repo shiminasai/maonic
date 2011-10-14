@@ -175,6 +175,10 @@ class EncuestaAdmin(AutocompleteFKMixin, admin.ModelAdmin):
                InfraestructuraInline,HerramientasInline,TransporteInline,CreditoInline,
                SeguridadInline,VulnerableInline,RiesgosInline
               ]
+    list_display = ('productor',)
+    #list_filter = ['productor__departamento__municipio']
+    #search_fields = ['productor', 'productor__departamento__municipio']
+    date_hierarchy = 'fecha'
     
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Recolector)
