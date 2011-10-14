@@ -215,6 +215,11 @@ img{
 }
 .ajustado{
     padding: 15px;
+background: url(/files/images/noise.jpg);
+}
+.full{
+    
+background: url(/files/images/noise.jpg);
 }
 .nombre_modulo{
     font-size: 25px;
