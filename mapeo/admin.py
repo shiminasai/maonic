@@ -12,13 +12,14 @@ class MaonicAdmin(admin.ModelAdmin):
             return self.model.objects.filter(user=request.user)
         
     def get_form(self, request, obj=None, ** kwargs):
+
         if request.user.is_superuser:
             form = super(MaonicAdmin, self).get_form(request, ** kwargs)
         else:
             form = super(MaonicAdmin, self).get_form(request, ** kwargs)
             form.base_fields['user'].queryset = User.objects.filter(pk=request.user.pk)
         return form
-    
+
     def save_model(self, request, obj, form, change):
         instance = form.save(commit=False)
         instance.user = request.user
