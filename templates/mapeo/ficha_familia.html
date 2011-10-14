@@ -69,9 +69,7 @@
             <div class="subtitle">Tipo de Organizaci&oacute;n</div>
             <div class="detalles2">
                 <ul class="details">
-                    {%for elemento in  objeto.tipo_org.all%}
-                    <li>{{elemento.nombre}}</li>
-                    {%endfor%}
+                  <li>{{objeto.tipo_org.nombre}}{%if objeto.nombre_org %}: {{objeto.nombre_org}}{%endif%}</li>
                 </ul>
                 <div class="clean"></div>
             </div>
@@ -93,21 +91,21 @@
             <div class="litle_left uno">
                 <div class="subtitle">Rubros</div>
                 <div class="detalles2">
-                    <div class="subcategoria">&Aacute;rboles</div>
+                    {%if objeto.arboles%}<div class="subcategoria">&Aacute;rboles</div>{%endif%}
                     <ul class="details">
                         {%for elemento in  objeto.arboles.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>
                     <div class="clean"></div>
-                    <div class="subcategoria">Animales</div>
+                    {%if objeto.animales.all%}<div class="subcategoria">Animales</div>{%endif%}
                     <ul class="details">
                         {%for elemento in  objeto.animales.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>
                     <div class="clean"></div>
-                    <div class="subcategoria">Cultivos</div>
+                    {%if objeto.cultivos.all%}<div class="subcategoria">Cultivos</div>{%endif%}
                     <ul class="details">
                         {%for elemento in  objeto.cultivos.all%}
                         <li>{{elemento.nombre}}</li>
