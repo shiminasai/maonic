@@ -97,7 +97,7 @@ class Propiedades(models.Model):
         return u'%s' % self.equipo.nombre
     
     class Meta:
-        verbose_name_plural = "13.2 Equipos"
+        verbose_name_plural = "Equipos"
         
         
 class Infraestructura(models.Model):
@@ -131,7 +131,7 @@ class Herramientas(models.Model):
         return self.herramienta.nombre
 
     class Meta:
-        verbose_name_plural = "13.3-Herramientas"
+        verbose_name_plural = "Herramientas"
 
 
 class NombreTransporte(models.Model):

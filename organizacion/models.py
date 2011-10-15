@@ -35,7 +35,7 @@ class SerMiembro(models.Model):
     class Meta:
         verbose_name_plural = "Porque quiere ser miembro"
 
-CHOICE_DESDE = ((1,'Menos de 5 años'),(2,'Más de 5 años'),(3,'No utilizar'))
+CHOICE_DESDE = ((1,'Menos de 5 años'),(2,'Más de 5 años'))
 CHOICE_MIEMBRO_GREMIAL = ((1,'Junta directiva'),(2,'Comisiones de trabajo'),(3,'No'))
 
 

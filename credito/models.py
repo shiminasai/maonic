@@ -27,8 +27,8 @@ CHOICE_DESDE = ((1,'Menos de 5 años'),(2,'Más de 5 años'))
 
 CHOICE_SATISFACCION = ((1,"Menos de 25 % de las necesidades"),
                        (2,"Entre 25 y 50 % de las necesidades"),
-                       (3,"Entre 50 y 100 % de las necesidades"),
-                       (4,"No aplica"))
+                       (3,"Entre 50 y 100 % de las necesidades")
+                       )
 
 class Credito(models.Model):
     ''' Modelo de credito
