@@ -402,8 +402,8 @@ def cultivos(request):
         totales = query.aggregate(total=Sum('cultivosfinca__total'))['total']
         consumo = query.aggregate(consumo=Sum('cultivosfinca__consumo'))['consumo']
         libre = query.aggregate(libre=Sum('cultivosfinca__venta_libre'))['libre']
-        organizada =query.aggregate(organizada=Sum('cultivosfinca__venta_organizada'))['organizada']
-        tabla[key] = {'key2':key2,'totales':totales,'consumo':consumo,'libre':libre,'organizada':organizada}
+        #organizada =query.aggregate(organizada=Sum('cultivosfinca__venta_organizada'))['organizada']
+        tabla[key] = {'key2':key2,'totales':totales,'consumo':consumo,'libre':libre}
 
     return render_to_response('monitoreo/cultivo/cultivos.html',
                              locals(),
