@@ -179,6 +179,10 @@ class EncuestaAdmin(AutocompleteFKMixin, admin.ModelAdmin):
     #list_filter = ['productor__departamento__municipio']
     #search_fields = ['productor', 'productor__departamento__municipio']
     date_hierarchy = 'fecha'
+    class Media:
+        css = {
+            'all': ('css/custom_admin.css',)
+        }
     
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Recolector)
