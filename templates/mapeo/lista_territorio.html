@@ -7,14 +7,14 @@
 <script type="text/javascript">
     function cargar_elemento(modelo, page){
       $.getJSON('/mapeo/territorio/lista/' + modelo + '/?page=' + page, function(data){
-          $('#ajustado').html('');
+          $('#resultado').html('');
           if (data.enlaces.length == 0){
-             $('#ajustado').html('No hay datos');
+             $('#resultado').html('No hay datos');
            }else{
             $.each(data.enlaces, function(i, elemento){
                var link = '<li><a href="/mapeo/ficha/' + elemento.modelo + 
                '/' + elemento.id + '/">' + elemento.nombre + '</a></li>';
-               $('#ajustado').append(link);
+               $('#resultado').append(link);
               }); 
              var paginador = '<a href="#"' + 
                              ' onClick=\'cargar_elemento("' + modelo + 
@@ -22,7 +22,7 @@
                              '<a href="#"' +
                              ' onClick=\'cargar_elemento("' + modelo + 
                              '", ' +  data.sig + ')\'"> Siguiente</a>'; 
-             $('#ajustado').append(paginador);
+             $('#resultado').append(paginador);
             }
         });
     }
@@ -43,44 +43,42 @@
 {% endblock %}
 {% block contenido %}
 <div class="full">
-    <div class="elemento_lista" id="familia">
-        <div class="actor_title">{{familia}}</div>
-        <div class="change">Familias <br>Productoras</div>
-    </div>
-    <div class="elemento_lista" id="cooperativa">
-        <div class="actor_title">{{cooperativa}}</div>
-        <div class="change">Cooperativas</div>
-    </div>
-    <div class="elemento_lista" id="centrales">
-        <div class="actor_title">{{centrales}}</div>
-        <div class="change">Centrales de<br>Cooperativas</div>
-    </div>
-    <div class="elemento_lista" id="asistencia">
-        <div class="actor_title">{{asistencia}}</div>
-        <div class="change">Agentes de<br>Asistencia T&eacute;cnica</div>
-    </div>
-    <div class="elemento_lista" id="insumo">
-        <div class="actor_title">{{insumo}}</div>
-        <div class="change">Empresas<br>Comerciales<br>de Insumos</div>
-    </div>
-    <div class="elemento_lista" id="producto">
-        <div class="actor_title">{{producto}}</div>
-        <div class="change">Empresas<br>Comerciales<br>de Productos</div>
-    </div>
-    <div class="elemento_lista" id="certificadora">
-        <div class="actor_title">{{certificadora}}</div>
-        <div class="change">Empresas<br>Certificadoras</div>
-    </div>
-    <div class="elemento_lista" id="financiera">
-        <div class="actor_title">{{financiera}}</div>
-        <div class="change">Empresas<br>Financieras</div>
-    </div>
-    <div class="elemento_lista" id="orgpublica">
-        <div class="actor_title">{{orgpublica}}</div>
-        <div class="change">Organizaci&oacute;n<br>P&uacute;blica</div>
-    </div>
-    <div class="clean"></div>
+    <div id="recuadro">
+        <div id="filtrarlistado">
+            <div class="elemento_lista"id ="familia" >
+                <div class="change"><div id="familia-number" class="redondo">{{familia}}</div> Familias Productoras </div>
+            </div>
+            <div class="elemento_lista"id ="cooperativa" >
+                <div class="change"><div id="cooperativa-number" class="redondo">{{cooperativa}}</div> Cooperativas </div>
+            </div>
+            <div class="elemento_lista"id ="centrales" >
+                <div class="change"><div id="centrales-number" class="redondo">{{centrales}}</div> Centrales de Cooperativas </div>
+            </div>
+            <div class="elemento_lista"id ="asistencia" >
+                <div class="change"><div id="asistencia-number" class="redondo">{{asistencia}}</div> Agentes de Asistencia T&eacute;cnica </div>
+            </div>
+            <div class="elemento_lista"id ="insumo" >
+                <div class="change"><div id="insumo-number" class="redondo">{{insumo}}</div> Empresas de Insumos</div>
+            </div>
+            <div class="elemento_lista"id ="producto" >
+                <div class="change"><div id="producto-number" class="redondo">{{producto}}</div> Empresas de Productos</div>
+            </div>
+            <div class="elemento_lista"id ="certificadora" >
+                <div class="change"><div id="certificadora-number" class="redondo">{{certificadora}}</div>Empresas Certificadoras</div>
+            </div>
+            <div class="elemento_lista"id ="financieraa" >
+                <div class="change"><div id="financiera-number" class="redondo">{{financiera}}</div>Empresas Financieras</div>
+            </div>
+            <div class="elemento_lista"id ="orgpublica" >
+                <div class="change"><div id="orgpublica-number" class="redondo">{{orgpublica}}</div>Organizaci&oacute;n P&uacute;blica</div>
+            </div>
+        </div>
+
+<div id="resultado" >
+
 </div>
-<div id="ajustado" class="ajustado">
+   <div class="clean"></div>
+</div>
+
 </div>
 {% endblock %}
