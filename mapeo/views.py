@@ -55,7 +55,7 @@ def obtener_lista_paginada(request, modelo):
 
         #se le agrega el tipo de modelo para construir la url
         lista_objetos = [dict(objeto, modelo = modelo) for objeto
-                in objetos.object_list.values('id', 'nombre')]
+                in objetos.object_list.values('id', 'nombre','municipio__nombre')]
         resultados = dict(enlaces = lista_objetos,
                           sig = objetos.next_page_number(),
                           ant = objetos.previous_page_number())
