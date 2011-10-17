@@ -146,15 +146,14 @@ def formulario_asociaciones(request):
                     lista_modelos.append(key)
 
             request.session['lista_modelos'] = lista_modelos
-            #validar aca!
 
             for coso in ('semillas', 'materia_procesada', 'buenas_practicas',
-                    'arboles', 'cultivos', 'animales',
+                    'arboles', 'cultivos', 'animales', 'rubros',
                     'tipo_organizacion', 'certificacion', 'area_trabajo'):
                 if coso in form.cleaned_data:
                     request.session[coso] = form.cleaned_data[coso]
-            #TODO:hacer un flash al estilo rails redigirir a mapita
             request.session['activo'] = True
+
             return HttpResponseRedirect('/mapeo/mapa')
     else:
         form = AsociacionesForm()
@@ -167,7 +166,7 @@ def _get_params(session):
     '''funcion interna para devolver parametros
     del formulario de busqueda'''
     keys = ('semillas', 'materia_procesada', 'buenas_practicas',
-            'arboles', 'cultivos', 'animales',
+            'arboles', 'cultivos', 'animales', 'rubros',
             'tipo_org', 'certificacion', 'area_trabajo')
     params = {}
     for key in keys:

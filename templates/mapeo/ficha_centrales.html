@@ -98,23 +98,8 @@
             <div class="litle_left uno">
                 <div class="subtitle">Rubros</div>
                 <div class="detalles2">
-                    <div class="subcategoria">&Aacute;rboles</div>
                     <ul class="details">
-                        {%for elemento in  objeto.arboles.all%}
-                        <li>{{elemento.nombre}}</li>
-                        {%endfor%}
-                    </ul>
-                    <div class="clean"></div>
-                    <div class="subcategoria">Animales</div>
-                    <ul class="details">
-                        {%for elemento in  objeto.animales.all%}
-                        <li>{{elemento.nombre}}</li>
-                        {%endfor%}
-                    </ul>
-                    <div class="clean"></div>
-                    <div class="subcategoria">Cultivos</div>
-                    <ul class="details">
-                        {%for elemento in  objeto.cultivos.all%}
+                        {%for elemento in  objeto.rubros.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>
