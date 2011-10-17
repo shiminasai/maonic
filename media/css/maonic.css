@@ -323,7 +323,7 @@ background: url(/files/images/noise.jpg);
 }
 #map_canvas{
     height: 420px;
-    width: 960px;
+    width: 890px;
 }
 .explora_mapa{
     padding-top: 10px;
@@ -341,11 +341,7 @@ background: url(/files/images/noise.jpg);
 .infowindow a:hover{
     text-decoration: underline;
 }
-.elemento_lista{
-    width: 6.667em;
-    height: 74px;
-    float: left;
-}
+
 .actor_title{
     height: 21px;
     text-align: center;
@@ -353,14 +349,6 @@ background: url(/files/images/noise.jpg);
     color: #fff;
     font-weight: bold;
     line-height: 21px;
-}
-.change{
-    height: 46px;
-    cursor: pointer;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
-    padding-top: 7px;
 }
 
 /* Agregado por Byron */
@@ -376,92 +364,113 @@ font-weight:bold;
 color:#9ea925;
 }
 
-/**** Comienzan los estilos de la bandera gay jajaja :P *********/
-#familia .actor_title{
-    background: #c1c634;
-}
-#familia .change{
-    background: url(/files/images/lista/familia_back.png) repeat-x;
-}
-#familia .change:hover{
-    background-position: 0 -53px;
-}
-#cooperativa .actor_title{
-    background: #af774b;
-}
-#cooperativa .change{
-    background: url(/files/images/lista/cooperativa_back.png) repeat-x;
-}
-#cooperativa .change:hover{
-    background-position: 0 -53px;
-}
-#centrales .actor_title{
-    background: #e39c1c;
-}
-#centrales .change{
-    background: url(/files/images/lista/centrales_back.png) repeat-x;
-}
-#centrales .change:hover{
-    background-position: 0 -53px;
-}
-#asistencia .actor_title{
-    background: #d8c515;
-}
-#asistencia .change{
-    background: url(/files/images/lista/asistencia_back.png) repeat-x;
-}
-#asistencia .change:hover{
-    background-position: 0 -53px;
-}
-#insumo .actor_title{
-    background: #64ad43;
-}
-#insumo .change{
-    background: url(/files/images/lista/insumo_back.png) repeat-x;
-}
-#insumo .change:hover{
-    background-position: 0 -53px;
-}
-#producto .actor_title{
-    background: #57a692;
-}
-#producto .change{
-    background: url(/files/images/lista/producto_back.png) repeat-x;
-}
-#producto .change:hover{
-    background-position: 0 -53px;
-}
-#certificadora .actor_title{
-    background: #5d68b6;
-}
-#certificadora .change{
-    background: url(/files/images/lista/certificadora_back.png) repeat-x;
-}
-#certificadora .change:hover{
-    background-position: 0 -53px;
-}
-#financiera .actor_title{
-    background: #ba67ad;
-}
-#financiera .change{
-    background: url(/files/images/lista/financiadora_back.png) repeat-x;
-}
-#financiera .change:hover{
-    background-position: 0 -53px;
-}
-#orgpublica .actor_title{
-    background: #b43e3e;
-}
-#orgpublica .change{
-    background: url(/files/images/lista/orgpublica_back.png) repeat-x;
-}
-#orgpublica .change:hover{
-    background-position: 0 -53px;
-}
-.change:hover{
-    color: #fff;
+/**** Comienzan los estilos de la seleccion de tipo de actores *********/
+
+
+#filtrarlistado{
+    width:200px;
+    float:left;
+    border-right:#B5B5B5 1px solid;
 }
 
+.change{
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.change:hover{
+    text-decoration: underline;
+}
+
+
+.elemento_lista{
+    width:200px;
+    float:left;
+    margin-bottom:7px;
+}
+#familia-number{
+    padding:5px 7px 5px 7px;
+    background:#c1c634;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+.redondo{
+    border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+}
+
+#cooperativa-number{
+    padding:5px 7px 5px 7px;
+    background:#af774b;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+#centrales-number{
+    padding:5px 7px 5px 7px;
+    background:#e39c1c;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+
+#asistencia-number{
+    padding:5px 7px 5px 7px;
+    background:#efe056;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+
+#insumo-number{
+    padding:5px 7px 5px 7px;
+    background:#64ad43;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+
+#producto-number{
+    padding:5px 7px 5px 7px;
+    background:#57a692;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+
+#certificadora-number{
+    padding:5px 7px 5px 7px;
+    background:#5d68b6;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+
+#financiera-number{
+    padding:5px 7px 5px 7px;
+    background:#ba67ad;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+#orgpublica-number{
+    padding:5px 7px 5px 7px;
+    background:#b43e3e;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+
+#resultado{
+    float:left;
+    margin-left:15px;
+}
 /******************************************************************/
 .errorlist{
     color: red;
@@ -685,3 +694,21 @@ ul.details li{
 .infobox a:hover{
     text-decoration: underline;
 }
+caption {font-size: 1.7em; color: #F06; text-align: left;}
+table {margin: 0; padding: 0; border-collapse: collapse; width: 600px;}
+td, th {padding: 10px 4px; border-bottom: 1px solid #EEE;}
+td + td {border-left: 1px solid #FAFAFA; color: #999;}
+td + td + td {color: #666; border-left: none;}
+td a {color: #444; text-decoration: none; text-align: right;}
+td a, th a {display: block; width: 100%;}
+td a:hover {background: #444; color: #FFF;}
+tfoot th {text-align: right;}
+th {text-align: left;}
+th + th {text-align: right;}
+th + th + th {text-align: left;}
+th a {color: #F06; text-decoration: none; font-size: 1.1em;}
+th a:visited {color: #F69;}
+th a:hover {color: #F06; text-decoration: underline;}
+thead tr, tfoot tr {color: #555; font-size: 0.8em;}
+tr {font: 12px sans-serif; background: url(/files/images/prettyinpink_row.png) repeat-x #F8F8F8; color: #666;}
+tr:hover {background: #FFF;}
