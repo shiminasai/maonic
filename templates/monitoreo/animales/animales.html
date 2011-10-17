@@ -16,15 +16,13 @@ Subindicador animales
         <caption>Los Animales</caption>
         <thead>
             <tr>
-                <th></th>
-                <th>Número</th>
+                <th>Animales</th>
+                <th>Cantidad</th>
                 <th>%</th>
-                <th>cantidad</th>
-                <th>Cantidad/Familia</th>
             </tr>
         </thead>
         <tbody>
-            {%for fila in tabla%}
+            {%for fila in tabla_animales%}
             <tr>
                 {%for celda in fila%}
                 <td>{{celda}}</td>
@@ -38,8 +36,6 @@ Subindicador animales
         <caption>Los Animales y la Producción </caption>
         <thead>
             <tr>
-                <th>Animal</th>
-                <th>Cantidad</th>
                 <th>Producto</th>
                 <th>Unidad</th>
                 <th>Cantidad Producida</th>

@@ -39,10 +39,10 @@ class AnimalesFinca(models.Model):
     ''' Modelo animales en la finca
     '''
     produccion = models.ForeignKey(ProductoAnimal)
-    total_produccion = models.IntegerField('Total producion por año', null=True)
-    consumo = models.FloatField('Consumo')
-    venta_libre = models.FloatField('Venta libre')
-    venta_organizada = models.FloatField('Venta organizada')
+    total_produccion = models.FloatField('Total producion por año', null=True, blank=True)
+    consumo = models.FloatField('Consumo', null=True, blank=True)
+    venta_libre = models.FloatField('Venta libre', null=True, blank=True)
+    venta_organizada = models.FloatField('Venta organizada', null=True, blank=True)
     encuesta = models.ForeignKey(Encuesta)
     
     def __unicode__(self):

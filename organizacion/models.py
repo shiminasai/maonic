@@ -35,7 +35,7 @@ class SerMiembro(models.Model):
     class Meta:
         verbose_name_plural = "Porque quiere ser miembro"
 
-CHOICE_DESDE = ((1,'Menos de 5 años'),(2,'Más de 5 años'),(3,'No utilizar'))
+CHOICE_DESDE = ((1,'Menos de 5 años'),(2,'Más de 5 años'))
 CHOICE_MIEMBRO_GREMIAL = ((1,'Junta directiva'),(2,'Comisiones de trabajo'),(3,'No'))
 
 
@@ -44,7 +44,7 @@ class OrganizacionGremial(models.Model):
     '''
     socio = models.ManyToManyField(OrgGremiales,
                                    verbose_name="Es socio/a de una organización gremial")
-    nombre = models.CharField('Nombre de la organización gremial', max_length=200)
+    nombre = models.CharField('Nombre de la organización gremial', max_length=200, null=True, blank=True)
     desde_socio = models.IntegerField('Desde cuando', choices=CHOICE_DESDE, null=True, blank=True)
     beneficio = models.ManyToManyField(BeneficiosObtenido,
                                        verbose_name="¿Qué beneficios ha tenido por ser socio/a de la cooperativa, la asociación o empresa", null=True, blank=True)

@@ -164,10 +164,11 @@ class EncuestaAdmin(AutocompleteFKMixin, admin.ModelAdmin):
     save_on_top = True
     actions_on_top = True
     exclude = ('usuario',)
-    related_search_fields = { 
-                              'productor':('nombre',),
-                              #'productor' :{'search': ('nombre',), 'related': ('nombre',)},
-                            }
+    raw_id_fields = ("productor",)
+#    related_search_fields = { 
+#                              'productor':('nombre',),
+#                              #'productor' :{'search': ('nombre',), 'related': ('nombre',)},
+#                            }
     inlines = [OrganizacionGremialInline,TenenciaInline,UsoTierraInline,AnimalesCantidadInline,
                AnimalesFincaInline,CultivosFincaInline,OpcionesManejoInline,UsoSemillaInline,
                SueloInline,ManejoSueloInline,InversionesInline,IngresoFamiliarInline,
@@ -175,6 +176,14 @@ class EncuestaAdmin(AutocompleteFKMixin, admin.ModelAdmin):
                InfraestructuraInline,HerramientasInline,TransporteInline,CreditoInline,
                SeguridadInline,VulnerableInline,RiesgosInline
               ]
+    list_display = ('productor','departamentos','finca','fecha',)
+    #list_filter = ['productor__departamento__municipio']
+    #search_fields = ['productor', 'productor__departamento__municipio']
+    date_hierarchy = 'fecha'
+    class Media:
+        css = {
+            'all': ('css/custom_admin.css',)
+        }
     
 admin.site.register(Encuesta, EncuestaAdmin)
 admin.site.register(Recolector)
