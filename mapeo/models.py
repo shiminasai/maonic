@@ -115,7 +115,6 @@ class FichaBaseAsociaciones(models.Model):
 
     # Campos de control y seguridad
     user = models.ForeignKey(User) #usuario que creó el registro
-    tipo_org = models.ForeignKey(TipoOrganizacion, blank=True, null=True)
     fecha_agregado = models.DateTimeField(auto_now_add=True)
     fecha_actualizado = models.DateTimeField(auto_now=True)
 
@@ -182,6 +181,7 @@ class Uniones(FichaBaseAsociaciones):
         verbose_name = 'unión'
 
 class Cooperativa(FichaBaseAsociaciones):    
+    tipo_org = models.ForeignKey(TipoOrganizacion, blank=True, null=True)
     central = models.ForeignKey(Centrales, blank=True, null=True)
     union = models.ForeignKey(Uniones, blank=True, null=True)
 
@@ -190,8 +190,8 @@ class Cooperativa(FichaBaseAsociaciones):
         verbose_name = 'cooperativa'
 
 class Asociacion(FichaBaseAsociaciones):
-    # FIXME: El modelos debe ser dinámico: Centrales\Uniones
-    central = models.ForeignKey(Centrales)
+    tipo_org = models.ForeignKey(TipoOrganizacion, blank=True, null=True)
+    central = models.ForeignKey(Centrales, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = u'asociaciones'
