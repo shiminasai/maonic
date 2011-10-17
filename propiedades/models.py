@@ -46,9 +46,6 @@ class TipoCasa(models.Model):
     piso = models.ManyToManyField(Piso, verbose_name="Piso", null=True, blank=True)
     techo = models.ManyToManyField(Techo, verbose_name="Techo", null=True, blank=True)
     encuesta = models.ForeignKey(Encuesta)
-    
-    def __unicode__(self):
-        return u'%s' % self.get_tipo_display()
 
     class Meta:
         verbose_name_plural = "Tipo de casa"

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from django.http import Http404, HttpResponse
 from django.template.defaultfilters import slugify
 from django.template import RequestContext
@@ -343,43 +344,68 @@ def fincas_grafos(request, tipo):
 def animales(request):
     '''Los animales y la produccion'''
     consulta = _queryset_filtrado(request)
-    tabla = []
+    num_familias = consulta.count()
+    tabla_animales = []
     tabla_produccion = []
-    totales = {}
-
-    totales['numero'] = consulta.count()
-    totales['porcentaje_num'] = 100
-    #totales['animales'] = consulta.aggregate(cantidad=Sum('animalesfinca__cantidad'))['cantidad']
-    totales['porcentaje_animal'] = 100
-
+    
     for animal in Animales.objects.all():
-        query = consulta.filter(animalesfinca__animales = animal)
-        numero = query.distinct().count()
-        try:
-            producto = AnimalesFinca.objects.filter(animales = animal)[0].produccion
-        except:
-            #el animal no tiene producto aún
-            continue
-
-        porcentaje_num = saca_porcentajes(numero, totales['numero'], False)
-        animales = query.aggregate(#cantidad = Sum('animalesfinca__cantidad'),
-                                   venta_libre = Sum('animalesfinca__venta_libre'),
+        query = consulta.filter(animalescantidad__animales = animal)
+        numero = query.count()
+        porcentaje_num = saca_porcentajes(numero, num_familias, False)
+        tabla_animales.append([animal.nombre,numero,porcentaje_num])
+        
+    for producto in ProductoAnimal.objects.all():
+        query = consulta.filter(animalesfinca__produccion = producto)
+        numero = query.count()
+        porcentaje_num = saca_porcentajes(numero, num_familias, False)
+        animales = query.aggregate(venta_libre = Sum('animalesfinca__venta_libre'),
                                    venta_organizada = Sum('animalesfinca__venta_organizada'),
                                    total_produccion = Sum('animalesfinca__total_produccion'),
                                    consumo = Sum('animalesfinca__consumo'))
-#        try:
-#            animal_familia = float(animales['cantidad'])/float(numero)
-#        except:
-#            animal_familia = 0
-        animal_familia = "%.2f" % animal_familia
-        tabla.append([animal.nombre, numero, porcentaje_num,
-                      animales['cantidad'], animal_familia])
-        tabla_produccion.append([animal.nombre, #animales['cantidad'],
-                                 producto.nombre, producto.unidad,
+        tabla_produccion.append([producto.nombre, producto.unidad,
                                  animales['total_produccion'],
                                  animales['consumo'],
                                  animales['venta_libre'],
                                  animales['venta_organizada']])
+
+    print tabla_produccion        
+#    tabla = []
+#    tabla_produccion = []
+#    totales = {}
+
+#    totales['numero'] = consulta.count()
+#    totales['porcentaje_num'] = 100
+#    #totales['animales'] = consulta.aggregate(cantidad=Sum('animalesfinca__cantidad'))['cantidad']
+#    totales['porcentaje_animal'] = 100
+
+#    for animal in Animales.objects.all():
+#        query = consulta.filter(animalesfinca__animales = animal)
+#        numero = query.distinct().count()
+#        try:
+#            producto = AnimalesFinca.objects.filter(animales = animal)[0].produccion
+#        except:
+#            #el animal no tiene producto aún
+#            continue
+
+#        porcentaje_num = saca_porcentajes(numero, totales['numero'], False)
+#        animales = query.aggregate(#cantidad = Sum('animalesfinca__cantidad'),
+#                                   venta_libre = Sum('animalesfinca__venta_libre'),
+#                                   venta_organizada = Sum('animalesfinca__venta_organizada'),
+#                                   total_produccion = Sum('animalesfinca__total_produccion'),
+#                                   consumo = Sum('animalesfinca__consumo'))
+##        try:
+##            animal_familia = float(animales['cantidad'])/float(numero)
+##        except:
+##            animal_familia = 0
+#        animal_familia = "%.2f" % animal_familia
+#        tabla.append([animal.nombre, numero, porcentaje_num,
+#                      animales['cantidad'], animal_familia])
+#        tabla_produccion.append([animal.nombre, #animales['cantidad'],
+#                                 producto.nombre, producto.unidad,
+#                                 animales['total_produccion'],
+#                                 animales['consumo'],
+#                                 animales['venta_libre'],
+#                                 animales['venta_organizada']])
 
     return render_to_response('monitoreo/animales/animales.html',
                               locals(),
@@ -483,12 +509,12 @@ def usosemilla(request):
     for k in Variedades.objects.all():
         key = slugify(k.variedad).replace('-','_')
         key2 = slugify(k.cultivo.cultivo).replace('-','_')
-        query = a.filter(semilla__cultivo = k )
+        query = a.filter(usosemilla__cultivo = k )
         frecuencia = query.count()
-        frec = query.filter(semilla__cultivo=k).count()
+        frec = query.filter(usosemilla__cultivo=k).count()
         porce = saca_porcentajes(frec,num_familia)
-        nativos = query.filter(semilla__cultivo=k,semilla__origen=1).aggregate(nativos=Count('semilla__origen'))['nativos']
-        introducidos = query.filter(semilla__cultivo=k,semilla__origen=2).aggregate(introducidos=Count('semilla__origen'))['introducidos']
+        nativos = query.filter(usosemilla__cultivo=k,usosemilla__origen=1).aggregate(nativos=Count('usosemilla__origen'))['nativos']
+        introducidos = query.filter(usosemilla__cultivo=k,usosemilla__origen=2).aggregate(introducidos=Count('usosemilla__origen'))['introducidos']
         suma_semilla = nativos + introducidos
         por_nativos = saca_porcentajes(nativos, suma_semilla)
         por_introducidos = saca_porcentajes(introducidos, suma_semilla)
