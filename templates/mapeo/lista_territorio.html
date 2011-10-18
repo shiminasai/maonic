@@ -28,7 +28,10 @@
         	  $(grid).dataTable({
                   "bJQueryUI": true,
                   "sPaginationType": "full_numbers",
-                    "oLanguage": {
+                  "oTableTools": {
+                        "sSwfPath": "/files/swf/copy_cvs_xls_pdf.swf"
+                  },
+                  "oLanguage": {
                         "sProcessing":   "Procesando...",
                         "sLengthMenu":   "Mostrar _MENU_ registros",
                         "sZeroRecords":  "No se encontraron resultados",
@@ -44,9 +47,9 @@
                             "sNext":     "Siguiente",
                             "sLast":     "Último"
                         }
-                    }
-
-                  });
+                  }
+                  
+            });
          }            
     	});
     }
@@ -90,7 +93,7 @@
             <div class="elemento_lista"id ="certificadora" >
                 <div class="change"><div id="certificadora-number" class="redondo">{{certificadora}}</div>Empresas Certificadoras</div>
             </div>
-            <div class="elemento_lista"id ="financieraa" >
+            <div class="elemento_lista"id ="financiera" >
                 <div class="change"><div id="financiera-number" class="redondo">{{financiera}}</div>Empresas Financieras</div>
             </div>
             <div class="elemento_lista"id ="orgpublica" >
