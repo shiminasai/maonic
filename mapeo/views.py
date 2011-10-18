@@ -13,9 +13,13 @@ from django.views.generic.simple import direct_to_template
 def index(request):
     familias = Familia.objects.all().count()
     cooperativas = Cooperativa.objects.all().count()
-    e_comerciales = ComProducto.objects.all().count()
+    centrales = Centrales.objects.all().count()
+    asistencia = AsistenciaTecnica.objects.all().count()
+    e_insumos = ComInsumo.objects.all().count()
+    e_productos = ComProducto.objects.all().count()
     certificadoras = Certificadora.objects.all().count()
     e_financiera = Financiera.objects.all().count()
+    org_publicas = OrgPublica.objects.all().count()
 
     return direct_to_template(request, 'index.html', locals())
 
