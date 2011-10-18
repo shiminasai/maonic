@@ -4,27 +4,51 @@
 {% endblock %}
 {% block extrahead %}
 <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.1.js"></script>
+        <link type="text/css" rel="stylesheet"  href="/files/css/demo_table_jui.css" >
+        <link type="text/css" rel="stylesheet"  href="/files/css/themes/smoothness/jquery-ui-1.8.4.custom.css" >
+        <script type="text/javascript" src="/files/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
     function cargar_elemento(modelo, page){
-      $.getJSON('/mapeo/territorio/lista/' + modelo + '/?page=' + page, function(data){
-          $('#resultado').html('');
+      $.getJSON('/mapeo/lista/' + modelo + '/?page=' + page, function(data){
+    	  $('#resultado').html('');
           if (data.enlaces.length == 0){
-             $('#resultado').html('No hay datos');
-           }else{
-            $.each(data.enlaces, function(i, elemento){
-               var link = '<li><a href="/mapeo/ficha/' + elemento.modelo + 
-               '/' + elemento.id + '/">' + elemento.nombre + '</a></li>';
-               $('#resultado').append(link);
-              }); 
-             var paginador = '<a href="#"' + 
-                             ' onClick=\'cargar_elemento("' + modelo + 
-                             '", ' +  data.ant + ')\'"> Anterior</a> |' +
-                             '<a href="#"' +
-                             ' onClick=\'cargar_elemento("' + modelo + 
-                             '", ' +  data.sig + ')\'"> Siguiente</a>'; 
-             $('#resultado').append(paginador);
-            }
-        });
+             $('#resultado').html('No hay datos');             
+          }else{
+        	  var tabla ='<thead><tr><th class="sorting">nombre</th><th class="sorting">municipio</th></tr></thead><tbody>';
+        	  $.each(data.enlaces, function(i, elemento){
+        		  tabla = tabla +'<tr><td><a href="/mapeo/ficha/' + elemento.modelo + '/' + elemento.id + '/">' + elemento.nombre + '</a></td><td>' + elemento.municipio__nombre + '</td></tr>';
+        		  });
+        	  tabla=tabla+"</tbody>";
+        	  var grid=$('<table></table>')
+        	  .addClass('display')
+        	  .attr('id','example')
+        	  .html(tabla)
+        	  .appendTo($('#resultado'));
+        	  
+        	  $(grid).dataTable({
+                  "bJQueryUI": true,
+                  "sPaginationType": "full_numbers",
+                    "oLanguage": {
+                        "sProcessing":   "Procesando...",
+                        "sLengthMenu":   "Mostrar _MENU_ registros",
+                        "sZeroRecords":  "No se encontraron resultados",
+                        "sInfo":         "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+                        "sInfoEmpty":    "Mostrando desde 0 hasta 0 de 0 registros",
+                        "sInfoFiltered": "(filtrado de _MAX_ registros en total)",
+                        "sInfoPostFix":  "",
+                        "sSearch":       "Buscar:",
+                        "sUrl":          "",
+                        "oPaginate": {
+                            "sFirst":    "Primero",
+                            "sPrevious": "Anterior",
+                            "sNext":     "Siguiente",
+                            "sLast":     "Último"
+                        }
+                    }
+
+                  });
+         }            
+    	});
     }
     $(document).ready(function(){
        var lista_modelos = [{%for modelo in lista_modelos%}'{{modelo}}',{%endfor%}];
