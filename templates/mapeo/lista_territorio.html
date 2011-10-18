@@ -9,14 +9,14 @@
         <script type="text/javascript" src="/files/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
     function cargar_elemento(modelo, page){
-      $.getJSON('/mapeo/lista/' + modelo + '/?page=' + page, function(data){
+      $.getJSON('/mapeo/territorio/lista/' + modelo + '/?page=' + page, function(data){
     	  $('#resultado').html('');
           if (data.enlaces.length == 0){
              $('#resultado').html('No hay datos');             
           }else{
-        	  var tabla ='<thead><tr><th class="sorting">nombre</th><th class="sorting">municipio</th></tr></thead><tbody>';
+        	  var tabla ='<thead><tr><th class="sorting">nombre</th><th class="sorting">municipio</th><th class="sorting">Telefono</th><th class="sorting">Email</th></tr></thead><tbody>';
         	  $.each(data.enlaces, function(i, elemento){
-        		  tabla = tabla +'<tr><td><a href="/mapeo/ficha/' + elemento.modelo + '/' + elemento.id + '/">' + elemento.nombre + '</a></td><td>' + elemento.municipio__nombre + '</td></tr>';
+        		  tabla = tabla +'<tr><td><a href="/mapeo/ficha/' + elemento.modelo + '/' + elemento.id + '/">' + elemento.nombre + '</a></td><td>' + elemento.municipio__nombre + '</td><td>' + elemento.telefono + '</td><td>' + elemento.email + '</td></tr>';
         		  });
         	  tabla=tabla+"</tbody>";
         	  var grid=$('<table></table>')
