@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="/files/css/prettify.css" />
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="/files/css/jquery.multiselect.filter.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/files/js/prettify.js"></script>
 <script type="text/javascript" src="/files/js/jquery.multiselect.min.js"></script>
 <script type="text/javascript" src="/files/js/jquery.multiselect.filter.js"></script>
@@ -47,8 +46,8 @@
                         Rubros
                     </div>
                     <div class="filtros_form">
-                        <div class="filtos_label">{{form.cultivos.label}}</div>
-                        {{form.cultivos}}
+                        <div class="filtos_label">{{form.rubros.label}}</div>
+                        {{form.rubros}}
                         <div class="filtos_label">{{form.animales.label}}</div>
                         {{form.animales}}
                         <div class="filtos_label">{{form.arboles.label}}</div>
@@ -64,20 +63,8 @@
                         {{form.materia_procesada}}
                         <div class="filtos_label">{{form.buenas_practicas.label}}</div>
                         {{form.buenas_practicas}}
-<!--
-
-<div class="filtos_label">{{form.tipo_organizacion.label}}</div>
-                        {{form.tipo_organizacion}}
-
--->
-                        
-                        
                         <div class="filtos_label">{{form.certificacion.label}}</div>
                         {{form.certificacion}}
-<!--
-                        <div class="filtos_label">{{form.area_trabajo.label}}</div>
-                        {{form.area_trabajo}}
--->
                     </div>
                     <br>
                 </div>                
@@ -94,7 +81,7 @@
 $(function(){
    
    // cultivos
-	$("#id_cultivos").multiselect({
+	$("#id_rubros").multiselect({
 		//show: ["bounce", 200],
 		//hide: ["explode", 1000],
 		noneSelectedText: 'Seleccione elementos',
