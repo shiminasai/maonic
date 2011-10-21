@@ -72,7 +72,10 @@ def obtener_lista_territorio(request, modelo):
     primeras lineas de este archivo
     '''
     if request.is_ajax():
-        lista_objetos = _get_model(modelo).objects.filter(
+        if request.session['departamento'] == '1':
+            lista_objetos = _get_model(modelo).objects.all()
+        else:
+            lista_objetos = _get_model(modelo).objects.filter(
                 municipio__departamento__id = request.session['departamento'])
         paginator = Paginator(lista_objetos, 25)
 
@@ -237,7 +240,6 @@ def lista(request):
             dicc,
             context_instance=RequestContext(request))
 
-#@session_required
 def territorio(request, id=None):
     """
     Mapeo por Territorio, muestra lista de actores ubicados en un departamento.
@@ -257,7 +259,10 @@ def territorio(request, id=None):
             'orgpublica': 0,
         }
         for modelo in lista_modelos:
-            dicc[modelo] = _get_model(modelo).objects.filter(
+            if id == '1':
+                dicc[modelo] = _get_model(modelo).objects.all().distinct().count()
+            else:
+                dicc[modelo] = _get_model(modelo).objects.filter(
                     municipio__departamento__id=id).distinct().count()
 
         return render_to_response('mapeo/lista_territorio.html',
