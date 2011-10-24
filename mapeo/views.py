@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
 from models import *
+from lugar.models import *
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import simplejson
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -59,7 +60,7 @@ def obtener_lista_paginada(request, modelo):
 
         #se le agrega el tipo de modelo para construir la url
         lista_objetos = [dict(objeto, modelo = modelo) for objeto
-                in objetos.object_list.values('id', 'nombre','municipio__nombre','telefono','email')]
+                in objetos.object_list.values('id', 'nombre','municipio__nombre','telefono','celular','email')]
         resultados = dict(enlaces = lista_objetos,
                           sig = objetos.next_page_number(),
                           ant = objetos.previous_page_number())
@@ -91,7 +92,7 @@ def obtener_lista_territorio(request, modelo):
 
         #se le agrega el tipo de modelo para construir la url
         lista_objetos = [dict(objeto, modelo = modelo) for objeto
-                in objetos.object_list.values('id', 'nombre','municipio__nombre','telefono','email')]
+                in objetos.object_list.values('id', 'nombre','municipio__nombre','telefono','celular','email')]
         resultados = dict(enlaces = lista_objetos,
                           sig = objetos.next_page_number(),
                           ant = objetos.previous_page_number())
@@ -247,6 +248,28 @@ def territorio(request, id=None):
     if id:
         request.session['departamento'] = id
         lista_modelos = [model for model in model_dict]
+        if id == '1':
+            cantidad_actores = Familia.objects.all().count() + \
+                                Cooperativa.objects.all().count() + \
+                                Centrales.objects.all().count() + \
+                                AsistenciaTecnica.objects.all().count() + \
+                                ComInsumo.objects.all().count() + \
+                                ComProducto.objects.all().count() + \
+                                Certificadora.objects.all().count() + \
+                                Financiera.objects.all().count() + \
+                                OrgPublica.objects.all().count() 
+            dpto="Todo el pais"
+        else:
+            cantidad_actores = Familia.objects.filter(municipio__departamento__id = id).count() + \
+                                Cooperativa.objects.filter(municipio__departamento__id = id).count() + \
+                                Centrales.objects.filter(municipio__departamento__id = id).count() + \
+                                AsistenciaTecnica.objects.filter(municipio__departamento__id = id).count() + \
+                                ComInsumo.objects.filter(municipio__departamento__id = id).count() + \
+                                ComProducto.objects.filter(municipio__departamento__id = id).count() + \
+                                Certificadora.objects.filter(municipio__departamento__id = id).count() + \
+                                Financiera.objects.filter(municipio__departamento__id = id).count() + \
+                                OrgPublica.objects.filter(municipio__departamento__id = id).count() 
+            dpto = Departamento.objects.get(pk=id)
         dicc = {'lista_modelos': lista_modelos,
             'familia': 0,
             'cooperativa': 0,
@@ -257,6 +280,9 @@ def territorio(request, id=None):
             'certificadora': 0,
             'financiera': 0,
             'orgpublica': 0,
+            'cantidad_actores':cantidad_actores,
+            'dpto':dpto,
+            'id':id,
         }
         for modelo in lista_modelos:
             if id == '1':

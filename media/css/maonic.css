@@ -466,7 +466,14 @@ color:#9ea925;
     float:left;
     margin-right:5px;
 }
-
+#resultado-dept{
+    float:left;
+    margin-left:15px;
+    width:655px;
+    height:20px;
+    background:#eef4bc;
+    padding:5px;
+}
 #resultado{
     float:left;
     margin-left:15px;
