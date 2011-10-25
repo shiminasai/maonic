@@ -14,9 +14,9 @@
           if (data.enlaces.length == 0){
              $('#resultado').html('No hay datos');             
           }else{
-        	  var tabla ='<thead><tr><th class="sorting">nombre</th><th class="sorting">municipio</th><th class="sorting">Telefono</th><th class="sorting">Email</th></tr></thead><tbody>';
+        	  var tabla ='<thead><tr><th class="sorting">nombre</th><th class="sorting">municipio</th><th class="sorting">Telefono</th><th class="sorting">Celular</th><th class="sorting">Email</th></tr></thead><tbody>';
         	  $.each(data.enlaces, function(i, elemento){
-        		  tabla = tabla +'<tr><td><a href="/mapeo/ficha/' + elemento.modelo + '/' + elemento.id + '/">' + elemento.nombre + '</a></td><td>' + elemento.municipio__nombre + '</td><td>' + elemento.telefono + '</td><td>' + elemento.email + '</td></tr>';
+        		  tabla = tabla +'<tr><td><a href="/mapeo/ficha/' + elemento.modelo + '/' + elemento.id + '/">' + elemento.nombre + '</a></td><td>' + elemento.municipio__nombre + '</td><td>' + elemento.telefono + '</td><td>' + elemento.celular + '</td><td>' + elemento.email + '</td></tr>';
         		  });
         	  tabla=tabla+"</tbody>";
         	  var grid=$('<table></table>')
@@ -104,9 +104,17 @@
                 <div class="change"><div id="orgpublica-number" class="redondo">{{orgpublica}}</div>Organizaci&oacute;n P&uacute;blica</div>
             </div>
         </div>
+<div id="resultado-dept" >
+     {% if id != '1'%}
+     {{cantidad_actores}} actores registrados para este departamento  <div style="float:right;font-size:18px;font-weight:bold;margin-top:-3px" >{{dpto.nombre}} </div>
+    {%else%}
+    {{cantidad_actores}} actores registrados <div style="float:right;font-size:18px;font-weight:bold;margin-top:-3px" >{{dpto}} </div>
+    {%endif%}
+</div>
 
 <div id="resultado" >
-
+    <br>
+<img src="/files/images/tooltip.jpg">
 </div>
    <div class="clean"></div>
 </div>
