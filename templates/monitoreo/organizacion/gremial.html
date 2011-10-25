@@ -4,10 +4,38 @@
 Organización &raquo; Subindicador Organización Gremial
 <div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador <span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a></div>
 {%endblock%}
-{%block extra_header%}
+{%block extrahead%}
 <style type="text/css">
     .gremial{background: url(/archivos/imagen/fondosubmenuhover.png) repeat-x;}
 </style>
+<link type="text/css" rel="stylesheet"  href="/files/css/demo_table_jui.css" >
+<link type="text/css" rel="stylesheet"  href="/files/css/themes/smoothness/jquery-ui-1.8.4.custom.css" >
+<script type="text/javascript" src="/files/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+$(document).ready( function () {
+        	  $('.tablagrid').dataTable({
+                  "bJQueryUI": true,
+                  "oLanguage": {
+                        "sProcessing":   "Procesando...",
+                        "sLengthMenu":   "Mostrar _MENU_ registros",
+                        "sZeroRecords":  "No se encontraron resultados",
+                        "sInfo":         "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+                        "sInfoEmpty":    "Mostrando desde 0 hasta 0 de 0 registros",
+                        "sInfoFiltered": "(filtrado de _MAX_ registros en total)",
+                        "sInfoPostFix":  "",
+                        "sSearch":       "Buscar:",
+                        "sUrl":          "",
+                        "oPaginate": {
+                            "sFirst":    "Primero",
+                            "sPrevious": "Anterior",
+                            "sNext":     "Siguiente",
+                            "sLast":     "Último"
+                        }
+                  }
+                  
+            });
+} );
+</script>
 <script type="text/javascript">
     var activo = 0; 
     function click_callback(id){
@@ -41,19 +69,20 @@ Organización &raquo; Subindicador Organización Gremial
 <div class="separador"></div>
 
 <div id="mostrar">
-    {% include "monitoreo/menu.html" %}
-</div>
 
+</div>
+<div class="full">
+<div id="recuadro"> 
 <div id="sidebar">
     <div class="graficos_widget">
-        <h1>Gráficos Org. Gremial </h1>
+        Gráficos Org. Gremial 
         <a id="grafico1" href="#" onCLick="onCLick=click_callback('miembro')">¿Porque soy o quiero ser miembro?</a>
         <a id="grafico2" href="#" onCLick="click_callback('beneficio')">Beneficio de ser Socio/a</a>
         <a id="grafico3" href="#" onCLick="click_callback('estructura')">Interesado en asumir cargo?</a>
     </div>
     <div id="grafo"></div>
-<div class="contenido">
-    <table width=500>
+
+    <table width=500 class="tablagrid display">
         <caption>Es socio/a de organización Gremial</caption>
         <thead>
             <tr>
@@ -81,7 +110,7 @@ Organización &raquo; Subindicador Organización Gremial
     </table>
     
     
-     <table width=500>
+     <table width=500 class=>
         <caption>Desde cuando socios</caption>
         <thead>
             <tr>
@@ -192,6 +221,7 @@ Organización &raquo; Subindicador Organización Gremial
     </table>
         <br>
     <br>
+</div>
 </div>
 </div>
 {% endblock %}

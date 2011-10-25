@@ -733,3 +733,70 @@ ul.details li{
     -moz-box-shadow: 0px 1px 3px #d1ceb4;
     box-shadow: 0px 1px 3px #d1ceb4;
 }
+
+.form_label{
+    width:180px;
+    float:left;
+}
+.campoform{
+    padding:10px 0px;
+    border-bottom:#eee 1px solid;
+}
+
+#id_socio,#id_desde,#id_dueno{
+    width: 200px;
+    background:url(/files/images/fhbg.gif);
+    border:#D6D6D6 1px solid;
+    height:25px;
+    font-size:13px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+}
+
+#boton{
+    display:block;
+    width:120px;
+    height:35px;
+    color:#777249;
+    font-size:14px;
+    font-weight:bold;
+    line-height:40px;
+    border:#c0ba87 1px solid;
+    text-align:center;
+    background: url(/files/images/fondoactorterritorio.png) repeat-x;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+}
+#boton:hover{
+    -webkit-box-shadow: 0px 1px 3px #d1ceb4;
+    -moz-box-shadow: 0px 1px 3px #d1ceb4;
+    box-shadow: 0px 1px 3px #d1ceb4;
+}
+
+#contenedor_indicadores .button{
+    display:block;
+    padding-left:10px;
+    padding-right:10px;
+    margin-right:6px;
+    margin-bottom:6px;
+    float:left;
+    height:34px;
+    color:#696C69;
+    font-size:14px;
+    font-weight:bold;
+    line-height:40px;
+    border:#D6D6D6 1px solid;
+    text-align:center;
+    background: #fff url(/files/images/bg.gif) top;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+}
+#contenedor_indicadores .button:hover{
+    color:#1F1F1F;
+}
