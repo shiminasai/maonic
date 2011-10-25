@@ -117,14 +117,14 @@ img{
 .center_center .left .cant{
     margin: 0;
     padding: 0;
-    font-size: 22px;    
+    font-size: 16px;    
     color: #fbfa91;
     font-weight: bold;    
 }
 .center_center .cantidades{
     float: left;
     text-align: right;
-    line-height: 35px;
+    line-height: 33px;
     margin-left: 20px;
     margin-top: 8px;
 }
@@ -133,7 +133,7 @@ img{
     text-align: left;
     line-height: 18px;
     color: #fff;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;    
 }
 .center_center .unete{
