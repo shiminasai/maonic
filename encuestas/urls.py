@@ -14,7 +14,7 @@ urlpatterns = patterns('maonic.encuestas.views',
     (r'^index/ajax/municipio/(?P<departamento>\d+)/$', 'get_municipios'),
     (r'^index/ajax/comunidad/(?P<municipio>\d+)/$', 'get_comunidad'),
     #graficas para los indicadores
-#    (r'^grafo/organizacion/(?P<tipo>\w+)/$', 'organizacion_grafos'),
+    (r'^grafo/organizacion/(?P<tipo>\w+)/$', 'organizacion_grafos'),
 #    (r'^grafo/agua-disponibilidad/(?P<tipo>\d+)/$', 'agua_grafos_disponibilidad'),
 #    (r'^grafo/fincas/(?P<tipo>\w+)/$', 'fincas_grafos'),
 #    (r'^grafo/arboles/(?P<tipo>\w+)/$', 'arboles_grafos'),
