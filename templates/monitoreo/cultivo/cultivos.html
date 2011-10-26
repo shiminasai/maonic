@@ -1,17 +1,29 @@
 {% extends "base.html"%}
 {%load unslugify %}
+{% block extrahead %}
+{% include "monitoreo/grid-js.html" %}
+{%endblock%}
 {% block titulo %}
-Subindicador los Cultivos y la producción
-<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador<span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a> </div>
-{% endblock %}
-{
-{%block contenido%}
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
+Subindicador animales
+<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador <span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a></div>
+{% endblock%}
+{% block top %}
+<div class="nombre_modulo">
+   Cultivos
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
 </div>
 
-<div class="contenido">
-    <table>
+{% endblock %}
+
+{%block contenido%}
+
+<div class="full">
+<div id="recuadro">
+
+    <table class="tablagrid display">
         <caption>Los cultivos y la producción</caption>
         <thead>
             <tr>
@@ -37,15 +49,6 @@ Subindicador los Cultivos y la producción
         <tbody>
     </table>
 </div>
-<script>
-    // Hacemos que nos aplique cebra a las filas de la tabla y permita ordenarla
-    // ademas que ordene por defecto las filas 0,0 y 2,1
-    $(document).ready(function()
-    {
-        //$("#table_example").tablesorter();
-        //$("#table_example").tablesorter({sortList:[[0,0],[2,1]], widgets: ['zebra']});
-        $("#table_example").tablesorter({sortList:[[1,0],[1,1]], widgets: ['zebra']});
-    }
-); 
-</script>
+</div>
+
 {%endblock%}

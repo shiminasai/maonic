@@ -1,15 +1,27 @@
 {% extends "base.html"%}
 
+{% block extrahead %}
+{% include "monitoreo/grid-js.html" %}
+{%endblock%}
 {% block titulo %}
-Uso de Semilla
+Subindicador animales
 <div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador <span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a></div>
 {% endblock%}
-{% block contenido %}
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
+{% block top %}
+<div class="nombre_modulo">
+   Uso de Semillas
 </div>
-<div class="contenido">   
-    <table>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
+</div>
+
+{% endblock %}
+{% block contenido %}
+
+<div class="full">
+<div id="recuadro">   
+    <table class="tablagrid display">
         <caption>Uso de semilla</caption>
         <thead>
             <tr>
@@ -40,5 +52,5 @@ Uso de Semilla
     </table>
     <br></br><br></br>
 </div>
-
+</div>
 {% endblock %}

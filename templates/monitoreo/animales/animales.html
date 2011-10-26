@@ -1,18 +1,27 @@
 {% extends "base.html" %}
 {%load unslugify %}
+{% block extrahead %}
+{% include "monitoreo/grid-js.html" %}
+{%endblock%}
 {% block titulo %}
 Subindicador animales
 <div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador <span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a></div>
 {% endblock%}
-
-{% block contenido %}
-
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
+{% block top %}
+<div class="nombre_modulo">
+   Animales
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
 </div>
 
-<div class="contenido">
-    <table>
+{% endblock %}
+{% block contenido %}
+<div class="full">
+<div id="recuadro">
+
+    <table class="tablagrid display">
         <caption>Los Animales</caption>
         <thead>
             <tr>
@@ -32,7 +41,7 @@ Subindicador animales
         </tbody>
     </table>
 
-    <table>
+    <table class="tablagrid display">
         <caption>Los Animales y la Producción </caption>
         <thead>
             <tr>
@@ -55,5 +64,5 @@ Subindicador animales
         </tbody>
     </table>
 </div>
-
+</div>
 {% endblock %}

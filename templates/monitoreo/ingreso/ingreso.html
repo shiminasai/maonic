@@ -1,14 +1,9 @@
 {% extends "base.html"%}
 {% load humanize %}
-{% block titulo %}
-Ingresos
-<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador</a> <span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></div>
-{% endblock %}
 {%load unslugify %}
-{% block extra_header %}
-<script type="text/javascript" src="{{MEDIA_URL}}js/highcharts.js"></script>
-<script type="text/javascript" src="{{MEDIA_URL}}js/exporting.js"></script>
-<script src="{{MEDIA_URL}}js/jquery.tablesorter.min.js"></script>
+{% block extrahead %}
+<script type="text/javascript" src="/files/js/highcharts.js"></script>
+<script type="text/javascript" src="/files/js/exporting.js"></script>
 <script type="text/javascript">
     var activo = 0;
     function click_callback(id){
@@ -227,42 +222,52 @@ function Grafo10(){
 	 });	
 }
 </script>
+{% include "monitoreo/grid-js.html" %}
+{% endblock %}
+{% block top %}
+<div class="nombre_modulo">
+   Ingresos
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
+</div>
+
 {% endblock %}
 {%block contenido%}
 
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
-</div>
 
-<div class="contenido">
+<div class="full">
+<div id="recuadro">
     <div id="sidebar">
         <div class="graficos_widget">
-            <h1>Gráficos ingresos</h1>
+            <div class="grafico-titulo">Gráficos ingresos</div>
             <a href="#" id="grafico1" onCLick="click_callback('vendio')">A quién venden?</a>
             <a href="#" id="grafico2" onCLick="click_callback('maneja')">Quién maneja el negocio?</a>
             <a href="#" id="grafico3" onCLick="click_callback('ingreso')">Quién tiene los ingresos?</a>
             <a href="#" id="grafico9" onclick="Grafo8();" class="grafo">Ingreso por sistema</a>
             <a href="#" id="grafico10" onCLick="Grafo9();" class="grafo">Número de rubro en cada sistema</a>
             <a href="#" id="grafico11" onCLick="Grafo10();" class="grafo">Ingreso por clase</a>
-            <h1>Gráficos Otros ingresos</h1>
+            <div class="grafico-titulo">Gráficos Otros ingresos</div>
              <a href="#" id="grafico4" onCLick="click_callback('salario')">Tipos de Salarios</a>
             <a href="#" id="grafico5" onCLick="click_callback('negocio')">Tipos de Negocio</a>
             <a href="#" id="grafico6" onCLick="click_callback('remesa')">Tipos Remesas</a>
             <a href="#" id="grafico7" onCLick="click_callback('alquiler')">Tipo alquiler</a>
+            <div class="clean"></div>
 <!--            <a href="#" id="grafico8" onCLick="click_callback('aportar')">Persona aportar en la finca</a>-->
         </div>
     </div>
     <div id="grafo" style="width:670px;"></div>
-     <table id="sortTableExample" class="tablesorter">
+     <table class="tablagrid display">
         <caption>Agroforestales</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th >Número de familias que venden</th>
+                <th >Unidad</th>
+                <th >Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -287,17 +292,16 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
-    <table id="sortTableExample2" class="tablesorter">
+    <table  class="tablagrid display">
         <caption>Forestales</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th >Número de familias que venden</th>
+                <th >Unidad</th>
+                <th >Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -322,17 +326,17 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
-    <table id="sortTableExample" class="tablesorter">
+
+    <table class="tablagrid display">
         <caption>Granos básicos</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th >Número de familias que venden</th>
+                <th>Unidad</th>
+                <th >Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -357,17 +361,17 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
-    <table id="sortTableExample" class="tablesorter">
+
+    <table  class="tablagrid display">
         <caption>Ganado mayor</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th >Número de familias que venden</th>
+                <th >Unidad</th>
+                <th >Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -392,17 +396,17 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
-    <table id="sortTableExample" class="tablesorter">
+
+    <table class="tablagrid display">
         <caption>Animales de patio</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th >Número de familias que venden</th>
+                <th >Unidad</th>
+                <th >Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -427,17 +431,17 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
-    <table id="sortTableExample" class="tablesorter">
+
+    <table class="tablagrid display">
         <caption>Hortalizas y frutas</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th >Número de familias que venden</th>
+                <th >Unidad</th>
+                <th >Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -462,17 +466,17 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
-    <table id="sortTableExample" class="tablesorter">
+
+    <table class="tablagrid display">
         <caption>Musaceas</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th >Número de familias que venden</th>
+                <th>Unidad</th>
+                <th >Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -497,17 +501,17 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
-    <table id="sortTableExample" class="tablesorter">
+
+    <table class="tablagrid display">
         <caption>Raíces y tubérculos</caption>
         <thead>
             <tr>
-                <th style="font-size:9px;">RUBROS</th>
-                <th style="font-size:9px;">Número de familias que venden</th>
-                <th style="font-size:9px;">Unidad</th>
-                <th style="font-size:9px;">Cantidad vendida por familia</th>
-                <th style="font-size:9px;">Precio promedio</th>
-                <th style="font-size:9px;">Ingreso por venta</th>
+                <th >RUBROS</th>
+                <th>Número de familias que venden</th>
+                <th >Unidad</th>
+                <th>Cantidad vendida por familia</th>
+                <th >Precio promedio</th>
+                <th >Ingreso por venta</th>
             </tr>
         </thead>
         <tbody>
@@ -532,13 +536,13 @@ function Grafo10(){
         </tr>
 
     </table>
-    <br></br>
+
     <table>
         <th>Ingreso agropecuario: {{respuesta.ingreso|intcomma}}</th>
     </table>
 
     <br><div class="subindicador">INGRESO  &raquo; Los Otros Ingresos familiares <a href="#" class="exportar"></a></div><br>
-    <table id="sortTableExample" class="tablesorter">
+    <table class="tablagrid display">
         <caption></caption>
         <thead>
             <tr>
@@ -586,11 +590,7 @@ function Grafo10(){
         </tr>
     </table><br><br>
     </div>
-<script type="text/javascript">
-  $(function() {
-    $("table#sortTableExample").tablesorter( {sortList: [[0,0], [1,0]]} );
-    $("table#sortTableExample2").tablesorter( {sortList: [[0,0], [1,0]]} );
-  });
-</script>
+
+</div>
 </div>
 {%endblock%}
