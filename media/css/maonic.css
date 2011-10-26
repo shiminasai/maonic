@@ -800,3 +800,31 @@ ul.details li{
 #contenedor_indicadores .button:hover{
     color:#1F1F1F;
 }
+
+table caption{
+    font-size:18px;
+    text-align:left;
+}
+.graficos_widget{
+border-bottom:#9C9C9C 1px solid;
+margin-bottom:20px;
+}
+
+.grafico-titulo{
+font-size:18px;
+font-weight:bold;
+}
+
+.graficos_widget a{
+    display:block;
+    padding:5px;
+    border:#ccc 1px solid;
+    cursor:pointer;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    float:left;
+    color:#477E31;
+    margin:5px;
+}

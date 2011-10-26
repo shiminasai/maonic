@@ -5,7 +5,7 @@
 {% block extrahead %}
 <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.1.js"></script>
         <link type="text/css" rel="stylesheet"  href="/files/css/demo_table_jui.css" >
-        <link type="text/css" rel="stylesheet"  href="/files/css/themes/smoothness/jquery-ui-1.8.4.custom.css" >
+        <link type="text/css" rel="stylesheet"  href="/files/css/themes/verde-maonic/jquery-ui-1.8.16.custom.css" >
         <script type="text/javascript" src="/files/js/jquery.dataTables.js"></script>
 <script type="text/javascript">
     function cargar_elemento(modelo, page){
@@ -28,6 +28,7 @@
         	  $(grid).dataTable({
                   "bJQueryUI": true,
                   "sPaginationType": "full_numbers",
+                  "iDisplayLength": 50,
                     "oLanguage": {
                         "sProcessing":   "Procesando...",
                         "sLengthMenu":   "Mostrar _MENU_ registros",
