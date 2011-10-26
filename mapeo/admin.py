@@ -17,7 +17,7 @@ class MaonicAdmin(admin.ModelAdmin):
             form = super(MaonicAdmin, self).get_form(request, ** kwargs)
         else:
             form = super(MaonicAdmin, self).get_form(request, ** kwargs)
-            form.base_fields['user'].queryset = User.objects.filter(pk=request.user.pk)
+        #    form.base_fields['user'].queryset = User.objects.filter(pk=request.user.pk)
         return form
 
     def save_model(self, request, obj, form, change):
