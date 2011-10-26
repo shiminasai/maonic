@@ -43,7 +43,7 @@ $(document).ready( function () {
 <script type="text/javascript">
     var activo = 0; 
     function click_callback(id){
-        $.getJSON('/grafo/organizacion/' + id, function(data) {
+        $.getJSON('/monitoreo/grafo/organizacion/' + id, function(data) {
             if (activo!= id){
                 $("#grafo").html('<img src="' + data.url + '" />');
                 activo = id;
@@ -89,9 +89,7 @@ $(document).ready( function () {
 <div id="sidebar">
     <div class="graficos_widget">
         <div class="grafico-titulo">Gráficos Org. Gremial </div>
-        <a id="grafico1" href="#" onCLick="onCLick=click_callback('miembro')">¿Porque soy o quiero ser miembro?</a>
         <a id="grafico2" href="#" onCLick="click_callback('beneficio')">Beneficio de ser Socio/a</a>
-        <a id="grafico3" href="#" onCLick="click_callback('estructura')">Interesado en asumir cargo?</a>
         <div class="clean"></div>
     </div>
     <div id="grafo"></div>
