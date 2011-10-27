@@ -5,8 +5,12 @@
 {% block extrahead %}
 <script type="text/javascript" src="{{MEDIA_URL}}js/jquery-1.6.1.js"></script>
         <link type="text/css" rel="stylesheet"  href="/files/css/demo_table_jui.css" >
+        <link type="text/css" rel="stylesheet"  href="/files/css/TableTools.css" >
         <link type="text/css" rel="stylesheet"  href="/files/css/themes/smoothness/jquery-ui-1.8.4.custom.css" >
         <script type="text/javascript" src="/files/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="/files/js/ZeroClipboard.js"></script>
+        <script type="text/javascript" src="/files/js/TableTools.js"></script>
+        <script type="text/javascript" src="/files/js/table.exporting.js"></script>
 <script type="text/javascript">
     function cargar_elemento(modelo, page){
       $.getJSON('/mapeo/territorio/lista/' + modelo + '/?page=' + page, function(data){
@@ -18,7 +22,7 @@
         	  $.each(data.enlaces, function(i, elemento){
         		  tabla = tabla +'<tr><td><a href="/mapeo/ficha/' + elemento.modelo + '/' + elemento.id + '/">' + elemento.nombre + '</a></td><td>' + elemento.municipio__nombre + '</td><td>' + elemento.telefono + '</td><td>' + elemento.celular + '</td><td>' + elemento.email + '</td></tr>';
         		  });
-        	  tabla=tabla+"</tbody>";
+            tabla=tabla+"</tbody>";
         	  var grid=$('<table></table>')
         	  .addClass('display')
         	  .attr('id','example')
@@ -26,6 +30,7 @@
         	  .appendTo($('#resultado'));
         	  
         	  $(grid).dataTable({
+                  "sDom": 'T<"clear">lfrtip<"clear spacer">T',
                   "bJQueryUI": true,
                   "sPaginationType": "full_numbers",
                   "oTableTools": {
