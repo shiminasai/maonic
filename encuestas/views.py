@@ -56,10 +56,10 @@ def _queryset_filtrado(request):
 
     if request.session['departamento']:
         if not request.session['municipio']:
-            municipios = Municipio.objects.filter(productor__municipio__departamento__in=request.session['departamento'])
-            params['municipio__in'] = municipios
+            municipios = Municipio.objects.filter(departamento__in=request.session['departamento'])
+            params['productor__municipio__in'] = municipios
         else:
-            params['municipio__in'] = request.session['municipio']
+            params['productor__municipio__in'] = request.session['municipio']
 
 #    if request.session['organizacion']:
 #        params['organizacion__in'] = request.session['organizacion']
