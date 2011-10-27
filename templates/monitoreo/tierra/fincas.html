@@ -16,7 +16,7 @@ Tierra &raquo; Subindicador Uso de tierra
     //si activo es el mismo id, esconder grafico
     var activo = 0; 
     function click_callback(id){
-        $.getJSON('/grafo/fincas/' + id, function(data) {
+        $.getJSON('/monitoreo/grafo/fincas/' + id, function(data) {
             if (activo!= id){
                 $("#grafo").html('<img src="' + data.url + '" />');
                 activo = id;
