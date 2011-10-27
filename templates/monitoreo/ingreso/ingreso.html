@@ -7,7 +7,7 @@
 <script type="text/javascript">
     var activo = 0;
     function click_callback(id){
-        $.getJSON('/grafo/ingreso/' + id, function(data) {
+        $.getJSON('/monitoreo/grafo/ingreso/' + id, function(data) {
             if (activo!= id){
                 $("#grafo").html('<img src="' + data.url + '" />');
                 activo = id;
@@ -244,7 +244,6 @@ function Grafo10(){
             <div class="grafico-titulo">Gráficos ingresos</div>
             <a href="#" id="grafico1" onCLick="click_callback('vendio')">A quién venden?</a>
             <a href="#" id="grafico2" onCLick="click_callback('maneja')">Quién maneja el negocio?</a>
-            <a href="#" id="grafico3" onCLick="click_callback('ingreso')">Quién tiene los ingresos?</a>
             <a href="#" id="grafico9" onclick="Grafo8();" class="grafo">Ingreso por sistema</a>
             <a href="#" id="grafico10" onCLick="Grafo9();" class="grafo">Número de rubro en cada sistema</a>
             <a href="#" id="grafico11" onCLick="Grafo10();" class="grafo">Ingreso por clase</a>

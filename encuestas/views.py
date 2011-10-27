@@ -806,6 +806,127 @@ def ingresos(request):
 
     return render_to_response('monitoreo/ingreso/ingreso.html',locals(),
                               context_instance=RequestContext(request))
+                              
+#-----------------------------------------------------------------------
+@session_required
+def grafos_ingreso(request, tipo):
+    ''' tabla sobre los ingresos familiares
+    '''
+    #------ varaibles ------
+    consulta = _queryset_filtrado(request)
+    data = []
+    legends = []
+    #-----------------------
+    if tipo == 'vendio':
+        for opcion in IngresoManeja.objects.all():
+            data.append(consulta.filter(ingresofamiliar__quien_vendio=opcion).count())
+            legends.append(opcion.nombre)
+        return grafos.make_graph(data, legends,
+                'A quien venden', return_json=True,
+                type=grafos.PIE_CHART_3D)
+    elif tipo == 'maneja':
+        for opcion in IngresoManeja.objects.all():
+            data.append(consulta.filter(ingresofamiliar__maneja_negocio=opcion).count())
+            legends.append(opcion.nombre)
+        return grafos.make_graph(data, legends,
+                'Quien maneja negocio', return_json=True,
+                type=grafos.PIE_CHART_3D)
+    elif tipo == 'salario':
+        for opcion in TipoTrabajo.objects.all():
+            a = consulta.filter(otrosingresos__fuente__nombre__icontains="salarios",
+                                        otrosingresos__tipo=opcion).count()
+            if a > 0:
+                data.append(a)
+                legends.append(opcion)
+        return grafos.make_graph(data, legends,
+                'Tipos de salarios', return_json=True,
+                type=grafos.PIE_CHART_3D)
+    elif tipo == 'negocio':
+        for opcion in TipoTrabajo.objects.all():
+            a = consulta.filter(otrosingresos__fuente__nombre__icontains="negocios",
+                                        otrosingresos__tipo=opcion).count()
+            if a > 0:
+                data.append(a)
+                legends.append(opcion)
+        return grafos.make_graph(data, legends,
+                'Tipos de Negocios', return_json=True,
+                type=grafos.PIE_CHART_3D)
+    elif tipo == 'remesa':
+        for opcion in TipoTrabajo.objects.all():
+            a = consulta.filter(otrosingresos__fuente__nombre__icontains="remesas",
+                                       otrosingresos__tipo=opcion).count()
+            if a > 0:
+                data.append(a)
+                legends.append(opcion)
+        return grafos.make_graph(data, legends,
+                'Tipos de Remesas', return_json=True,
+                type=grafos.PIE_CHART_3D)
+    elif tipo == 'alquiler':
+        for opcion in TipoTrabajo.objects.all():
+            a = consulta.filter(otrosingresos__fuente__nombre__icontains="alquiler",
+                                        otrosingresos__tipo=opcion).count()
+            if a > 0:
+                data.append(a)
+                legends.append(opcion)
+        return grafos.make_graph(data, legends,
+                'Tipos de Alquiler', return_json=True,
+                type=grafos.PIE_CHART_3D)
+    else:
+        raise Http404
+        
+@session_required
+def grafos_bienes(request, tipo):
+    '''tabla de bienes'''
+    #----- variables ------
+    consulta = _queryset_filtrado(request)
+    data = []
+    legends = []
+    #----------------------
+    if tipo == 'tipocasa':
+        for opcion in CHOICE_TIPO_CASA:
+            data.append(consulta.filter(tipocasa__tipo=opcion[0]).count())
+            legends.append(opcion[1])
+        return grafos.make_graph(data, legends,
+                'Tipos de casas', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'tipopiso':
+        for opcion in Piso.objects.all():
+            data.append(consulta.filter(tipocasa__piso=opcion).count())
+            legends.append(opcion.nombre)
+        return grafos.make_graph(data, legends,
+                'Tipo de pisos', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'tipotecho':
+        for opcion in Techo.objects.all():
+            data.append(consulta.filter(tipocasa__techo=opcion).count())
+            legends.append(opcion.nombre)
+        return grafos.make_graph(data, legends,
+                'Tipos de Techos', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'ambiente':
+        for opcion in CHOICE_AMBIENTE:
+            data.append(consulta.filter(detallecasa__ambientes=opcion[0]).count())
+            legends.append(opcion[1])
+        return grafos.make_graph(data, legends,
+               'Numeros de ambientes', return_json = True,
+               type = grafos.PIE_CHART_3D)
+    elif tipo == 'letrina':
+        for opcion in CHOICE_OPCION:
+            data.append(consulta.filter(detallecasa__letrina=opcion[0]).count())
+            legends.append(opcion[1])
+        return grafos.make_graph(data, legends,
+                'Tiene letrina', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'lavadero':
+        for opcion in CHOICE_OPCION:
+            data.append(consulta.filter(detallecasa__lavadero=opcion[0]).count())
+            legends.append(opcion[1])
+        return grafos.make_graph(data, legends,
+               'Tiene lavadero', return_json = True,
+               type = grafos.PIE_CHART_3D)
+
+    else:
+        raise Http404
 
 #propiedades y equipos                              
 @session_required
