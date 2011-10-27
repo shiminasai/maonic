@@ -33,7 +33,8 @@ from forms import *
 from maonic.lugar.models import *
 from decimal import Decimal
 
-#from utils import *
+from utils import grafos
+from utils import *
 
 # Función para obtener las url
 
@@ -55,10 +56,10 @@ def _queryset_filtrado(request):
 
     if request.session['departamento']:
         if not request.session['municipio']:
-            municipios = Municipio.objects.filter(productor__municipio__departamento__in=request.session['departamento'])
-            params['municipio__in'] = municipios
+            municipios = Municipio.objects.filter(departamento__in=request.session['departamento'])
+            params['productor__municipio__in'] = municipios
         else:
-            params['municipio__in'] = request.session['municipio']
+            params['productor__municipio__in'] = request.session['municipio']
 
 #    if request.session['organizacion']:
 #        params['organizacion__in'] = request.session['organizacion']
@@ -1096,6 +1097,30 @@ def mitigariesgos(request):
                               'num_familias':num_familia},
                                context_instance=RequestContext(request))
 
+@session_required
+def organizacion_grafos(request, tipo):
+    '''grafos de organizacion
+       tipo puede ser: beneficio, miembro'''
+    consulta = _queryset_filtrado(request)
+
+    data = []
+    legends = []
+    if tipo == 'beneficio':
+        for opcion in BeneficiosObtenido.objects.all():
+            data.append(consulta.filter(organizaciongremial__beneficio=opcion).count())
+            legends.append(opcion.nombre)
+        return grafos.make_graph(data, legends,
+                '¿Qué beneficios ha tenido por ser socio/a de la cooperativa, la asociación o empresa', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'miembro':
+        for opcion in SerMiembro.objects.all():
+            data.append(consulta.filter(organizaciongremial__beneficio=opcion).count())
+            legends.append(opcion.nombre)
+        return grafos.make_graph(data, legends,
+                'Porque soy o quiero ser miembro de la junta directiva o las comisiones', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    else:
+        raise Http404
                                
 #utilitarios
 def obtener_lista(request):

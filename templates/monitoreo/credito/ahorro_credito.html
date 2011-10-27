@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {%load unslugify %}
-{%block titulo %}
-Ahorro y Credito
-<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador<span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a> </div>
-{%endblock%}
-{%block extra_header%}
+{%block extrahead%}
 <script type="text/javascript">
     var activo = 0; 
     function click_callback(id){
@@ -47,26 +43,37 @@ Ahorro y Credito
         });
     });
 </script>
+{% include "monitoreo/grid-js.html" %}
 {%endblock%}
-{% block contenido %}
-
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
+{% block top %}
+<div class="nombre_modulo">
+ Credito
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
 </div>
 
+{% endblock %}
+{% block contenido %}
+
+
+<div class="full">
+<div id="recuadro">
+
     <div class="graficos_widget">
-        <h1>Graficos</h1>
+        <div class="grafico-titulo">Graficos</div>
         <a id="grafico1" href="#" onCLick="click_callback('ahorro')">Ahorro</a>
         <a id="grafico2" href="#" onCLick="click_callback('origen')">Origen del Crédito</a>
         <a id="grafico3" href="#" onCLick="click_callback('satisfaccion')">Satisfacción con el crédito</a>
         <a id="grafico4" href="#" onCLick="click_callback('uso')">Uso del crédito</a>
+        <div class="clean"></div>
     </div>
     
 <div id="grafo"></div>
 
-<div class="contenido">
    
-    <table id="table_example" class="tablesorter" style="font-size:90%">
+    <table class="tablagrid display">
         <caption>Los Ahorro</caption>
         <thead>
             <tr>
@@ -86,7 +93,7 @@ Ahorro y Credito
         </tbody>
     </table>
 
-    <table width=510>
+    <table class="tablagrid display">
         <caption>Los créditos</caption>
         <thead>
             <tr>
@@ -121,17 +128,7 @@ Ahorro y Credito
         </tr>
     </table>
 </div>
-<script>
-    // Hacemos que nos aplique cebra a las filas de la tabla y permita ordenarla
-    // ademas que ordene por defecto las filas 0,0 y 2,1
-    $(document).ready(function()
-    {
-        //$("#table_example").tablesorter();
-        //$("#table_example").tablesorter({sortList:[[0,0],[2,1]], widgets: ['zebra']});
-        $("#table_example").tablesorter({sortList:[[1,0],[1,1]], widgets: ['zebra']});
-    }
-); 
-</script>
+</div>
 
 
 {% endblock %}

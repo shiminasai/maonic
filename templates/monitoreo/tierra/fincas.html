@@ -4,19 +4,19 @@
 Tierra &raquo; Subindicador Uso de tierra
 <div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador <span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a></div>
 {%endblock%}
-{% block extra_header %}
+{% block extrahead %}
 <style type="text/css">
     .tierra{background: url(/archivos/imagen/fondosubmenuhover.png) repeat-x;}
 </style>
-<script type="text/javascript" src="{{MEDIA_URL}}js/highcharts.js"></script>
-<script type="text/javascript" src="{{MEDIA_URL}}js/exporting.js"></script>
+<script type="text/javascript" src="/files/js/highcharts.js"></script>
+<script type="text/javascript" src="/files/js/exporting.js"></script>
 <script type="text/javascript">
     //si activo es 0 el html interno esta vacio
     //caso si activo es otro num sustituir grafico
     //si activo es el mismo id, esconder grafico
     var activo = 0; 
     function click_callback(id){
-        $.getJSON('/grafo/fincas/' + id, function(data) {
+        $.getJSON('/monitoreo/grafo/fincas/' + id, function(data) {
             if (activo!= id){
                 $("#grafo").html('<img src="' + data.url + '" />');
                 activo = id;
@@ -167,31 +167,38 @@ function Grafo5(){
 }
 
 </script>
+{% include "monitoreo/grid-js.html" %}
 {%endblock%}
+{% block top %}
+<div class="nombre_modulo">
+   Tierra
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
+</div>
 
+{% endblock %}
 {% block contenido %}
 
 <div class="separador"></div>
-
-<div id="mostrar">
-    {% include "monitoreo/menu.html" %}
-</div>
-
+<div class="full">
+<div id="recuadro">
 <div id="sidebar">
     <div class="graficos_widget">
-        <h1>Gráficos</h1>
+        <div class="grafico-titulo">Gráficos</div>
         <a href="#" id="grafico1" onCLick="click_callback('tenencia')">Tenencia de las Parcelas</a>
         <a href="#" id="grafico2" onCLick="click_callback('solares')">Tenencia de los solares</a>
         <a href="#" id="grafico3" onCLick="click_callback('propietario')">Dueño de la Propiedad</a>
         <a href="#" id="grafico4" onclick="Grafo4();" class="grafo">Rangos en Manzanas</a>
 	    <a href="#" id="grafico5" onclick="Grafo5();" class="grafo">Uso de tierra</a>
+        <div class="clean"></div>
     </div>
 </div>
 
 <div id="grafo"></div>
 
-<div class="contenido">
-    <table>
+    <table class="tablagrid display">
         <caption>Uso de Tierra</caption>
         <thead>
             <tr>
@@ -221,15 +228,21 @@ function Grafo5(){
                 </tr>
         </tbody>
     </table>
-     <table>
-    </br>
+     <table class="tablagrid display">
+         <thead>
         <tr>
-        <th>Promedio Mz: {{totales.promedio_manzana}}</th>
+        <th>Promedio Mz</th>
         </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>{{totales.promedio_manzana}}</td>
+        </tr>
+        </tbody>
     </table>
     
     <br>
-<table style="width:100%;">
+<table class="tablagrid display">
         <thead>
             <tr>
                 <th>Rangos</th>
@@ -275,6 +288,7 @@ function Grafo5(){
             </tr>
         </tbody>
     </table>
+</div>
 </div>
 <div id="container" style="height:410px; width: 800px; margin: 0 auto; clear:both"></div>
 

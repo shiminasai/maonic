@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {%load unslugify %}
-{%block titulo%}
-Bienes
-<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador<span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a> </div>
-{%endblock%}
-{% block extra_header %}
+{% block extrahead %}
 <script type="text/javascript">
     var activo = 0;
     function click_callback(id){
@@ -73,26 +69,35 @@ Bienes
         });
     });
 </script>
+{% include "monitoreo/grid-js.html" %}
+{% endblock %}
+{% block top %}
+<div class="nombre_modulo">
+   Bienes
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
+</div>
+
 {% endblock %}
 {% block contenido %}
 
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
-</div>
-
-<div class="contenido">
+<div class="full">
+<div id="recuadro">
         <div class="graficos_widget">
-            <h1>Graficos de bienes</h1>
+            <div class="grafico-titulo">Graficos de bienes</div>
             <a id="grafico1" href="#" onCLick="click_callback('tipocasa')">Tipo Casa</a></a>
             <a id="grafico2" href="#" onCLick="click_callback('tipopiso')">Tipo Piso</a>
             <a id="grafico3" href="#" onCLick="click_callback('tipotecho')">Tipo Techo</a>
             <a id="grafico4" href="#" onCLick="click_callback('ambiente')">Ambientes</a>
             <a id="grafico5" href="#" onCLick="click_callback('letrina')">Letrina</a>
             <a id="grafico6" href="#" onCLick="click_callback('lavadero')">Lavadero</a>
+            <div class="clean"></div>
         </div>
     <div id="grafo"></div>
     
-    <table id="table_example" class="tablesorter" style="font-size:90%">
+    <table class="tablagrid display">
         <caption>Los Equipos</caption>
         <thead>
             <tr>
@@ -116,7 +121,7 @@ Bienes
         </tbody>
     </table>
 
-    <table id="table_example" class="tablesorter" style="font-size:90%">
+    <table class="tablagrid display">
         <caption>Las Infraestructuras</caption>
         <thead>
             <tr>
@@ -140,7 +145,7 @@ Bienes
         </tbody>
     </table>
 
-    <table id="table_example" class="tablesorter" style="font-size:90%">
+    <table class="tablagrid display">
         <caption>Las Herramientas</caption>
         <thead>
             <tr>
@@ -164,7 +169,7 @@ Bienes
         </tbody>
     </table>
 
-    <table id="table_example" class="tablesorter" style="font-size:90%">
+    <table class="tablagrid display">
         <caption>Los Transportes</caption>
         <thead>
             <tr>
@@ -188,15 +193,6 @@ Bienes
         <tbody>
     </table>
 </div>
-<script>
-    // Hacemos que nos aplique cebra a las filas de la tabla y permita ordenarla
-    // ademas que ordene por defecto las filas 0,0 y 2,1
-    $(document).ready(function()
-    {
-        //$("#table_example").tablesorter();
-        //$("#table_example").tablesorter({sortList:[[0,0],[2,1]], widgets: ['zebra']});
-        $("#table_example").tablesorter({sortList:[[1,0],[1,1]], widgets: ['zebra']});
-    }
-); 
-</script>
+</div>
+
 {% endblock %}

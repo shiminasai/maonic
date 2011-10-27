@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 {%load unslugify %}
-{% block extra_header %}
+{% block extrahead %}
 <script type="text/javascript" src="{{MEDIA_URL}}js/highcharts.js"></script>
 <script type="text/javascript" src="{{MEDIA_URL}}js/exporting.js"></script>
 <script type="text/javascript">
@@ -461,25 +461,29 @@ var chart;
         });
     });
 </script>
+{% include "monitoreo/grid-js.html" %}
 {% endblock %}
-{% block titulo %}
+{% block top %}
+<div class="nombre_modulo">
 Seguridad alimentaria
-<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador<span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a> </div>
-{% endblock%}
-{% block contenido %}
-
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
 </div>
 
-<div class="contenido">
+{% endblock %}
+{% block contenido %}
+<div class="full">
+<div id="recuadro">
+
 
 <div class="contenedor">
         <div class="grafico-title"></div>
         <div id="container4"></div>
 </div>
 
-<table style="width:100%;">
+<table  class="tablagrid display">
     <caption>Alimentos que contienen carbohidrátos</caption>
         <thead>
             <tr>
@@ -515,7 +519,7 @@ Seguridad alimentaria
         <div id="container"></div>
 </div>
     <br></br>
-<table style="width:100%;">
+<table  class="tablagrid display">
     <caption>Alimentos que contienen grasas</caption>
         <thead>
             <tr>
@@ -551,7 +555,7 @@ Seguridad alimentaria
         <div id="container1"></div>
 </div>
     <br></br>
-<table style="width:100%;">
+<table  class="tablagrid display">
     <caption>Alimentos que contienen minerales/vitaminas</caption>
         <thead>
             <tr>
@@ -587,7 +591,7 @@ Seguridad alimentaria
         <div id="container2"></div>
 </div>
    <br></br> 
-<table style="width:100%;">
+<table  class="tablagrid display">
     <caption>Alimentos que contienen proteinas</caption>
         <thead>
             <tr>
@@ -622,5 +626,6 @@ Seguridad alimentaria
         <div class="grafico-title"></div>
         <div id="container3"></div>
 </div> 
-</div>    
+</div>
+</div> 
 {% endblock %}

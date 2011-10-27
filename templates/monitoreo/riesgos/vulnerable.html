@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {%load unslugify %}
-{%block extra_header%}
+{%block extrahead%}
 <style type="text/css">
     .vulnerable{background: url(/archivos/imagen/fondosubmenuhover.png) repeat-x;}
 </style>
@@ -472,24 +472,29 @@ var chart;
             ]
         });
     });
-</script>    
+</script>
+{% include "monitoreo/grid-js.html" %}
 {%endblock%}
-{% block titulo %}
-Subindicador Vulnerable
-<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador<span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a> </div>
-{% endblock%}
+{% block top %}
+<div class="nombre_modulo">
+Riesgo Vulnerabilidad
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
+</div>
+
+{% endblock %}
 
 {% block contenido %}
 
 <div class="separador"></div>
-
-<div id="mostrar">
-     {% include "monitoreo/menu.html" %}
-</div>
-<div class="contenido">
-    <table width="100%">
+<div class="full">
+<div id="recuadro">
+    <table class="tablagrid display">
+                <caption>Fenomenos naturales</caption>
         <thead>
-        <caption>Fenomenos naturales</caption>
+
             <tr>
                 <th>Causa</th>
                 <th>Años con años</th>
@@ -544,9 +549,10 @@ Subindicador Vulnerable
         <div id="container"></div>
 </div>
 <br>
-<table width="100%">
+<table  class="tablagrid display">
+            <caption>Razones agrícolas</caption>
         <thead>
-        <caption>Razones agrícolas</caption>
+
             <tr>
                 <th>Causa</th>
                 <th>Años con años</th>
@@ -592,9 +598,10 @@ Subindicador Vulnerable
         <div id="container1"></div>
 </div>
 <br>
-<table width="100%">
+<table  class="tablagrid display">
+       <caption>Razones de mercados</caption>
         <thead>
-        <caption>Razones de mercados</caption>
+     
             <tr>
                 <th>Causa</th>
                 <th>Años con años</th>
@@ -649,9 +656,10 @@ Subindicador Vulnerable
         <div id="container2"></div>
 </div>
 <br>
-<table width="100%">
+<table  class="tablagrid display">
+            <caption>Inversión</caption>
         <thead>
-        <caption>Inversión</caption>
+
             <tr>
                 <th>Causa</th>
                 <th>Años con años</th>
@@ -686,7 +694,8 @@ Subindicador Vulnerable
 <div class="contenedor">
         <div class="grafico-title"></div>
         <div id="container3"></div>
-    <br></br><br></br>
+
 </div>
-    
+    </div>
+    </div>
 {% endblock %}

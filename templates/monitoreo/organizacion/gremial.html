@@ -9,8 +9,12 @@ Organización &raquo; Subindicador Organización Gremial
     .gremial{background: url(/archivos/imagen/fondosubmenuhover.png) repeat-x;}
 </style>
 <link type="text/css" rel="stylesheet"  href="/files/css/demo_table_jui.css" >
-<link type="text/css" rel="stylesheet"  href="/files/css/themes/smoothness/jquery-ui-1.8.4.custom.css" >
+<link type="text/css" rel="stylesheet"  href="/files/css/themes/verde-maonic/jquery-ui-1.8.16.custom.css" >
 <script type="text/javascript" src="/files/js/jquery.dataTables.js"></script>
+<style type="text/css">
+.fg-toolbar{display:none !important;}
+.dataTables_wrapper{min-height:0px; margin-bottom:35px;}
+</style>
 <script type="text/javascript">
 $(document).ready( function () {
         	  $('.tablagrid').dataTable({
@@ -39,7 +43,7 @@ $(document).ready( function () {
 <script type="text/javascript">
     var activo = 0; 
     function click_callback(id){
-        $.getJSON('/grafo/organizacion/' + id, function(data) {
+        $.getJSON('/monitoreo/grafo/organizacion/' + id, function(data) {
             if (activo!= id){
                 $("#grafo").html('<img src="' + data.url + '" />');
                 activo = id;
@@ -63,7 +67,16 @@ $(document).ready( function () {
     });
 </script>
 {%endblock%}
+{% block top %}
+<div class="nombre_modulo">
+   Organizacion
+</div>
+<div class="links">
+    <img src="/files/images/atras.png" alt="atras">
+    <a href="/monitoreo/index/">Volver a indicadores</a> |
+</div>
 
+{% endblock %}
 {% block contenido %}
 
 <div class="separador"></div>
@@ -75,10 +88,9 @@ $(document).ready( function () {
 <div id="recuadro"> 
 <div id="sidebar">
     <div class="graficos_widget">
-        Gráficos Org. Gremial 
-        <a id="grafico1" href="#" onCLick="onCLick=click_callback('miembro')">¿Porque soy o quiero ser miembro?</a>
+        <div class="grafico-titulo">Gráficos Org. Gremial </div>
         <a id="grafico2" href="#" onCLick="click_callback('beneficio')">Beneficio de ser Socio/a</a>
-        <a id="grafico3" href="#" onCLick="click_callback('estructura')">Interesado en asumir cargo?</a>
+        <div class="clean"></div>
     </div>
     <div id="grafo"></div>
 
@@ -92,14 +104,14 @@ $(document).ready( function () {
             </tr>
         </thead>
         <tbody>
-        <tr>
+        
             {% for key, value in tabla_gremial.items %}
-            <td>{{key}}</td>
-            <td>{{value.frecuencia|floatformat:2}}</td>
-            <td>{{value.porcentaje|floatformat:2}}</td>
-       </tr>
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value.frecuencia|floatformat:2}}</td>
+                <td>{{value.porcentaje|floatformat:2}}</td>
+            </tr>
             {% endfor %}
-            
        <tr>
             <th>TOTAL</th>
             <th>{{divisor|floatformat:2}}</th>
@@ -110,7 +122,7 @@ $(document).ready( function () {
     </table>
     
     
-     <table width=500 class=>
+     <table width=500 class="tablagrid display">
         <caption>Desde cuando socios</caption>
         <thead>
             <tr>
@@ -120,12 +132,13 @@ $(document).ready( function () {
             </tr>
         </thead>
         <tbody>
-        <tr>
+        
             {% for key, value in tabla_desde.items %}
+            <tr>
             <td>{{key}}</td>
-            <td>{{value.frecuencia|floatformat:2}}</td>
-            <td>{{value.porcentaje|floatformat:2}}</td>
-       </tr>
+                <td>{{value.frecuencia|floatformat:2}}</td>
+                <td>{{value.porcentaje|floatformat:2}}</td>
+            </tr>
             {% endfor %}
             
        <tr>
@@ -137,7 +150,7 @@ $(document).ready( function () {
        </tbody>
     </table>
     
-     <table width=500>
+     <table width=500 class="tablagrid display">
         <caption>Soy miembro de órgano gremial</caption>
         <thead>
             <tr>
@@ -147,12 +160,13 @@ $(document).ready( function () {
             </tr>
         </thead>
         <tbody>
-        <tr>
+        
             {% for key, value in tabla_miembro.items %}
-            <td>{{key}}</td>
-            <td>{{value.frecuencia|floatformat:2}}</td>
-            <td>{{value.porcentaje|floatformat:2}}</td>
-       </tr>
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value.frecuencia|floatformat:2}}</td>
+                <td>{{value.porcentaje|floatformat:2}}</td>
+            </tr>
             {% endfor %}
             
        <tr>
@@ -165,7 +179,7 @@ $(document).ready( function () {
     </table>
 
 
-<table width=500>
+<table width=500 class="tablagrid display">
         <caption>Desde cuando miembro</caption>
         <thead>
             <tr>
@@ -175,12 +189,13 @@ $(document).ready( function () {
             </tr>
         </thead>
         <tbody>
-        <tr>
+        
             {% for key, value in tabla_desde_miembro.items %}
-            <td>{{key}}</td>
-            <td>{{value.frecuencia|floatformat:2}}</td>
-            <td>{{value.porcentaje|floatformat:2}}</td>
-       </tr>
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value.frecuencia|floatformat:2}}</td>
+                <td>{{value.porcentaje|floatformat:2}}</td>
+            </tr>
             {% endfor %}
             
        <tr>
@@ -193,7 +208,7 @@ $(document).ready( function () {
     </table>
     
     
-    <table>
+    <table class="tablagrid display">
         <caption>He recibido capacitación para desempeñar mi cargo</caption>
         <thead>
             <tr>
@@ -203,12 +218,13 @@ $(document).ready( function () {
             </tr>
         </thead>
         <tbody>
-        <tr>
+        
             {% for key, value in tabla_capacitacion.items %}
-            <td>{{key}}</td>
-            <td>{{value.frecuencia|floatformat:2}}</td>
-            <td>{{value.porcentaje|floatformat:2}}</td>
-       </tr>
+            <tr>
+                <td>{{key}}</td>
+                <td>{{value.frecuencia|floatformat:2}}</td>
+                <td>{{value.porcentaje|floatformat:2}}</td>
+            </tr>
             {% endfor %}
             
        <tr>
