@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {%load unslugify %}
-{%block titulo%}
-Bienes
-<div class="cambiar_indicador"><a href="#" id="mas">Cambiar Indicador<span id="estado" class="estadouno"><img src="/archivos/imagen/menos.png"/></span></a> </div>
-{%endblock%}
-{% block extra_header %}
+{% block extrahead %}
 <script type="text/javascript">
     var activo = 0;
     function click_callback(id){
@@ -73,6 +69,7 @@ Bienes
         });
     });
 </script>
+{% include "monitoreo/grid-js.html" %}
 {% endblock %}
 {% block contenido %}
 
