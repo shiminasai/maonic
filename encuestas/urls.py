@@ -21,7 +21,7 @@ urlpatterns = patterns('maonic.encuestas.views',
 #    (r'^grafo/manejosuelo/(?P<tipo>\w+)/$', 'grafo_manejosuelo'),
     (r'^grafo/ingreso/(?P<tipo>\w+)/$', 'grafos_ingreso'),
     (r'^grafo/bienes/(?P<tipo>\w+)/$', 'grafos_bienes'),
-#    (r'^grafo/ahorro-credito/(?P<tipo>\w+)/$', 'ahorro_credito_grafos'),
+    (r'^grafo/ahorro-credito/(?P<tipo>\w+)/$', 'ahorro_credito_grafos'),
     (r'^mapa/$', 'obtener_lista'),
     (r'^(?P<vista>\w+)/$', '_get_view'),
     

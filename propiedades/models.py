@@ -57,6 +57,7 @@ class DetalleCasa(models.Model):
     tamano = models.IntegerField('Tamaño en mt cuadrado',null=True, blank=True)
     ambientes = models.IntegerField(choices=CHOICE_AMBIENTE,null=True, blank=True)
     letrina = models.IntegerField(choices=CHOICE_OPCION,null=True, blank=True)
+    lavadero = models.IntegerField(choices=CHOICE_OPCION,null=True, blank=True)
     encuesta = models.ForeignKey(Encuesta)
     
     def __unicode__(self):

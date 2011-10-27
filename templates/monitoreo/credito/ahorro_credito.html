@@ -4,7 +4,7 @@
 <script type="text/javascript">
     var activo = 0; 
     function click_callback(id){
-        $.getJSON('/grafo/ahorro-credito/' + id, function(data) {
+        $.getJSON('/monitoreo/grafo/ahorro-credito/' + id, function(data) {
             if (activo!= id){
                 $("#grafo").html('<img src="' + data.url + '" />');
                 activo = id;
@@ -63,7 +63,6 @@
 
     <div class="graficos_widget">
         <div class="grafico-titulo">Graficos</div>
-        <a id="grafico1" href="#" onCLick="click_callback('ahorro')">Ahorro</a>
         <a id="grafico2" href="#" onCLick="click_callback('origen')">Origen del Crédito</a>
         <a id="grafico3" href="#" onCLick="click_callback('satisfaccion')">Satisfacción con el crédito</a>
         <a id="grafico4" href="#" onCLick="click_callback('uso')">Uso del crédito</a>

@@ -833,11 +833,11 @@ def grafos_ingreso(request, tipo):
                 type=grafos.PIE_CHART_3D)
     elif tipo == 'salario':
         for opcion in TipoTrabajo.objects.all():
-            a = consulta.filter(otrosingresos__fuente__nombre__icontains="salarios",
+            a = consulta.filter(otrosingresos__fuente__nombre__icontains="salario",
                                         otrosingresos__tipo=opcion).count()
             if a > 0:
                 data.append(a)
-                legends.append(opcion)
+                legends.append(opcion.nombre)
         return grafos.make_graph(data, legends,
                 'Tipos de salarios', return_json=True,
                 type=grafos.PIE_CHART_3D)
@@ -883,9 +883,9 @@ def grafos_bienes(request, tipo):
     legends = []
     #----------------------
     if tipo == 'tipocasa':
-        for opcion in CHOICE_TIPO_CASA:
-            data.append(consulta.filter(tipocasa__tipo=opcion[0]).count())
-            legends.append(opcion[1])
+        for opcion in Casa.objects.all():
+            data.append(consulta.filter(tipocasa__tipo=opcion).count())
+            legends.append(opcion.nombre)
         return grafos.make_graph(data, legends,
                 'Tipos de casas', return_json = True,
                 type = grafos.PIE_CHART_3D)
@@ -1056,6 +1056,47 @@ def ahorro_credito(request):
 
     return render_to_response('monitoreo/credito/ahorro_credito.html', dicc,
                               context_instance=RequestContext(request))
+                              
+#-------------------------------------------------------------------
+@session_required
+def ahorro_credito_grafos(request, tipo):
+    '''Tipo puede ser: ahorro, uso, origen, satisfaccion'''
+    consulta = _queryset_filtrado(request)
+    data = []
+    legends = []
+    if tipo == 'ahorro': #ahorra a nombre de quien
+        #choice_ahorro (5, hombre), (6, mujeres), (7,ambos)
+        for numero in (5, 6, 7):
+            #FIX: numero de la pregunta hardcored
+            dato = consulta.filter(ahorro__ahorro=5, ahorro__respuesta = numero).count()
+            data.append(dato)
+            legends.append(CHOICE_AHORRO[numero - 1][1])
+        return grafos.make_graph(data, legends,
+                'A nombre de quien ahorra', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'origen': #de donde viene el credito
+        for origen in DaCredito.objects.all():
+            data.append(consulta.filter(credito__quien_credito= origen).count())
+            legends.append(origen.nombre)
+        return grafos.make_graph(data, legends,
+                'Origen del Crédito', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'satisfaccion':
+        for opcion in CHOICE_SATISFACCION:
+            data.append(consulta.filter(credito__satisfaccion=opcion[0]).count())
+            legends.append(opcion[1])
+        return grafos.make_graph(data, legends,
+                'Nivel de satisfacción con el crédito', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    elif tipo == 'uso':
+        for uso in OcupaCredito.objects.all():
+            data.append(consulta.filter(credito__ocupa_credito = uso).count())
+            legends.append(uso.nombre)
+        return grafos.make_graph(data, legends,
+                'Uso del Crédito', return_json = True,
+                type = grafos.PIE_CHART_3D)
+    else:
+        raise Http404
                               
 #Tabla seguridad alimentaria
 def alimentos(request,numero):
