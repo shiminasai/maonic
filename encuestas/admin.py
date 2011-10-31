@@ -16,9 +16,7 @@ from credito.models import *
 from seguridad.models import *
 from riesgo.models import *
 
-#from maonic.autocomplete.widgets import *
-from admin_autocomplete_mixin import AutocompleteFKMixin
-
+from autocomplete_admin import FkAutocompleteAdmin
 #Organizacion
 class OrganizacionGremialInline(admin.TabularInline):
     model = OrganizacionGremial
@@ -150,7 +148,7 @@ class RiesgosInline(admin.TabularInline):
     extra = 1
     can_delete = False
              
-class EncuestaAdmin(AutocompleteFKMixin, admin.ModelAdmin):
+class EncuestaAdmin(FkAutocompleteAdmin):
     def save_model(self, request, obj, form, change):
         obj.usuario = request.user
         obj.save()
@@ -164,11 +162,11 @@ class EncuestaAdmin(AutocompleteFKMixin, admin.ModelAdmin):
     save_on_top = True
     actions_on_top = True
     exclude = ('usuario',)
-    raw_id_fields = ("productor",)
-#    related_search_fields = { 
-#                              'productor':('nombre',),
-#                              #'productor' :{'search': ('nombre',), 'related': ('nombre',)},
-#                            }
+    #raw_id_fields = ("productor",)
+    related_search_fields = { 
+                              'productor':('nombre',)
+                              #'productor' :{'search': ('nombre',), 'related': ('nombre',)},
+                            }
     inlines = [OrganizacionGremialInline,TenenciaInline,UsoTierraInline,AnimalesCantidadInline,
                AnimalesFincaInline,CultivosFincaInline,OpcionesManejoInline,UsoSemillaInline,
                SueloInline,ManejoSueloInline,InversionesInline,IngresoFamiliarInline,
