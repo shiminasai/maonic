@@ -20,4 +20,4 @@ DATABASES = {
 }
 
 EMAIL_HOST = 'localhost'
-DEFAULT_FROM_EMAIL = ''
+DEFAULT_FROM_EMAIL = 'noreply@domain.com'
