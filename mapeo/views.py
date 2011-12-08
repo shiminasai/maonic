@@ -103,7 +103,7 @@ def obtener_lista(request, modelo):
     if request.is_ajax():
         lista = []
         params = _get_params(request.session)
-        for objeto in _get_model(modelo).objects.filter(** params):
+        for objeto in _get_model(modelo).objects.filter(** params).distinct():
             if objeto.lat and objeto.lon:
                 dicc = dict(nombre=objeto.nombre, id=objeto.id,
                             lon=foat(objeto.lon) , lat=float(objeto.lat),
