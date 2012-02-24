@@ -1,5 +1,14 @@
+
 <div class="links">
-    <img src="/files/images/atras.png" alt="atras">
-    <a href="/mapeo/formulario/">Cambiar filtros</a> |
-    <a href="/mapeo/lista/">Ver lista</a>
+    <a id="volver" href="#">← Regresar</a>
+    <a href="/mapeo/territorio">Territorios</a>
+    <a href="/mapeo/formulario">Productores</a>
+    <a href="/mapeo/formulario/asociaciones/">Asociaciones</a>
 </div>
+<script>
+$("#volver")
+      .click(function() {
+            history.back();
+            return false;
+      });
+</script>

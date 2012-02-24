@@ -668,7 +668,7 @@ ul.details li{
 .links{
     line-height: 60px;
     float: right;
-    font-size: 24px;
+    font-size: 14px;
     color: #88a317;
     margin-right: 15px;
 }
@@ -678,11 +678,19 @@ ul.details li{
     margin-right: 8px;    
 }
 .links a{
-    font-size: 20px;
-    color: #88a317;
+    font-size: 13px;
+    font-weight:bold;
+    color: #747a5b;
+    background:url(/files/images/botontop.png) repeat-x;
+    padding:5px;
+    border:#fff 1px solid;
+        -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
 }
 .links a:hover{
-    text-decoration: underline;
+    color:#000;
 }
 .infobox{
     cursor: pointer;
