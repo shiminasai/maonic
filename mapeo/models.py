@@ -218,16 +218,16 @@ class Familia(FichaBaseProductores):
 class AsistenciaTecnica(FichaBaseProductores):
     desde= models.IntegerField('desde cuando provee asistencia')
     promedio = models.IntegerField('promedio de fincas atendidas por año')
-    tipo_org = models.ForeignKey(TipoOrganizacion)
+    # tipo_org = models.ForeignKey(TipoOrganizacion)
     # FIXME: El modelos debe ser dinámico: Cooperativa\Centrales\Uniones
-    nombre_org = ChainedForeignKey(
-            Cooperativa,
-            chained_field='tipo_org',
-            chained_model_field='tipo_org',
-            show_all=False,
-            auto_choose=True,
-            null=True
-    )
+    # nombre_org = ChainedForeignKey(
+    #         Cooperativa,
+    #         chained_field='tipo_org',
+    #         chained_model_field='tipo_org',
+    #         show_all=False,
+    #         auto_choose=True,
+    #         null=True
+    # )
 
     class Meta:
         verbose_name_plural = 'Agentes de asistencia técnica'
