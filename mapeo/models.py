@@ -207,6 +207,11 @@ class Familia(FichaBaseProductores):
     #asociacion fk
     asociacion = models.ForeignKey(Asociacion, blank=True, null=True)
 
+    class Meta:
+        permissions = (
+            ("edit_all", "Puede editar lo ajeno"),
+        )
+
     def __unicode__(self):
         return u'%s - %s' % (self.nombre_finca, self.nombre)
 
