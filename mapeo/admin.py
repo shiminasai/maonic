@@ -6,7 +6,7 @@ from models import *
 class MaonicAdmin(admin.ModelAdmin):
 
     def queryset(self, request):
-        if request.user.is_superuser:
+        if request.user.is_superuser or request.user.has_perm('mapeo.edit_all'):
             return self.model.objects.all()
         elif request.user.is_staff:
             return self.model.objects.filter(user=request.user)
