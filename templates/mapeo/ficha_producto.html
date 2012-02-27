@@ -17,6 +17,7 @@
 <div class="nombre_modulo">
     M&oacute;dulo de Mapeo
 </div>
+{% include "links.html" %}
 {% endblock %}
 {% block contenido %}
 <div class="full">
@@ -54,17 +55,19 @@
             <div class="dato">Miembros</div>
             <div class="dato_valor">{{objeto.num_mujeres}} mujeres | {{objeto.num_hombres}} hombres</div>
         </div>
-        <div class="detalles">
+
+<!--         <div class="detalles">
             <div class="dato">Im&aacute;genes</div>
             <div class="dato_valor">
                 {%if objeto.foto1%}
                 <img class="foto" src="{{objeto.foto1.url_227x154}}" alt="Foto finca">
-                <div class="explorar_fotos"><a href="#" id="explorar_galeria">Explorar Galería</a></div>
+                <div class="explorar_fotos"><a href="#" id="explorar_galeria">Explorar Galería</a>
                 {%else%}
                 <img class="foto" src="/files/images/img.png" alt="Foto finca">
                 {%endif%}
+                </div>
             </div>
-        </div>
+        </div> -->
         <div class="clean"></div>
     </div>
     <br>
