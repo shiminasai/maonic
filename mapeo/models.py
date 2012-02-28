@@ -198,6 +198,9 @@ class Asociacion(FichaBaseAsociaciones):
         verbose_name = u'asociación'
 
 class Familia(FichaBaseProductores):
+    sexo = models.IntegerField(choices=((1, 'Masculino'), (2, 'Femenino')))
+    fecha_nacimiento = models.DateField()
+    cedula = models.CharField(blank=True, help_text='XXX-XXXXXX-XXXXA', max_length=16)
     nombre_finca = models.CharField('Nombre de finca', max_length=50)
     area_finca = models.DecimalField('Area de la finca en Manzanas', 
             decimal_places=2, max_digits=8)
