@@ -73,7 +73,7 @@
             <div class="subtitle">Tipo de Organizaci&oacute;n</div>
             <div class="detalles2">
                 <ul class="details">
-                    {%for elemento in  objeto.tipo_org.all%}
+                    {%for elemento in objeto.tipo_org.all%}
                     <li>{{elemento.nombre}}</li>
                     {%endfor%}
                 </ul>
@@ -84,7 +84,7 @@
             <div class="subtitle">Tipo de Certificaci&oacute;n</div>
             <div class="detalles2">
                 <ul class="details">
-                    {%for elemento in  objeto.certificacion.all%}
+                    {%for elemento in objeto.certificacion.all%}
                     <li>{{elemento.nombre}}</li>
                     {%endfor%}
                 </ul>
@@ -98,7 +98,7 @@
                 <div class="subtitle">Rubros</div>
                 <div class="detalles2">
                     <ul class="details">
-                        {%for elemento in  objeto.cultivos.all%}
+                        {%for elemento in objeto.rubros.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>
@@ -109,7 +109,7 @@
                 <div class="subtitle">Semillas</div>
                 <div class="detalles2">
                     <ul class="details">
-                        {%for elemento in  objeto.semillas.all%}
+                        {%for elemento in objeto.semillas.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>
