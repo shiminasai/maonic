@@ -103,21 +103,21 @@
                 <div class="detalles2">
                     {%if objeto.arboles%}<div class="subcategoria">&Aacute;rboles</div>{%endif%}
                     <ul class="details">
-                        {%for elemento in  objeto.arboles.all%}
+                        {%for elemento in objeto.arboles.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>
                     <div class="clean"></div>
                     {%if objeto.animales.all%}<div class="subcategoria">Animales</div>{%endif%}
                     <ul class="details">
-                        {%for elemento in  objeto.animales.all%}
+                        {%for elemento in objeto.animales.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>
                     <div class="clean"></div>
                     {%if objeto.cultivos.all%}<div class="subcategoria">Cultivos</div>{%endif%}
                     <ul class="details">
-                        {%for elemento in  objeto.cultivos.all%}
+                        {%for elemento in objeto.cultivos.all%}
                         <li>{{elemento.nombre}}</li>
                         {%endfor%}
                     </ul>

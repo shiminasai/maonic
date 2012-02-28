@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from lugar.models import Municipio
 from thumbs import ImageWithThumbsField
 from smart_selects.db_fields import ChainedForeignKey
+import datetime
 
 #Galeria de foto.
 FOTOS_SIZES = ((640, 480), (227, 154))
@@ -217,6 +218,18 @@ class Familia(FichaBaseProductores):
 
     def __unicode__(self):
         return u'%s - %s' % (self.nombre_finca, self.nombre)
+
+    def get_age(self):
+        born = self.fecha_nacimiento
+        today = datetime.date.today()
+        try: # raised when birth date is February 29 and the current year is not a leap year
+            birthday = born.replace(year=today.year)
+        except ValueError:
+            birthday = born.replace(year=today.year, day=born.day-1)
+        if birthday > today:
+            return today.year - born.year - 1
+        else:
+            return today.year - born.year
 
 class AsistenciaTecnica(FichaBaseProductores):
     desde= models.IntegerField('desde cuando provee asistencia')
