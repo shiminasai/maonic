@@ -72,13 +72,14 @@ def obtener_lista_territorio(request, modelo):
     definida dentro del diccionario model_dict en las
     primeras lineas de este archivo
     '''
+    familias = Familia.objects.all().count()
     if request.is_ajax():
         if request.session['departamento'] == '1':
             lista_objetos = _get_model(modelo).objects.all()
         else:
             lista_objetos = _get_model(modelo).objects.filter(
                 municipio__departamento__id = request.session['departamento'])
-        paginator = Paginator(lista_objetos, 25)
+        paginator = Paginator(lista_objetos, familias)
 
         try:
             page = int(request.GET.get('page', '1'))
