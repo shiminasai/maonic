@@ -20,8 +20,8 @@ class UsoTierra(models.Model):
     area = models.FloatField('Área en Mz', null=True, blank=True)
     encuesta = models.ForeignKey(Encuesta)
     
-    def __unicode__(self):
-        return u'%s' % self.tierra.nombre
+    #def __unicode__(self):
+        i#return u'%s' % self.tierra.nombre
         
     class Meta:
         verbose_name_plural = "Uso de tierra"
