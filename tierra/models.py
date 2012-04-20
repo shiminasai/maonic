@@ -21,7 +21,7 @@ class UsoTierra(models.Model):
     encuesta = models.ForeignKey(Encuesta)
     
     #def __unicode__(self):
-        i#return u'%s' % self.tierra.nombre
+        #return u'%s' % self.tierra.nombre
         
     class Meta:
         verbose_name_plural = "Uso de tierra"
