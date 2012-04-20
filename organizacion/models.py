@@ -82,6 +82,7 @@ class Tenencia(models.Model):
     ''' Modelo tipo de tenencia de la propiedad
     '''
     parcela = models.IntegerField('Tipo de tenencia Parcela', choices=CHOICE_TENENCIA, null=True, blank=True)
+    solar = models.IntegerField('Solar (dónde está la vivienda)', choices=CHOICE_TENENCIA, null=True, blank=True)
     dueno = models.IntegerField('Documento legal de la propiedad, a nombre de quien', choices=CHOICE_DUENO, null=True, blank=True)
     encuesta = models.ForeignKey(Encuesta)
     

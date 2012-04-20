@@ -77,19 +77,17 @@ class ManejoSueloInline(admin.TabularInline):
 class InversionesInline(admin.TabularInline):
     model = Inversion
     extra = 1
-    max_num = 1
+    
 
 #Ingreso familiar
 class IngresoFamiliarInline(admin.TabularInline):
     model = IngresoFamiliar
     extra = 1
-    max_num = 1
 
 #Otros ingresos
 class OtrosIngresosInline(admin.TabularInline):
     model = OtrosIngresos
     extra = 1
-    max_num = 1
     
 #Propiedades y bienes
 class TipoCasaInline(admin.TabularInline):
