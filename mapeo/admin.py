@@ -31,9 +31,10 @@ class MaonicAdmin(admin.ModelAdmin):
 
 class FamiliaAdmin(MaonicAdmin):
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
-    search_fields = ['nombre','user','municipio',]
+    search_fields = ['nombre','user__username', 'municipio__nombre']
     list_filter = ['user', ]
     list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
     
     def get_form(self, request, obj=None, ** kwargs):
         form = super(FamiliaAdmin, self).get_form(request, ** kwargs)
