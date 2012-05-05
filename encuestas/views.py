@@ -25,6 +25,7 @@ from maonic.semilla.models import *
 from maonic.suelo.models import *
 from maonic.mapeo.models import *
 from maonic.tierra.models import *
+from maonic.mapeo.models import *
 
 from decorators import session_required
 from datetime import date
@@ -160,6 +161,8 @@ def generales(request):
         if conteo > 0:
             porcentaje = round(saca_porcentajes(conteo,total_encuesta),1)
             anio_lista.append([anio[1],conteo,porcentaje])
+
+    cuanto = Familia.objects.annotate(bp=Count('buenas_practicas')).filter(bp__lt=2)
 
     return render_to_response('monitoreo/generales.html', locals(),
                                context_instance=RequestContext(request))

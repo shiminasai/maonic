@@ -329,4 +329,22 @@ $(document).ready(function() {
     <div id="container3"></div>
 <br></br>
 </div>
+
+<table style="width:100%;">
+  <caption>Productores con menos de 2 <strong>buenas practicas</strong> </caption>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Municipio</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for a in cuanto %}
+<tr>
+  <td>{{a.nombre}}</td>
+  <td>{{a.municipio}}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
 {% endblock %}
