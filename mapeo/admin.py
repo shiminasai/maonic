@@ -46,9 +46,17 @@ class FamiliaAdmin(MaonicAdmin):
 
 class AsistenciaTecnicaAdmin(MaonicAdmin):
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
-    
+    search_fields = ['nombre','user__username', 'municipio__nombre']
+    list_filter = ['user', ]
+    list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
+
 class CooperativaAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+    search_fields = ['nombre','user__username', 'municipio__nombre']
+    list_filter = ['user', ]
+    list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
     
     def get_form(self, request, obj=None, ** kwargs):
         form = super(CooperativaAdmin, self).get_form(request, ** kwargs)
@@ -60,6 +68,10 @@ class CooperativaAdmin(MaonicAdmin):
     
 class AsociacionAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+    search_fields = ['nombre','user__username', 'municipio__nombre']
+    list_filter = ['user', ]
+    list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
     
     def get_form(self, request, obj=None, ** kwargs):
         form = super(AsociacionAdmin, self).get_form(request, ** kwargs)
@@ -68,9 +80,17 @@ class AsociacionAdmin(MaonicAdmin):
 
 class CentralesAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+    search_fields = ['nombre','user__username', 'municipio__nombre']
+    list_filter = ['user', ]
+    list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
 
 class UnionesAdmin(MaonicAdmin):
     filter_horizontal = ('area_trabajo', 'rubros', 'semillas','materia_procesada','certificacion')
+    search_fields = ['nombre','user__username', 'municipio__nombre']
+    list_filter = ['user', ]
+    list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
 
 class ComInsumoAdmin(MaonicAdmin):
     filter_horizontal = ('tipo_cliente','animales','cultivos','semillas','materia_procesada','certificacion')
@@ -83,6 +103,10 @@ class CertificadoraAdmin(MaonicAdmin):
 
 class FinancieraAdmin(MaonicAdmin):
     filter_horizontal = ('tipo_cliente','animales','cultivos','semillas','materia_procesada','certificacion')
+    search_fields = ['nombre','user__username', 'municipio__nombre']
+    list_filter = ['user', ]
+    list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
     
 class OrgPublicaAdmin(MaonicAdmin):
     filter_horizontal = ('animales','cultivos','semillas','materia_procesada','certificacion')
