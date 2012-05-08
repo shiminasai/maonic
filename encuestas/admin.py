@@ -145,6 +145,11 @@ class RiesgosInline(admin.TabularInline):
     model = Riesgos
     extra = 1
     can_delete = False
+
+class CertificacionInline(admin.TabularInline):
+    model = Certificacion
+    extra = 1
+    max_num = 1
              
 class EncuestaAdmin(FkAutocompleteAdmin):
     def save_model(self, request, obj, form, change):
@@ -170,7 +175,7 @@ class EncuestaAdmin(FkAutocompleteAdmin):
                SueloInline,ManejoSueloInline,InversionesInline,IngresoFamiliarInline,
                OtrosIngresosInline,TipoCasaInline,DetalleCasaInline,PropiedadesInline,
                InfraestructuraInline,HerramientasInline,TransporteInline,CreditoInline,
-               SeguridadInline,VulnerableInline,RiesgosInline
+               SeguridadInline,VulnerableInline,RiesgosInline,CertificacionInline
               ]
     list_display = ('productor','departamentos','finca','fecha',)
     #list_filter = ['productor__departamento__municipio']
@@ -224,3 +229,4 @@ admin.site.register(Fenomeno)
 admin.site.register(Graves)
 admin.site.register(PreguntaRiesgo)
 admin.site.register(ManejoAgro)
+admin.site.register(TipoCertificacion)

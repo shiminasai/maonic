@@ -66,3 +66,22 @@ class Riesgos(models.Model):
     class Meta:
         verbose_name_plural = "Mitigación de los riesgos"
 #-------------------------------------------------------------------------------
+
+class TipoCertificacion(models.Model):
+    nombre = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name_plural = "Tipos de certificación"
+
+class Certificacion(models.Model):
+    "Tipo de certificación"
+    certificacion_finca = models.ManyToManyField(TipoCertificacion, verbose_name="Certificación de la finca",
+                                                   null=True, blank=True)
+    encuesta = models.ForeignKey(Encuesta)
+
+    class Meta:
+        verbose_name_plural = "Certificación de la finca"
+
