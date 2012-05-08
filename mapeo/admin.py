@@ -100,6 +100,10 @@ class ComProductoAdmin(MaonicAdmin):
     
 class CertificadoraAdmin(MaonicAdmin):
     filter_horizontal = ('tipo_cliente','animales','cultivos','semillas','materia_procesada','certificacion')
+    search_fields = ['nombre','user__username', 'municipio__nombre']
+    list_filter = ['user', ]
+    list_display = ['nombre','user','municipio',]
+    date_hierarchy = 'fecha_agregado'
 
 class FinancieraAdmin(MaonicAdmin):
     filter_horizontal = ('tipo_cliente','animales','cultivos','semillas','materia_procesada','certificacion')
