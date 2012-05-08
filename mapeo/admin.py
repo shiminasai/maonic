@@ -43,6 +43,9 @@ class FamiliaAdmin(MaonicAdmin):
     
     class Media:
         js = ['/files/js/familia.js', ]
+        css = {
+           "all": ("css/custom.css",)
+        }
 
 class AsistenciaTecnicaAdmin(MaonicAdmin):
     filter_horizontal = ('arboles','animales','cultivos','semillas','materia_procesada','certificacion','buenas_practicas')
