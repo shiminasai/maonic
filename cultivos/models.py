@@ -14,6 +14,7 @@ class Cultivos(models.Model):
 
     class Meta:
         verbose_name_plural = "CultivosFinca-Cultivos"
+        ordering = ['nombre']
 
 class Manejo(models.Model):
     nombre = models.CharField('Tipo de manejo', max_length=200)

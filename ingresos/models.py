@@ -41,6 +41,7 @@ class RubrosI(models.Model):
         return self.nombre
         
     class Meta:
+        ordering = ['nombre']
         verbose_name_plural = "IngresoFamiliar-Rubros"
       
 class IngresoFamiliar(models.Model):

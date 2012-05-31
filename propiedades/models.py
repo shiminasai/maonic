@@ -126,7 +126,7 @@ class Herramientas(models.Model):
     encuesta = models.ForeignKey(Encuesta)
 
     def __unicode__(self):
-        return self.herramienta.nombre
+        return u'%s' % (self.herramienta.nombre)
 
     class Meta:
         verbose_name_plural = "Herramientas"
