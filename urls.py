@@ -10,6 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
+    (r'^logout/$', 'encuestas.views.logout_page'),
     (r'^mapeo/', include('maonic.mapeo.urls')),
     (r'^monitoreo/', include('maonic.encuestas.urls')),
     (r'^$', 'maonic.mapeo.views.index'),

@@ -36,23 +36,47 @@
                                 <p class="cant">{{familias}}</p>
                                 <p class="cant">{{cooperativas}}</p>
                                 <p class="cant">{{centrales}}</p>
+                                {% if asistencia%}
                                 <p class="cant">{{asistencia}}</p>
+                                {% endif %}
+                                {% if e_insumos %}
                                 <p class="cant">{{e_insumos}}</p>
+                                {% endif %}
+                                {% if e_productos %}
                                 <p class="cant">{{e_productos}}</p>
+                                {% endif %}
+                                {% if certificadoras %}
                                 <p class="cant">{{certificadoras}}</p>
+                                {% endif %}
+                                {% if e_financiera %}
                                 <p class="cant">{{e_financiera}}</p>
+                                {% endif %}
+                                {% if org_publicas %}
                                 <p class="cant">{{org_publicas}}</p>
+                                {% endif %}
                             </div>
                             <div class="descripciones">
                                 <p>&nbsp;Familias productoras</p>
                                 <p>&nbsp;Cooperativas</p>
                                 <p>&nbsp;Centrales de Cooperativas</p>
+                                {% if asistencia %}
                                 <p>&nbsp;Agentes Asistencia T&eacute;cnica</p>
+                                {% endif %}
+                                {% if e_insumos %}
                                 <p>&nbsp;Empresas de Insumos</p>
+                                {% endif %}
+                                {% if e_productos %}
                                 <p>&nbsp;Empresas de Productos</p>
+                                {% endif %}
+                                {% if certificadoras %}
                                 <p>&nbsp;Empresas Certificadoras</p>
+                                {% endif %}
+                                {% if e_finaciera %}
                                 <p>&nbsp;Empresas Financieras</p>
+                                {% endif %}
+                                {% if org_publicas %}
                                 <p>&nbsp;Organizaciones P&uacute;blicas</p>
+                                {% endif %}
                             </div>
                             <div class="clean"></div>
 

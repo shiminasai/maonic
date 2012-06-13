@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template.defaultfilters import slugify
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404, get_list_or_404
@@ -8,6 +8,7 @@ from django.views.generic.simple import direct_to_template
 from django.utils import simplejson
 from django.db.models import Sum, Count, Avg
 from django.core.exceptions import ViewDoesNotExist
+from django.contrib.auth import logout
 
 from maonic.encuestas.models import *
 from maonic.animales.models import *
@@ -38,6 +39,10 @@ from utils import grafos
 from utils import *
 
 # Función para obtener las url
+
+def logout_page(request):
+  logout(request)
+  return HttpResponseRedirect('/')
 
 def _get_view(request, vista):
     if vista in VALID_VIEWS:
