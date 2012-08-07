@@ -8,3 +8,9 @@ def save_as_xls(request):
     response['Content-Type'] = 'application/vnd.ms-excel'
     response['Charset'] ='UTF-8'
     return response
+
+def get_file_path(instance, filename):
+    ext = filename.split('.')[-1]
+    nombre = p.sub(repl, filename.replace('.'+filename.split('.')[-1], ''))
+    filename = "%s.%s" % (nombre, ext)
+    return os.path.join(instance.fileDir, filename)

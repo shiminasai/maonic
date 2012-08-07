@@ -31,10 +31,13 @@ USE_L10N = True
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = PROJECT_ROOT + '/media/'
 
+STATIC_ROOT = ''
+STATIC_URL = '/files/'
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/files/'
+MEDIA_URL = '/uploads/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -49,6 +52,16 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,11 +89,13 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.humanize',
     'maonic.mapeo',
+    'maonic.noticias',
 #    'maonic.monitoreo',
 #    'registration',
     'maonic.lugar',
     'south',
     'smart_selects',
+    'ckeditor',
     #app del monitoreo
     'maonic.encuestas',
     'maonic.organizacion',
@@ -106,3 +121,41 @@ EMAIL_HOST_USER = 'no-reply@maonic.simas.org.ni'
 EMAIL_HOST_PASSWORD = 'gatitobonito'
 DEFAULT_FROM_EMAIL = 'no-reply@maonic.simas.org.ni'
 NO_DATA_GRAPH_URL = '/files/images/NODATA.jpg'
+
+#Configuracion del ckeditor
+
+CKEDITOR_MEDIA_PREFIX = '/media/files/ckeditor/'
+
+CKEDITOR_UPLOAD_PATH = PROJECT_ROOT + '/media/uploads/'
+
+CKEDITOR_RESTRICT_BY_USER = True
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 300,
+        'width': 650,
+        'toolbar': [
+            [ 
+              'Undo', 'Redo',
+              '-', 'Bold', 'Italic', 'Underline',
+              '-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock',
+              '-', 'Link', 'Unlink', 'Anchor',
+              '-', 'Format',
+              '-', 'SpellChecker', 'Scayt',
+              '-', 'Maximize',
+             ],
+           [
+              'HorizontalRule',
+              '-', 'Table',
+              '-', 'BulletedList', 'NumberedList','-','Outdent','Indent',
+              '-', 'Cut','Copy','PasteText',
+              '-', 'Source',
+              '-', 'Superscript','Subscript','Font','Image',
+              '-', 'FontSize',
+            ]
+        ],
+        'toolbarCanCollapse': False,
+        'skin':'office2003',
+        'uiColor': '#EEe',
+    }
+}
