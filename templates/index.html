@@ -1,125 +1,299 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <title>Sistema Regional MAONIC | Home </title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="image/x-icon" rel="shortcut icon" href="/files/images/favicon.png" >
-        <link type="text/css" rel="stylesheet"  href="/files/css/maonic.css" >
-    </head>
-    <body>
-        {% include "header.html" %}
-        <div class="content">
-            <div class="wrapper">
-                <div class="center_top">
-                    <div class="description">
-                        <div class="logo"><a href="/"><img src="/files/images/logo.png" alt="Maonic Logo"></a></div>
-                        <div class="title">MAONIC</div>
-                        <div>
-                            Es el Movimiento de Productoras y Productores Agroecológicos y Orgánicos de Nicaragua, impulsado por  cooperativas de base, territoriales, regionales, nacionales y por asociaciones gremiales
-                        </div>
-                    </div>
-                    <div class="saber_mas">
-                        <a href="/maonic"></a>
-                    </div>
-                    <div class="clean"></div>
-                </div>
-                <div class="center_center">
-                    <div class="left">
-                        <div class="slogan">
-                            "Contribuimos a mejorar<br>
-                            la calidad de vida de<br>
-                            las familias agricultoras"<br>
-                        </div>
-                        <br>
-                        <div>
-                            <div class="cantidades">
-                                <p class="cant">{{familias}}</p>
-                                <p class="cant">{{cooperativas}}</p>
-                                <p class="cant">{{centrales}}</p>
-                                {% if asistencia%}
-                                <p class="cant">{{asistencia}}</p>
-                                {% endif %}
-                                {% if e_insumos %}
-                                <p class="cant">{{e_insumos}}</p>
-                                {% endif %}
-                                {% if e_productos %}
-                                <p class="cant">{{e_productos}}</p>
-                                {% endif %}
-                                {% if certificadoras %}
-                                <p class="cant">{{certificadoras}}</p>
-                                {% endif %}
-                                {% if e_financiera %}
-                                <p class="cant">{{e_financiera}}</p>
-                                {% endif %}
-                                {% if org_publicas %}
-                                <p class="cant">{{org_publicas}}</p>
-                                {% endif %}
-                            </div>
-                            <div class="descripciones">
-                                <p>&nbsp;Familias productoras</p>
-                                <p>&nbsp;Cooperativas</p>
-                                <p>&nbsp;Centrales de Cooperativas</p>
-                                {% if asistencia %}
-                                <p>&nbsp;Agentes Asistencia T&eacute;cnica</p>
-                                {% endif %}
-                                {% if e_insumos %}
-                                <p>&nbsp;Empresas de Insumos</p>
-                                {% endif %}
-                                {% if e_productos %}
-                                <p>&nbsp;Empresas de Productos</p>
-                                {% endif %}
-                                {% if certificadoras %}
-                                <p>&nbsp;Empresas Certificadoras</p>
-                                {% endif %}
-                                {% if e_finaciera %}
-                                <p>&nbsp;Empresas Financieras</p>
-                                {% endif %}
-                                {% if org_publicas %}
-                                <p>&nbsp;Organizaciones P&uacute;blicas</p>
-                                {% endif %}
-                            </div>
-                            <div class="clean"></div>
+<!DOCTYPE html>
+<!--[if IE 8]>               <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="mapeo">
-                            <div class="title">
-                                M&oacute;dulo de Mapeo<br>
-                                Nacional
-                            </div>
-                            <div class="desc">
-                                Encuentra todos los actores relacionados a la
-                                producción de productos orgánicos en nuestro país
-                            </div>
-                            <a href="/mapeo/seleccion/" class="ira"></a>
-                        </div>
-                        <div class="monitoreo">
-                            <div class="title">
-                                M&oacute;dulo<br>
-                                Monitoreo
-                            </div>
-                            <div class="desc">
-                                Encuentra todos los indicadores de producción,
-                                comercialización e inversión de productores
-                            </div>
-                            <a href="/monitoreo/index" class="ira"></a>
-                        </div>
-                        <div class="monitoreo">
-                            <div class="title">
-                                Red
-                                de Aprendizaje
-                            </div>
-                            <div class="desc">
-                                Espacio para la interacción e intercambio de experiencias y conocimientos en el sector de la agricultura orgánica y agroecológica
-                            </div><br>
-                            <a href="http://www.ruta.org/rediao/" class="ira"></a>
-                        </div>
-                    </div>
+<head>
+    <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Maonic</title>
+
+  <link rel="stylesheet" href="/files/css/normalize.css" />
+  
+  <link rel="stylesheet" href="/files/css/foundation.css" />
+  <link rel="stylesheet" href="/files/css/global.css" />
+  <script src="/files/js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+  <!-- Header principal -->
+<div class="top_header"></div>
+
+  
+<div class="menu_principal">
+    <div class="row">
+
+        <div class="large-12 columns">
+        <nav class="top-bar">
+             <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    <ul class="nav_menu">
+      
+      <li class="active"><a href="#">Acerca de Maonic</a></li>
+      <li><a href="#">Noticias</a></li>
+      <li><a href="#">Publicaciones</a></li>
+      <li><a href="#">Eventos</a></li>
+      <li class="has-dropdown"><a href="#">Sistema de Mapeo y Monitoreo</a>
+
+        <ul class="dropdown">
+          <li><label>Dropdown Level 1 Label</label></li>
+          <li><label>Dropdown Level 2 Label</label></li>
+          <li><label>Dropdown Level 3 Label</label></li>
+      
+        </ul>
+     
+    </ul>
+        </nav>
+        </div>
+    </div>
+    
+
+</div><!-- menu principal -->
+
+  <!-- Header principal -->
+
+
+<div class="slider-wrapper">
+    <div class="row">
+      <div class="logo-main">
+        
+        <img src="/files/images/logo.png">
+       
+      </div>
+ <div class="bg-logo"></div>
+    </div>
+    
+    <div id="slider" class="nivoSlider">
+                <img src="/files/images/maonic3.jpg" alt="" />
+                <a href="#"><img src="/files/images/maonic3.jpg"  alt=""/></a>
+                <img src="http://placehold.it/1500x300"/>
+                <img src="/files/images/maonic10.jpg" alt="" title="Nada" />
+            </div>
+            
+  </div>
+    <!-- Content -->
+    <div class="row">
+
+        <div class="large-12 columns">
+            <h3 class="c-title small-2">Noticias</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="row">
+            <div class="large-3 columns">
+                <div class="box-news">
+                <img src="http://placehold.it/220x150">
+        <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
+        <span class="read-text"><a href="#">Leer mas</a></span><div class="icon-plus"></div>
                 </div>
             </div>
-        </div>
-        {% include "footer.html" %}
-    </body>
-</html>
 
+            <div class="large-3 columns">
+                <div class="box-news">
+           <img src="http://placehold.it/220x150">
+         <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
+         <span class="read-text"><a href="#">Leer mas</a></span> <div class="icon-plus"></div>
+                </div>
+            </div>
+            <div class="large-3 columns">
+                <div class="box-news">
+                <img src="http://placehold.it/220x150">
+        <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
+        <span class="read-text"><a href="#">Leer mas</a></span><div class="icon-plus"></div>
+                </div>
+            </div>
+
+            <div class="large-3 columns">
+                <div class="box-news">
+                <img src="http://placehold.it/220x150">
+        <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
+        <span class="read-text"><a href="#">Leer mas</a></span><div class="icon-plus"></div>
+                </div>
+            </div>
+            </div>
+        
+
+        </div>
+            
+    </div> <!-- Noticias -->
+
+<!-- Modulos de Mapeo -->
+  <div class="row">
+
+    <div class="large-12 columns">
+      <h3 class="c-title small-3">Sistema de Mapeo y Monitoreo</h3>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="large-12 columns line">
+
+   <div class="row">
+
+      <div class="large-4 columns">
+        <div class="box-module-1">
+          <div class="icon-map"></div>
+          <span class="h-title">Modulo de Mapeo Nacional</span>
+          <div class="text-modulos">Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis cursu Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis</div>
+          <div class="boton-ir"></div>
+        </div>
+
+      </div>
+
+      <div class="large-4 columns">
+        <div class="box-module-2">
+          <div class="chart-icon"></div>
+          <span class="h-title">Modulo de Monitoreo</span>
+          <div class="text-modulos">Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis cursu Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis</div>
+          <div class="boton-ir"></div>
+        </div>
+      </div>
+
+      <div class="large-4 columns">
+        <div class="box-module-3">
+          <div class="icon-map"></div>
+          <span class="h-title">Red de aprendizaje</span>
+          <div class="text-modulos">Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis cursu Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis</div>
+          <div class="boton-ir"></div>
+        </div>
+      </div>
+ 
+    </div>
+    
+
+  </div>
+      
+</div> 
+<!-- Modulos de Mapeo -->
+
+<!-- Publicaciones y eventos -->
+<div class="pubmain">
+  <div class="row">
+
+    <div class="large-8 columns">
+      <h3 class="c-title small-3">Publicaciones</h3>
+       <div class="box-pub">
+         <div class="box-pub-content">
+           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
+           <span class="text-pub">Titulo de publicacion</span>
+           <span class="date-pub">Abril 26 2013</span>
+           <a href="#" class="tiny button boton-pub">Ver +</a>
+         </div>
+         <div class="box-pub-content">
+           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
+          <span class="text-pub">Titulo de publicacion</span>
+          <span class="date-pub">Abril 26 2013</span>
+          <a href="#" class="tiny button boton-pub">Ver +</a>
+         </div>
+         <div class="box-pub-content">
+           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
+           <span class="text-pub">Titulo de publicacion</span>
+           <span class="date-pub">Abril 26 2013</span>
+           <a href="#" class="tiny button boton-pub">Ver +</a>
+
+         </div>
+         <div class="box-pub-content">
+           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
+           <span class="text-pub">Titulo de publicacion</span>
+           <span class="date-pub">Abril 26 2013</span>
+           <a href="#" class="tiny button boton-pub">Ver +</a>
+         </div>
+
+       </div>
+    </div>
+  
+ 
+  
+    <div class="large-4 columns">
+      <h3 class="c-title small-3">Eventos</h3>
+       <div class="box-event"></div>
+    </div>
+
+  </div>
+</div>
+    <!-- Content -->
+
+    <div class="footer-content">
+   <div class="row">
+     <div class="large-12 columns">
+       <ul id="footer-menu">
+         <li><a href="#">Acerca de Maonic</a></li>
+         <li><a href="#">Noticias</a></li>
+         <li><a href="#">Publicaciones</a></li>
+         <li><a href="#">Eventos</a></li>
+         <li><a href="#">Contactenos</a></li>
+       </ul>
+       <div class="text-footer">Sistema desarrollado por SIMAS bajo plataforma Django</div>
+     </div>
+
+   </div>
+
+  </div>
+ <script type="text/javascript" src="/files/js/jquery-1.9.0.min.js"></script>
+ <script type="text/javascript" src="/files/js/jquery.nivo.slider.js"></script>
+  <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+          effect:'fold,fade,slideDown,slideUp,boxRain',
+          slides:4,
+          StarSlide:0,
+        });
+    });
+    </script>
+
+<script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? '/files/js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+  
+  <script src="/files/js/foundation.min.js"></script>
+
+  <!--
+  
+  <script src="js/foundation/foundation.js"></script>
+  
+  <script src="js/foundation/foundation.alerts.js"></script>
+  
+  <script src="js/foundation/foundation.clearing.js"></script>
+  
+  <script src="js/foundation/foundation.cookie.js"></script>
+  
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  
+  <script src="js/foundation/foundation.forms.js"></script>
+  
+  <script src="js/foundation/foundation.joyride.js"></script>
+  
+  <script src="js/foundation/foundation.magellan.js"></script>
+  
+  <script src="js/foundation/foundation.orbit.js"></script>
+  
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  
+  <script src="js/foundation/foundation.reveal.js"></script>
+  
+  <script src="js/foundation/foundation.section.js"></script>
+  
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  
+  -->
+  
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+
+
+</html>

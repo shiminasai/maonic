@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
-from django.http import HttpResponse
+from django.shortcuts import render_to_response
+import os
 
 def save_as_xls(request):
     tabla = request.POST['tabla']    
@@ -10,7 +11,8 @@ def save_as_xls(request):
     return response
 
 def get_file_path(instance, filename):
-    ext = filename.split('.')[-1]
-    nombre = p.sub(repl, filename.replace('.'+filename.split('.')[-1], ''))
-    filename = "%s.%s" % (nombre, ext)
+    #ext = filename.split('.')[-1]
+    #nombre = p.sub(repl, filename.replace('.'+filename.split('.')[-1], ''))
+    #filename = "%s.%s" % (nombre, ext)
     return os.path.join(instance.fileDir, filename)
+
