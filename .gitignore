@@ -4,6 +4,10 @@ settings_local.py
 *.sqlite3
 nbproject/
 media/galeria/
+media/noticias/
+media/publicaciones/
+media/eventos/
+media/uploads/
 *.db
 *.pl
 *.sql
