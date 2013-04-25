@@ -1,4 +1,4 @@
-body{background: url( ../img/bg.png) repeat;}
+body{background: url( /files/images/bg.png) repeat;}
 
 .top_header{background: #cdd13e;  width: 100%;}
 .box_foto{ width: 220px; background: #000; height: 150px;  }
@@ -30,7 +30,7 @@ ul.login-top { float:right;}
         }
 .read-text{ font-size: 12px;  float: right; margin-right: 10px;  }
 .read-text a{ text-decoration: underline;}
-.icon-plus{ background: url(../img/plus.png) no-repeat; width: 15px; height: 14px; 
+.icon-plus{ background: url(/files/images/plus.png) no-repeat; width: 15px; height: 14px; 
             float: right; margin-right: 5px;}
 .news-text{ font-size: 12px; font-family: 'Open Sans', sans-serif; padding: 10px;} 
 
@@ -53,11 +53,11 @@ ul.login-top { float:right;}
 .h-title{ font-family: 'Open Sans', sans-serif; font-size: 15px; 
           font-weight: bold;color: #484035; margin-top: 30px; float: left;}
 .text-modulos{float: left; margin-left: 1em; font-size: 12px; margin-bottom: 20px;}          
-.icon-map{background: url(../img/map-icon.png) no-repeat; width: 58px; height: 59px; float: left;
+.icon-map{background: url(/files/images/map-icon.png) no-repeat; width: 58px; height: 59px; float: left;
           margin: 10px;}
-.chart-icon{background: url(../img/chart-icon.png) no-repeat; width: 48px; height: 56px; float: left;
+.chart-icon{background: url(/files/images/chart-icon.png) no-repeat; width: 48px; height: 56px; float: left;
           margin: 10px;}
-.boton-ir{ background: url(../img/boton.png) no-repeat; width: 30px; 
+.boton-ir{ background: url(/files/images/boton.png) no-repeat; width: 30px; 
            height: 30px; float: right; margin: 25px;}                   
 .box-module-1{background: #f2e3ce; width: 310px; height: 210px;
             border: solid 1px #735a31;
@@ -129,7 +129,7 @@ ul.login-top { float:right;}
           box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);}
 .side-title{ color: #6f5c3b; margin: 10px; float: left; }
 .side-fecha{ color: #6f5c3b; margin: 10px;  }
-.icon-descargar{ background: url(../img/descargar.png) no-repeat; 
+.icon-descargar{ background: url(/files/images/descargar.png) no-repeat; 
                  width: 13px; height: 13px; float: left;  margin-top: 10px; }
 .down-text{ margin: 10px; margin-top: 10px; float: left; color: #50972f;}
 .down-text a{color: #50972f; font-weight: bold;} 
