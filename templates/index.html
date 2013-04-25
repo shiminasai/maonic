@@ -89,36 +89,18 @@
     <div class="row">
         <div class="large-12 columns">
             <div class="row">
+          {% for obj in noticias %}
             <div class="large-3 columns">
                 <div class="box-news">
-                <img src="http://placehold.it/220x150">
-        <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
-        <span class="read-text"><a href="#">Leer mas</a></span><div class="icon-plus"></div>
+                <img src="/files/{{obj.foto}}">
+        <div class="news-text">{{obj.contenido|striptags|truncatewords:20}}</div>
+        <span class="read-text"><a href="{{obj.get_absolute_url}}">Leer mas</a></span><div class="icon-plus"></div>
                 </div>
             </div>
+          {% empty %}
+            <p>No existe noticias</p>
+          {% endfor %}
 
-            <div class="large-3 columns">
-                <div class="box-news">
-           <img src="http://placehold.it/220x150">
-         <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
-         <span class="read-text"><a href="#">Leer mas</a></span> <div class="icon-plus"></div>
-                </div>
-            </div>
-            <div class="large-3 columns">
-                <div class="box-news">
-                <img src="http://placehold.it/220x150">
-        <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
-        <span class="read-text"><a href="#">Leer mas</a></span><div class="icon-plus"></div>
-                </div>
-            </div>
-
-            <div class="large-3 columns">
-                <div class="box-news">
-                <img src="http://placehold.it/220x150">
-        <div class="news-text">Risus proin amet, adipiscing habitasse. Nec, rhoncus, eros, dapibus et a urna nisi turpis aliquam mauris pulvinar nisi porta dictumst ut mattis pellentesque</div>
-        <span class="read-text"><a href="#">Leer mas</a></span><div class="icon-plus"></div>
-                </div>
-            </div>
             </div>
         
 
@@ -257,38 +239,6 @@
   </script>
   
   <script src="/files/js/foundation.min.js"></script>
-
-  <!--
-  
-  <script src="js/foundation/foundation.js"></script>
-  
-  <script src="js/foundation/foundation.alerts.js"></script>
-  
-  <script src="js/foundation/foundation.clearing.js"></script>
-  
-  <script src="js/foundation/foundation.cookie.js"></script>
-  
-  <script src="js/foundation/foundation.dropdown.js"></script>
-  
-  <script src="js/foundation/foundation.forms.js"></script>
-  
-  <script src="js/foundation/foundation.joyride.js"></script>
-  
-  <script src="js/foundation/foundation.magellan.js"></script>
-  
-  <script src="js/foundation/foundation.orbit.js"></script>
-  
-  <script src="js/foundation/foundation.placeholder.js"></script>
-  
-  <script src="js/foundation/foundation.reveal.js"></script>
-  
-  <script src="js/foundation/foundation.section.js"></script>
-  
-  <script src="js/foundation/foundation.tooltips.js"></script>
-  
-  <script src="js/foundation/foundation.topbar.js"></script>
-  
-  -->
   
   <script>
     $(document).foundation();
