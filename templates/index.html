@@ -16,24 +16,39 @@
 </head>
 <body>
   <!-- Header principal -->
-<div class="top_header"></div>
+<div class="top_header">
+  
+  <div class="row">
+
+    <div class="large-12 columns ">
+      
+      <ul class="login-top">
+        <li>iniciar sesion</li>|
+        <li>manual de usuario</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
 
   
+<!-- menu principal -->
 <div class="menu_principal">
-    <div class="row">
 
-        <div class="large-12 columns">
-        <nav class="top-bar">
-             <ul class="title-area">
-    <!-- Title Area -->
+  <div class="row">
+  <div class="large-12 columns">
+    <nav class="top-bar">
+
+    <ul class="title-area">
     <li class="name">
     </li>
     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-  </ul>
+    </ul>
 
   <section class="top-bar-section">
     <!-- Left Nav Section -->
+    <div class="home-button"></div>
     <ul class="nav_menu">
       
       <li class="active"><a href="#">Acerca de Maonic</a></li>
@@ -50,10 +65,12 @@
         </ul>
      
     </ul>
-        </nav>
-        </div>
+  </section>
+    </nav>
     </div>
     
+  </div>
+  
 
 </div><!-- menu principal -->
 
@@ -93,6 +110,7 @@
             <div class="large-3 columns">
                 <div class="box-news">
                 <img src="/files/{{obj.foto}}">
+                <h2 class=title-news>{{obj.titulo}}</h2>
         <div class="news-text">{{obj.contenido|striptags|truncatewords:20}}</div>
         <span class="read-text"><a href="{{obj.get_absolute_url}}">Leer mas</a></span><div class="icon-plus"></div>
                 </div>
