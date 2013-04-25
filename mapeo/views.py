@@ -11,6 +11,7 @@ from django.core.exceptions import ViewDoesNotExist, ValidationError
 from forms import ProductoresForm, AsociacionesForm
 from django.views.generic.simple import direct_to_template
 from noticias.models import Noticias
+from publicaciones.models import Publicacion
 
 def index(request):
     familias = Familia.objects.all().count()
@@ -23,6 +24,7 @@ def index(request):
     e_financiera = Financiera.objects.all().count()
     org_publicas = OrgPublica.objects.all().count()
     noticias = Noticias.objects.order_by('-id')[:4]
+    publicaciones = Publicacion.objects.order_by('-id')[:4]
 
     return direct_to_template(request, 'index.html', locals())
 

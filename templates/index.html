@@ -1,101 +1,8 @@
-<!DOCTYPE html>
-<!--[if IE 8]>               <html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+{% extends "base2.html" %}
 
-<head>
-    <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Maonic</title>
-
-  <link rel="stylesheet" href="/files/css/normalize.css" />
-  
-  <link rel="stylesheet" href="/files/css/foundation.css" />
-  <link rel="stylesheet" href="/files/css/global.css" />
-  <script src="/files/js/vendor/custom.modernizr.js"></script>
-
-</head>
-<body>
-  <!-- Header principal -->
-<div class="top_header">
-  
-  <div class="row">
-
-    <div class="large-12 columns ">
-      
-      <ul class="login-top">
-        <li>iniciar sesion</li>|
-        <li>manual de usuario</li>
-      </ul>
-    </div>
-  </div>
-
-</div>
-
-  
-<!-- menu principal -->
-<div class="menu_principal">
-
-  <div class="row">
-  <div class="large-12 columns">
-    <nav class="top-bar">
-
-    <ul class="title-area">
-    <li class="name">
-    </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-    </ul>
-
-  <section class="top-bar-section">
-    <!-- Left Nav Section -->
-    <div class="home-button"></div>
-    <ul class="nav_menu">
-      
-      <li class="active"><a href="#">Acerca de Maonic</a></li>
-      <li><a href="#">Noticias</a></li>
-      <li><a href="#">Publicaciones</a></li>
-      <li><a href="#">Eventos</a></li>
-      <li class="has-dropdown"><a href="#">Sistema de Mapeo y Monitoreo</a>
-
-        <ul class="dropdown">
-          <li><label>Dropdown Level 1 Label</label></li>
-          <li><label>Dropdown Level 2 Label</label></li>
-          <li><label>Dropdown Level 3 Label</label></li>
-      
-        </ul>
-     
-    </ul>
-  </section>
-    </nav>
-    </div>
-    
-  </div>
-  
-
-</div><!-- menu principal -->
-
-  <!-- Header principal -->
-
-
-<div class="slider-wrapper">
-    <div class="row">
-      <div class="logo-main">
-        
-        <img src="/files/images/logo.png">
-       
-      </div>
- <div class="bg-logo"></div>
-    </div>
-    
-    <div id="slider" class="nivoSlider">
-                <img src="/files/images/maonic3.jpg" alt="" />
-                <a href="#"><img src="/files/images/maonic3.jpg"  alt=""/></a>
-                <img src="http://placehold.it/1500x300"/>
-                <img src="/files/images/maonic10.jpg" alt="" title="Nada" />
-            </div>
-            
-  </div>
-    <!-- Content -->
+{% load thumbnail %}
+{% block contenido %}
+   <!-- Content -->
     <div class="row">
 
         <div class="large-12 columns">
@@ -111,7 +18,7 @@
                 <div class="box-news">
                 <img src="/files/{{obj.foto}}">
                 <h2 class=title-news>{{obj.titulo}}</h2>
-        <div class="news-text">{{obj.contenido|striptags|truncatewords:20}}</div>
+        <div class="news-text">{{obj.contenido|safe|striptags|truncatewords:20}}</div>
         <span class="read-text"><a href="{{obj.get_absolute_url}}">Leer mas</a></span><div class="icon-plus"></div>
                 </div>
             </div>
@@ -142,9 +49,9 @@
       <div class="large-4 columns">
         <div class="box-module-1">
           <div class="icon-map"></div>
-          <span class="h-title">Modulo de Mapeo Nacional</span>
-          <div class="text-modulos">Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis cursu Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis</div>
-          <div class="boton-ir"></div>
+          <span class="h-title"> <a href="/mapeo/seleccion/">Modulo de Mapeo Nacional</a>  </span>
+          <div class="text-modulos">Encuentra todos los actores relacionados a la producción de productos orgánicos en nuestro país</div>
+          <a href="/mapeo/seleccion/"><div class="boton-ir"></div></a>
         </div>
 
       </div>
@@ -152,18 +59,18 @@
       <div class="large-4 columns">
         <div class="box-module-2">
           <div class="chart-icon"></div>
-          <span class="h-title">Modulo de Monitoreo</span>
-          <div class="text-modulos">Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis cursu Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis</div>
-          <div class="boton-ir"></div>
+          <span class="h-title"> <a href="/monitoreo/index/">Modulo de Monitoreo</a>  </span>
+          <div class="text-modulos">Encuentra todos los indicadores de producción, comercialización e inversión de productores</div>
+          <a href="/monitoreo/index/"><div class="boton-ir"></div> </a>
         </div>
       </div>
 
       <div class="large-4 columns">
         <div class="box-module-3">
           <div class="icon-map"></div>
-          <span class="h-title">Red de aprendizaje</span>
-          <div class="text-modulos">Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis cursu Elit urna, nunc, elit habitasse facilisis scelerisque scelerisque? Sociis</div>
-          <div class="boton-ir"></div>
+          <span class="h-title"> <a href="http://www.ruta.org/rediao/">Red de aprendizaje</a> </span>
+          <div class="text-modulos">Espacio para la interacción e intercambio de experiencias y conocimientos en el sector de la agricultura orgánica y agroecológica</div>
+          <a href="http://www.ruta.org/rediao/"><div class="boton-ir"></div></a>
         </div>
       </div>
  
@@ -182,32 +89,18 @@
     <div class="large-8 columns">
       <h3 class="c-title small-3">Publicaciones</h3>
        <div class="box-pub">
-         <div class="box-pub-content">
-           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
-           <span class="text-pub">Titulo de publicacion</span>
-           <span class="date-pub">Abril 26 2013</span>
-           <a href="#" class="tiny button boton-pub">Ver +</a>
+        {% for obj in publicaciones %}
+          <div class="box-pub-content">
+          {% thumbnail obj.foto "100x70" crop="center" as im %}
+           <div class="pub-photo"><img src="/files/{{im}}"></div>
+          {% endthumbnail %}
+           <span class="text-pub">{{obj.titulo|truncatewords:1}}</span>
+           <span class="date-pub">{{obj.fecha|date:"F t Y"}}</span>
+           <a href="{{obj.get_absolute_url}}" class="tiny button boton-pub">Ver [+]</a>
          </div>
-         <div class="box-pub-content">
-           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
-          <span class="text-pub">Titulo de publicacion</span>
-          <span class="date-pub">Abril 26 2013</span>
-          <a href="#" class="tiny button boton-pub">Ver +</a>
-         </div>
-         <div class="box-pub-content">
-           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
-           <span class="text-pub">Titulo de publicacion</span>
-           <span class="date-pub">Abril 26 2013</span>
-           <a href="#" class="tiny button boton-pub">Ver +</a>
-
-         </div>
-         <div class="box-pub-content">
-           <div class="pub-photo"><img src="http://placehold.it/100x80"></div>
-           <span class="text-pub">Titulo de publicacion</span>
-           <span class="date-pub">Abril 26 2013</span>
-           <a href="#" class="tiny button boton-pub">Ver +</a>
-         </div>
-
+        {% empty %}
+          <p>No existe publicación!</p>
+        {% endfor %}
        </div>
     </div>
   
@@ -220,48 +113,4 @@
 
   </div>
 </div>
-    <!-- Content -->
-
-    <div class="footer-content">
-   <div class="row">
-     <div class="large-12 columns">
-       <ul id="footer-menu">
-         <li><a href="#">Acerca de Maonic</a></li>
-         <li><a href="#">Noticias</a></li>
-         <li><a href="#">Publicaciones</a></li>
-         <li><a href="#">Eventos</a></li>
-         <li><a href="#">Contactenos</a></li>
-       </ul>
-       <div class="text-footer">Sistema desarrollado por SIMAS bajo plataforma Django</div>
-     </div>
-
-   </div>
-
-  </div>
- <script type="text/javascript" src="/files/js/jquery-1.9.0.min.js"></script>
- <script type="text/javascript" src="/files/js/jquery.nivo.slider.js"></script>
-  <script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider({
-          effect:'fold,fade,slideDown,slideUp,boxRain',
-          slides:4,
-          StarSlide:0,
-        });
-    });
-    </script>
-
-<script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? '/files/js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  
-  <script src="/files/js/foundation.min.js"></script>
-  
-  <script>
-    $(document).foundation();
-  </script>
-</body>
-
-
-</html>
+{% endblock contenido %} 

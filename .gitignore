@@ -8,6 +8,7 @@ media/noticias/
 media/publicaciones/
 media/eventos/
 media/uploads/
+media/cache/
 *.db
 *.pl
 *.sql
