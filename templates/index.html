@@ -20,7 +20,7 @@
                 <a href="{{obj.get_absolute_url}}"><img src="/files/{{im}}"></a>
                 {%endthumbnail%}
                 <h2 class="title-news"><a href="{{obj.get_absolute_url}}">{{obj.titulo|truncatewords:8}}</a></h2>
-        <div class="news-text">{{obj.contenido|safe|striptags|truncatewords:20}}</div>
+        <div class="news-tfront">{{obj.contenido|safe|striptags|truncatewords:20}}</div>
        
                 </div>
             </div>
@@ -156,7 +156,7 @@
           </div>
         </div> 
         
-        <div class="mas-eventos"> Mas eventos</div>
+        <div class="more-text">Eventos<div class="icon-plus"></div></div>
        </div>
 
       </div>
