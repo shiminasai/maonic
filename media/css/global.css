@@ -1,8 +1,9 @@
 body{background: url( /files/images/bg.png) repeat;}
 
-.top_header{background: #cdd13e;  width: 100%;}
+.top_header{background: #cdd13e;  width: 100%; height: 33px;}
 .box_foto{ width: 220px; background: #000; height: 150px;  }
-ul.login-top { float:right;}
+ul.login-top { }
+.top-content{ margin: 0 auto; text-align: right;}
 .login-top li{ display: inline;text-align: center; 
                padding: 6px; color: #424534; font-size: 13px;   }
 /*Menu Principal*/
@@ -23,7 +24,7 @@ ul.login-top { float:right;}
 .title-news{padding-left: 10px; font-size: 14px;  color:#46351d; }
 /*Content News*/
 
-.box-news{background: #fff;  margin-bottom: 10px; padding-bottom: 2em;
+.box-news{background: #fff;  margin-bottom: 10px; padding-bottom: 2em; 
           -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.55);
           -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.55);
           box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);
@@ -50,9 +51,10 @@ ul.login-top { float:right;}
      
 /*Modulos de sistema*/
 
-.h-title{ font-family: 'Open Sans', sans-serif; font-size: 15px; 
+.h-title a{ font-family: 'Open Sans', sans-serif; font-size: 15px; 
           font-weight: bold;color: #484035; margin-top: 30px; float: left;}
-.text-modulos{float: left; margin-left: 1em; font-size: 12px; margin-bottom: 20px;}          
+.h-title a:hover{color: #6f5c3b;}          
+.text-modulos{float: left; margin-left: 1em; font-size: 13px; margin-bottom: 20px; text-align:left; height: 40px;}          
 .icon-map{background: url(/files/images/map-icon.png) no-repeat; width: 58px; height: 59px; float: left;
           margin: 10px;}
 .chart-icon{background: url(/files/images/chart-icon.png) no-repeat; width: 48px; height: 56px; float: left;
@@ -81,7 +83,9 @@ ul.login-top { float:right;}
               border-radius: 4px;
               margin-bottom: 2em;}
 .line{ border-bottom: solid 1px #846954;} 
-
+.lista-modulo{ font-size: 14px;  font-family: 'Open Sans', sans-serif; float: left; padding-bottom: 20px;}
+.lista-modulo li{ display: inline; margin: 8px; }
+.cantidades{ color:#d9881e;  font-weight: bold; }
 
 
 /*Menu Principal*/
@@ -96,16 +100,19 @@ ul.login-top { float:right;}
           -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
           -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
           box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);}
-.box-event { background: #f8f1e9; height: 20px; margin-bottom: 10px; height: 300px;
-             border: solid 1px #735a32;}
+.box-event-front { background: #f8f1e9;  margin-bottom: 10px; float: left;
+                   border: solid 1px #735a32; padding-bottom: 10px;  
+                  -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
+                  -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
+                   box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45); }
 
-.box-pub-content{ width: 270px; height: 110px;  float: left; margin: 20px;
-                  border: dotted 2px #946d46; }
+.box-pub-content{ width: 270px; height: 110px;  float: left; margin: 20px; background: #ecddcc;
+                  border: solid 1px #946d46; }
 
 .pub-photo{ padding: 10px; float: left;}
 .text-pub{ float: left; font-size: 12px;  color:#875733; 
            font-family: 'Open Sans', sans-serif; margin-top: 15px;
-           font-weight: bold;}
+           font-weight: bold; width: 90px;}
 
 .date-pub{ float: left; font-size: 10px;  color:#a89471; 
            font-family: 'Open Sans', sans-serif; margin-top: 15px;
@@ -146,9 +153,15 @@ ul.login-top { float:right;}
              border: solid 2px #605a4c;}
 .event-pic{ float: left; }
 
-.titulo-evento{ background: #d9881e; padding: 8px;  margin-left: 10px; 
+.titulo-evento{ background:#d9881e; padding: 8px;  margin-left: 10px; 
                 color: #fff; font-size: 13px; }
-
+.fecha-evento{float: left; font-size: 10px; margin: 25px 0 0 0;  color: #442e21; font-weight: bold;}
+.ti-event{ float: left; font-size: 14px; color: #442e21;   font-weight: bold; padding:10px;}
+.calendar-icon{ background: url(/files/images/calendar-icon.png) no-repeat; 
+                width: 18px; height: 16px; float: left; margin: 10px 0 0 20px;}                
+.title-bg{background: #fff; -webkit-border-radius: 9px;  float: left; margin:10px 0 0 2em;
+            border-radius: 9px; border: solid 1px #e8e4e3;}
+.eventos-box{float: left; margin-bottom: 10px;}            
 
 /*Eventos*/ 
 
@@ -283,7 +296,14 @@ ul.login-top { float:right;}
   font-weight:bold;
 }
 /* Wrapped around .top-bar to contain to grid width */
-
+ul,
+ol,
+dl {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 0;
+  list-style-position: outside;
+  font-family: inherit; }
 .top-bar {
   overflow: hidden;
   height: 40px;
