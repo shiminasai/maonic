@@ -1,0 +1,39 @@
+{% extends "base2.html" %}
+
+{% load thumbnail %}
+
+{% block contenido %}
+
+<div class="row">
+<div class="large-12 columns">
+<div class="large-8 columns">
+  <h3 class="o-title ">{{detalle.titulo}}</h3>
+  <div class="content-news">
+    <span class="news-date">{{detalle.fecha}}</span>
+    {% thumbnail detalle.foto "620x250" crop="center" as im %}
+    <img src="/files/{{im}}">
+    {% endthumbnail %}
+    <div class="news-text">
+      {{detalle.contenido|safe}}
+    </div>
+  </div>
+  
+  
+</div>
+<div class="large-4 columns">
+  <h3 class="sidebox-title ">Noticias</h3>
+{% for obj in ultimas %}
+  <div class="block-news">
+  <span class="feeds-title"><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></span>
+  <div class="resumen-news">{{obj.contenido|striptags|safe|truncatewords:15}}</div>
+  <span class="date-ticker">{{obj.fecha}}</span>
+</div>
+{% empty %}
+  <p>No hay ultimas noticias</p>
+{% endfor %}
+</div>
+</div>
+
+</div>
+  
+{% endblock contenido %}

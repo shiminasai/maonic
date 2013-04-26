@@ -30,7 +30,7 @@ class Noticias(models.Model):
         super(Noticias, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return '/noticias/%s/' % (self.slug)
+        return '/noticias/detalles/%s/' % (self.slug)
 
     class Meta:
         verbose_name = "Noticia"
