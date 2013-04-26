@@ -16,7 +16,9 @@
           {% for obj in noticias %}
             <div class="large-3 columns">
                 <div class="box-news">
-                <img src="/files/{{obj.foto}}">
+                {% thumbnail obj.foto "220x150" crop="center" as im %}
+                <img src="/files/{{im}}">
+                {%endthumbnail%}
                 <h2 class="title-news">{{obj.titulo|truncatewords:8}}</h2>
         <div class="news-text">{{obj.contenido|safe|striptags|truncatewords:20}}</div>
         <span class="read-text"><a href="{{obj.get_absolute_url}}">Leer mas</a></span><div class="icon-plus"></div>

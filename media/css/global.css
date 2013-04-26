@@ -24,7 +24,7 @@ ul.login-top { }
 .title-news{padding-left: 10px; font-size: 14px;  color:#46351d; }
 /*Content News*/
 
-.box-news{background: #fff;  margin-bottom: 10px; padding-bottom: 2em; 
+.box-news{background: #fff;  margin-bottom: 10px; padding-bottom: 2em;  height: 310px;
           -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.55);
           -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.55);
           box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);
