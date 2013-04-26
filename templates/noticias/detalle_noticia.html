@@ -10,7 +10,7 @@
   <h3 class="o-title ">{{detalle.titulo}}</h3>
   <div class="content-news">
     <span class="news-date">{{detalle.fecha}}</span>
-    {% thumbnail detalle.foto "620x250" crop="center" as im %}
+    {% thumbnail detalle.foto "620x250" crop="20%" as im %}
     <img src="/files/{{im}}">
     {% endthumbnail %}
     <div class="news-text">

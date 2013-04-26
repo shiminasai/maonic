@@ -22,6 +22,7 @@ ul.login-top { }
 
 /*content*/
 .title-news{padding-left: 10px; font-size: 14px;  color:#46351d; }
+.title-news a{ color:#46351d;}
 /*Content News*/
 
 .box-news{background: #fff;  margin-bottom: 10px; padding-bottom: 2em;  height: 310px;
@@ -33,7 +34,8 @@ ul.login-top { }
 .read-text a{ text-decoration: underline;}
 .icon-plus{ background: url(/files/images/plus.png) no-repeat; width: 15px; height: 14px; 
             float: right; margin-right: 5px;}
-.news-text{ font-size: 12px; font-family: 'Open Sans', sans-serif; padding: 10px;} 
+.news-text{ font-size: 12px; font-family: 'Open Sans', sans-serif; padding: 10px 0 0 0; text-align: justify;}
+.news-text a:hover{} 
 
 .content-news{ border-bottom: solid 1px #875634; margin-bottom: 10px;}
 .news-date{ font-size: 12px; font-weight: bold; font-family: 'Open Sans', sans-serif; 
@@ -100,11 +102,7 @@ ul.login-top { }
           -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
           -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
           box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);}
-.box-event-front { background: #f8f1e9;  margin-bottom: 10px; float: left;
-                   border: solid 1px #735a32; padding-bottom: 10px;  
-                  -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
-                  -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
-                   box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45); }
+
 
 .box-pub-content{ width: 270px; height: 110px;  float: left; margin: 20px; background: #ecddcc;
                   border: solid 1px #946d46; }
@@ -143,6 +141,7 @@ ul.login-top { }
 .sidebar-drop{ width: 220px; margin-bottom: 10px; }                
 /*Publicaciones*/ 
 
+
 /*Eventos*/ 
 .event-box{ background: #f0e4d6; -webkit-border-radius: 8px;
             border-radius: 8px; border: solid 1px #e8e4e3; 
@@ -161,7 +160,14 @@ ul.login-top { }
                 width: 18px; height: 16px; float: left; margin: 10px 0 0 20px;}                
 .title-bg{background: #fff; -webkit-border-radius: 9px;  float: left; margin:10px 0 0 2em;
             border-radius: 9px; border: solid 1px #e8e4e3;}
-.eventos-box{float: left; margin-bottom: 10px;}            
+.eventos-box{float: left; margin-bottom: 10px;}
+
+.box-event-front { background: #f8f1e9;  margin-bottom: 10px; float: left;
+                   border: solid 1px #735a32; padding-bottom: 10px;  height: 300px; 
+                  -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
+                  -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
+                   box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45); }
+.mas-eventos{float: left;}                               
 
 /*Eventos*/ 
 
@@ -174,6 +180,7 @@ ul.login-top { }
 
 .block-news{ border-bottom: dashed 1px #d0bfaf; padding-bottom: 10px; padding-left: 10px;}
 .feeds-title{color: #3c2a20; font-size: 14px; font-weight: bold;}
+.feeds-title a{color: #3c2a20;}
 .resumen-news{ font-size: 12px;}
 .date-ticker{ color: #97c00c; font-size: 12px;}
 /*sidebar*/
@@ -491,9 +498,16 @@ dl {
       .top-bar-section .dropdown li a {
         color: white;
         line-height: 1;
+        background: #837758;
         white-space: nowrap;
-        padding: 7px 15px;
-        background: #1e1e1e; }
+        
+         }
+
+      .top-bar-section .dropdown li a:focus {
+        font-weight: normal;
+        color:#fff;
+        padding: 8px 15px; }
+
       .top-bar-section .dropdown li label {     /*cambiar dropdow bg*/
         white-space: nowrap;
         background: #837758;
