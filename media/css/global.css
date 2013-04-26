@@ -23,9 +23,10 @@ ul.login-top { }
 /*content*/
 .title-news{padding-left: 10px; font-size: 14px;  color:#46351d; }
 .title-news a{ color:#46351d;}
+.title-news a:hover{ color: #91582b;}
 /*Content News*/
 
-.box-news{background: #fff;  margin-bottom: 10px; padding-bottom: 2em;  height: 310px;
+.box-news{background: #fff;  margin-bottom: 10px; padding-bottom: 2em;  height: 280px;
           -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.55);
           -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.55);
           box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);
@@ -33,13 +34,15 @@ ul.login-top { }
 .read-text{ font-size: 12px;  float: right; margin-right: 10px;  }
 .read-text a{ text-decoration: underline;}
 .icon-plus{ background: url(/files/images/plus.png) no-repeat; width: 15px; height: 14px; 
-            float: right; margin-right: 5px;}
+            float:left; margin-right: 5px;}
 .news-text{ font-size: 12px; font-family: 'Open Sans', sans-serif; padding: 10px 0 0 0; text-align: justify;}
-.news-text a:hover{} 
+.news-tfront{ font-size: 12px; font-family: 'Open Sans', sans-serif; padding: 10px; }
 
 .content-news{ border-bottom: solid 1px #875634; margin-bottom: 10px;}
 .news-date{ font-size: 12px; font-weight: bold; font-family: 'Open Sans', sans-serif; 
             color: #91582b; margin-bottom: 10px; float: left; }
+.more-text{ font-size: 14px; margin-top: 10px; margin-left: 10px; 
+            font-family: 'Open Sans', sans-serif; color:#46351d;}            
 /*Content News*/        
 .c-title{color: #875634; font-size: 16px;
     margin-top: 2em; font-family: 'Open Sans', sans-serif; font-size: 16px;
@@ -179,8 +182,9 @@ ul.login-top { }
                 -moz-border-radius: 9px;border-radius: 9px;} 
 
 .block-news{ border-bottom: dashed 1px #d0bfaf; padding-bottom: 10px; padding-left: 10px;}
-.feeds-title{color: #3c2a20; font-size: 14px; font-weight: bold;}
+.feeds-title{color: #3c2a20; font-size: 14px; font-weight: bold; margin-top: 5px; margin-bottom: 10px;}
 .feeds-title a{color: #3c2a20;}
+.feeds-title a:hover{ color: #91582b;}
 .resumen-news{ font-size: 12px;}
 .date-ticker{ color: #97c00c; font-size: 12px;}
 /*sidebar*/
@@ -495,6 +499,8 @@ dl {
       border-right:solid 1px #6d5f3b; 
       background: transparent;
       min-width: 100%; }
+
+
       .top-bar-section .dropdown li a {
         color: white;
         line-height: 1;
@@ -502,7 +508,7 @@ dl {
         white-space: nowrap;
         
          }
-
+      .top-bar-section .dropdown li a:hover { color: #000; background: #fff; }
       .top-bar-section .dropdown li a:focus {
         font-weight: normal;
         color:#fff;
@@ -514,6 +520,8 @@ dl {
         color: #fff;
 
          }
+        .top-bar-section .dropdown li label:hover {  white-space: nowrap; color: #000;}
+        
 
       .top-bar-section .dropdown li .dropdown {
         left: 100%;

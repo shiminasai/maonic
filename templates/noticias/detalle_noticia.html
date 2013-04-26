@@ -24,13 +24,14 @@
   <h3 class="sidebox-title ">Noticias</h3>
 {% for obj in ultimas %}
   <div class="block-news">
-  <span class="feeds-title"><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></span>
+  <div class="feeds-title"><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></div>
   <div class="resumen-news">{{obj.contenido|striptags|safe|truncatewords:15}}</div>
   <span class="date-ticker">{{obj.fecha}}</span>
 </div>
 {% empty %}
   <p>No hay ultimas noticias</p>
 {% endfor %}
+<div class="more-text">noticias<div class="icon-plus"></div></div>
 </div>
 </div>
 
