@@ -1,173 +1,37 @@
-<!DOCTYPE html>
-<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-
-<head>
-	<meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <title>Maonic</title>
-
-  <link rel="stylesheet" href="css/normalize.css" />
-  
-  <link rel="stylesheet" href="css/foundation.css" />
-  <link rel="stylesheet" href="css/global.css" />
-  <script src="js/vendor/custom.modernizr.js"></script>
-
-</head>
-<body>
-  <!-- Header principal -->
-<div class="top_header">
-  <div class="row">
-
-    <div class="large-12 columns ">
-      
-      <ul class="login-top">
-        <li>iniciar sesion</li>|
-        <li>manual de usuario</li>
-      </ul>
-    </div>
-  </div>
-  
-</div>
-
-  
-<!-- menu principal -->
-<div class="menu_principal">
-
-  <div class="row">
-  <div class="large-12 columns">
-    <nav class="top-bar">
-
-    <ul class="title-area">
-    <li class="name">
-    </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
-    </ul>
-
-  <section class="top-bar-section">
-    <!-- Left Nav Section -->
-    <div class="home-button"></div>
-    <ul class="nav_menu">
-      
-      <li><a href="#">Acerca de Maonic</a></li>
-      <li><a href="#">Noticias</a></li>
-      <li class="active"><a href="#">Publicaciones</a></li>
-      <li><a href="#">Eventos</a></li>
-      <li class="has-dropdown"><a href="#">Sistema de Mapeo y Monitoreo</a>
-
-        <ul class="dropdown">
-          <li><label>Dropdown Level 1 Label</label></li>
-          <li><label>Dropdown Level 2 Label</label></li>
-          <li><label>Dropdown Level 3 Label</label></li>
-      
-        </ul>
-     
-    </ul>
-  </section>
-    </nav>
-    </div>
-    
-  </div>
-  
-
-</div><!-- menu principal -->
-
-  <!-- Header principal -->
-
-
-<div class="slider-wrapper">
-    <div class="row">
-      <div class="logo-main">
-        
-        <img src="img/logo.png">
-       
-      </div>
- <div class="bg-logo"></div>
-    </div>
-    
-    <div id="slider" class="nivoSlider">
-                <img src="img/maonic3.jpg" alt="" />
-                <a href="#"><img src="img/maonic3.jpg"  alt=""/></a>
-                <img src="http://placehold.it/1500x300"/>
-                <img src="img/maonic10.jpg" alt="" title="Nada" />
-            </div>
-            
-  </div>
-    <!-- Content -->
-	
-  
+{% extends "base2.html" %}
+{% load thumbnail %}
+{% block contenido %}
   
 <div class="row">
 <div class="large-12 columns">
 <div class="large-8 columns">
   <h3 class="o-title ">Publicaciones</h3>
-
-  <div class="pubpage-box">
-    <img src="http://placehold.it/180x170">
+  {% for obj in objetos.object_list %}
+    <div class="pubpage-box">
+    {% thumbnail obj.foto "180x170" crop="10%" as im %}
+      <img src="/files/{{im}}">
+    {% endthumbnail %}
     <div class="info-pub">
-      <span class="titulo-pub">Titulo</span>
-      <span class="fecha-pub">fecha</span>
-      <span class="descarga-pub">descargar</span>
+      <span class="titulo-pub">{{obj.titulo}}</span>
+      <span class="fecha-pub">{{obj.fecha|date:"M/y"}}</span>
+      <span class="descarga-pub"><a href="/files/{{obj.archivo}}">descargar</a></span>
     </div>
   </div>
-
-  <div class="pubpage-box">
-    <img src="http://placehold.it/180x170">
-    <div class="info-pub">
-      <span class="titulo-pub">Titulo</span>
-      <span class="fecha-pub">fecha</span>
-      <span class="descarga-pub">descargar</span>
-    </div>
-  </div> 
-
-  <div class="pubpage-box">
-    <img src="http://placehold.it/180x170">
-    <div class="info-pub">
-      <span class="titulo-pub">Titulo</span>
-      <span class="fecha-pub">fecha</span>
-      <span class="descarga-pub">descargar</span>
-    </div>
-  </div> 
-
-  <div class="pubpage-box">
-    <img src="http://placehold.it/180x170">
-    <div class="info-pub">
-      <span class="titulo-pub">Titulo</span>
-      <span class="fecha-pub">fecha</span>
-      <span class="descarga-pub">descargar</span>
-    </div>
-  </div> 
-
-  <div class="pubpage-box">
-    <img src="http://placehold.it/180x170">
-    <div class="info-pub">
-      <span class="titulo-pub">Titulo</span>
-      <span class="fecha-pub">fecha</span>
-      <span class="descarga-pub">descargar</span>
-    </div>
-  </div> 
-
-  <div class="pubpage-box">
-    <img src="http://placehold.it/180x170">
-    <div class="info-pub">
-      <span class="titulo-pub">Titulo</span>
-      <span class="fecha-pub">fecha</span>
-      <span class="descarga-pub">descargar</span>
-    </div>
-  </div> 
+  {% empty %}
+    <p>No hay publicaciones</p>
+  {% endfor %}
   
   <div class="pagination-centered paginacion">
   <ul class="pagination">
-    <li class="arrow unavailable"><a href="">&laquo;</a></li>
-    <li class="current"><a href="">1</a></li>
-    <li><a href="">2</a></li>
-    <li><a href="">3</a></li>
-    <li><a href="">4</a></li>
-    <li class="unavailable"><a href="">&hellip;</a></li>
-    <li><a href="">12</a></li>
-    <li><a href="">13</a></li>
-    <li class="arrow"><a href="">&raquo;</a></li>
+    {% if objetos.has_previous %}
+      <li class="arrow unavailable"><a href="?page={{ objetos.previous_page_number }}">&laquo;</a></li>
+    {% endif %}
+    {% for numero in objetos.paginator.page_range %}
+      <li class="current"><a href="?page={{numero}}">{{numero}}</a></li>
+    {% endfor %}
+    {% if objetos.has_next %}
+      <li class="arrow"><a href="?page={{ objetos.next_page_number }}">&raquo;</a></li>
+    {% endif %}
   </ul>
 </div>
 </div>
@@ -175,112 +39,31 @@
   <h3 class="o-title ">Buscar publicaciones</h3>
   <div class="sidebar-drop">
 
-  <select id="customDropdown1" class="medium">
-        <option DISABLED>Categorias</option>
-        <option>Categoria</option>
-        <option>Categoria 1</option>
-        <option>Categoria 2</option>
-      </select>
+  <form action="/publicaciones/filtrar/" method="POST">{%csrf_token%}
+    {{form.as_p}}
+    <input type="submit" name="boton">
+  </form>
+
   </div>
-  <div class="sidebar-pub">
-    <div class="img-sidebar"><img src="http://placehold.it/100x115"></div>
-    <span class="side-title"> titulo de publicacion</span>
-    <span class="side-fecha"> fecha de publicacion</span>
-    <span class="down-text"><a href="#">descargar</a></span>
+  {% for obj in ultimas_publicaciones %}
+    <div class="sidebar-pub">
+    {% thumbnail obj.foto "100x115" crop="10%" as im %}
+    <div class="img-sidebar"><img src="/files/{{im}}"></div>
+    {% endthumbnail %}
+    <span class="side-title">{{obj.titulo|truncatewords:1}}</span>
+    <span class="side-fecha"> {{obj.fecha|date:"M/j/y"}}</span>
+    <span class="down-text"><a href="/files/{{obj.archivo}}">descargar</a></span>
     <div class="icon-descargar"></div>
   </div>
-
-  <div class="sidebar-pub">
-    <div class="img-sidebar"><img src="http://placehold.it/100x115"></div>
-    <span class="side-title"> titulo de publicacion</span>
-    <span class="side-fecha"> fecha de publicacion</span>
-    <span class="down-text"><a href="#">descargar</a></span>
-    <div class="icon-descargar"></div>
-  </div>
-
-  <div class="sidebar-pub">
-    <div class="img-sidebar"><img src="http://placehold.it/100x115"></div>
-    <span class="side-title"> titulo de publicacion</span>
-    <span class="side-fecha"> fecha de publicacion</span>
-    <span class="down-text"><a href="#">descargar</a></span>
-    <div class="icon-descargar"></div>
-  </div>
-
+  {% empty %}
+    <p>No hay ultimas publicaciones</p>
+  {% endfor %}
 </div>
 </div>
 
 </div>
-  
-  
-
-
 	<!-- Content -->
 
-	<div class="footer-content">
-   <div class="row">
-     <div class="large-12 columns">
-       <ul id="footer-menu">
-         <li><a href="#">Acerca de Maonic</a></li>
-         <li><a href="#">Noticias</a></li>
-         <li><a href="#">Publicaciones</a></li>
-         <li><a href="#">Eventos</a></li>
-         <li><a href="#">Contactenos</a></li>
-       </ul>
-       <div class="text-footer">Sistema desarrollado por SIMAS bajo plataforma Django</div>
-     </div>
+<br> <br>
 
-   </div>
-
-  </div>
-<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
- <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
-  <script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider();
-    });
-    </script>
-<script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  
-  <script src="js/foundation.min.js"></script>
-  <!--
-  
-  <script src="js/foundation/foundation.js"></script>
-  
-  <script src="js/foundation/foundation.alerts.js"></script>
-  
-  <script src="js/foundation/foundation.clearing.js"></script>
-  
-  <script src="js/foundation/foundation.cookie.js"></script>
-  
-  <script src="js/foundation/foundation.dropdown.js"></script>
-  
-  <script src="js/foundation/foundation.forms.js"></script>
-  
-  <script src="js/foundation/foundation.joyride.js"></script>
-  
-  <script src="js/foundation/foundation.magellan.js"></script>
-  
-  <script src="js/foundation/foundation.orbit.js"></script>
-  
-  <script src="js/foundation/foundation.placeholder.js"></script>
-  
-  <script src="js/foundation/foundation.reveal.js"></script>
-  
-  <script src="js/foundation/foundation.section.js"></script>
-  
-  <script src="js/foundation/foundation.tooltips.js"></script>
-  
-  <script src="js/foundation/foundation.topbar.js"></script>
-  
-  -->
-  
-  <script>
-    $(document).foundation();
-  </script> 
-</body>
-
-</html>
+{% endblock contenido %}
