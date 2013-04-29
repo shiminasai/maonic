@@ -38,11 +38,11 @@ ul.login-top { }
 .news-text{ font-size: 12px; font-family: 'Open Sans', sans-serif; padding: 10px 0 0 0; text-align: justify;}
 .news-tfront{ font-size: 12px; font-family: 'Open Sans', sans-serif; padding: 10px; }
 
-.content-news{ border-bottom: solid 1px #875634; margin-bottom: 10px;}
+.content-news{ border-bottom: solid 1px #875634; margin-bottom: 40px;}
 .news-date{ font-size: 12px; font-weight: bold; font-family: 'Open Sans', sans-serif; 
             color: #91582b; margin-bottom: 10px; float: left; }
-.more-text{ font-size: 14px; margin-top: 10px; margin-left: 10px; 
-            font-family: 'Open Sans', sans-serif; color:#46351d;}            
+.more-text{ font-size: 14px; margin-top: 20px;  margin-right: 15px; 
+            font-family: 'Open Sans', sans-serif; color:#46351d; float: right;}            
 /*Content News*/        
 .c-title{color: #875634; font-size: 16px;
     margin-top: 2em; font-family: 'Open Sans', sans-serif; font-size: 16px;
@@ -100,7 +100,7 @@ ul.login-top { }
 
 /*Publicaciones*/  
 
-.box-pub{ background: #f8f1e9;  margin-bottom: 10px; float: left;
+.box-pub{ background: #f8f1e9;  margin-bottom: 30px; float: left;
           border: solid 1px #735a32;
           -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
           -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
@@ -157,22 +157,69 @@ ul.login-top { }
 
 .titulo-evento{ background:#d9881e; padding: 8px;  margin-left: 10px; 
                 color: #fff; font-size: 13px; }
-.fecha-evento{float: left; font-size: 10px; margin: 25px 0 0 0;  color: #442e21; font-weight: bold;}
-.ti-event{ float: left; font-size: 14px; color: #442e21;   font-weight: bold; padding:10px;}
+.fecha-evento{float: left; font-size: 10px; margin: 25px 0 0 0;  
+              color: #442e21; font-weight: bold; width: 30px;}
+.ti-event{ float: left; font-size: 12px; color: #442e21;   font-weight: bold; padding:10px;}
 .calendar-icon{ background: url(/files/images/calendar-icon.png) no-repeat; 
                 width: 18px; height: 16px; float: left; margin: 10px 0 0 20px;}                
-.title-bg{background: #fff; -webkit-border-radius: 9px;  float: left; margin:10px 0 0 2em;
-            border-radius: 9px; border: solid 1px #e8e4e3;}
-.eventos-box{float: left; margin-bottom: 10px;}
+.title-bg{background: #fff; -webkit-border-radius: 12px;  float: left; margin:10px 0 0 2em;
+            border-radius: 12px; border: solid 1px #e8e4e3; width: 190px;}
+.eventos-box{float: left; margin-bottom: 10px; margin-top: 5px;}
 
-.box-event-front { background: #f8f1e9;  margin-bottom: 10px; float: left;
+.box-event-front { background: #f8f1e9;  margin-bottom: 30px; float: left;
                    border: solid 1px #735a32; padding-bottom: 10px;  height: 300px; 
                   -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
                   -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
                    box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45); }
-.mas-eventos{float: left;}                               
+.mas-eventos{float: left;} 
+
+.title-bg {
+  width: 190px;
+  background-color: #fff;
+  position: relative;
+  border: 2px solid #885736;
+}
+
+.title-bg:after, .title-bg:before {
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  right: 100%;
+  position: absolute;
+  width: 0;
+}
+
+.title-bg:after {
+  border-width: 8px;
+  border-right-color: #fff;
+  top: 8px;
+}
+
+.title-bg:before {
+  border-width: 10px;
+  border-right-color: #885736;
+  top: 6px;
+}                              
 
 /*Eventos*/ 
+
+
+/*lista de noticias*/ 
+.listnews-box{ background: #ede4cd; -webkit-border-radius: 8px;
+            border-radius: 8px; border: solid 1px #e8e4e3; 
+            margin-bottom: 10px; float: left;  }
+.listnews-content{ margin: 2px; }
+.sidebar-news{ background: #000; height: 300px;}
+.newslist-pic{ margin:10px;  float: left;
+             border: solid 2px #605a4c;}
+.titulo-list-news { background: #1c7c10; padding: 8px;  margin-left: 10px; 
+                color: #fff; font-size: 13px; float: left; width: 420px;   }
+
+.res-news{ font-size: 12px; margin-left: 10px; text-align: justify;  float: left; width: 420px;} 
+
+.paginador{ float: left; margin:20px 0 10px 0; text-align:center;}
+/* lista de  noticias*/ 
+
 
 /*sidebar*/
 
