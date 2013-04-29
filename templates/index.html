@@ -119,7 +119,7 @@
       {% for obj in eventos %}
         <div class="eventos-box">
           <div class="calendar-icon">
-            <span class="fecha-evento">{{obj.fecha_inicio}}</span>
+            <span class="fecha-evento">{{obj.fecha_inicio|date:"M  j-y"}}</span>
           </div>
           <div class="title-bg">
           <span class="ti-event">{{obj.titulo}}</span>
