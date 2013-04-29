@@ -80,10 +80,10 @@
     </div>
     
   <ul class="lista-modulo">
-          <li><span class="cantidades">1390</span>  Familias productoras</li>
-          <li><span class="cantidades">96</span> Cooperativas</li>
-          <li><span class="cantidades">3</span> Centrales de Cooperativas</li>
-          <li><span class="cantidades">1</span> Organizaciones Públicas</li>
+          <li><span class="cantidades">{{familias}}</span>  Familias productoras</li>
+          <li><span class="cantidades">{{cooperativas}}</span> Cooperativas</li>
+          <li><span class="cantidades">{{centrales}}</span> Centrales de Cooperativas</li>
+          <li><span class="cantidades">{{org_publicas}}</span> Organizaciones Públicas</li>
         </ul>
   </div>
       
@@ -112,50 +112,24 @@
        </div>
     </div>
   
- 
-  
     <div class="large-4 columns">
     <h3 class="c-title small-3">Eventos</h3>
 
       <div class="box-event-front">
+      {% for obj in eventos %}
         <div class="eventos-box">
           <div class="calendar-icon">
-            <span class="fecha-evento">Fecha evento</span>
+            <span class="fecha-evento">{{obj.fecha_inicio}}</span>
           </div>
           <div class="title-bg">
-          <span class="ti-event">Titulo evento</span>
+          <span class="ti-event">{{obj.titulo}}</span>
           </div>
         </div>
-
-        <div class="eventos-box">
-          <div class="calendar-icon">
-            <span class="fecha-evento">Fecha evento</span>
-          </div>
-          <div class="title-bg">
-          <span class="ti-event">Titulo evento</span>
-          </div>
-        </div> 
-
-        <div class="eventos-box">
-          <div class="calendar-icon">
-            <span class="fecha-evento">Fecha evento</span>
-          </div>
-          <div class="title-bg">
-          <span class="ti-event">Titulo evento</span>
-          </div>
-        </div> 
-
-
-
-        <div class="eventos-box">
-          <div class="calendar-icon">
-            <span class="fecha-evento">Fecha evento</span>
-          </div>
-          <div class="title-bg">
-          <span class="ti-event">Titulo evento</span>
-          </div>
-        </div> 
+      {% empty %}
+          <p>No existen eventos</p>
+      {% endfor %}
         
+
         <div class="more-text">Eventos<div class="icon-plus"></div></div>
        </div>
 
