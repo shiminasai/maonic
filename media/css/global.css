@@ -237,12 +237,13 @@ ul.login-top { }
 /*sidebar*/
 
 /*footer*/
+.text-footer{ text-align: center; font-size: 13px; font-family: 'Open Sans', sans-serif; font-weight: bold;}
 .footer-content{ width: 100%; background:#cdd13e; border-top: solid 2px #b2b344;  }
-#footer-menu {margin-top: 20px; }
+#footer-menu {margin-top: 20px; margin-bottom: 10px; text-align: center; }
 #footer-menu li{ display: inline; text-align: center; padding: 12px; 
-                 font-size: 12px; font-family: 'Open Sans', sans-serif;
+                 font-size: 12px; font-family: 'Open Sans', sans-serif;  text-decoration: underline;
                  }
-#footer-menu li a{color: #424534; }
+#footer-menu li a{color: #442e21; }
 
 
 
