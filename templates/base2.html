@@ -74,12 +74,14 @@
 
 <div class="slider-wrapper">
     <div class="row">
+      <div class="large-3 columns">
       <div class="logo-main">
         <a href="/">
         <img src="/files/images/logo.png">
        </a>
       </div>
  <div class="bg-logo"></div>
+    </div>
     </div>
     
     <div id="slider" class="nivoSlider">
@@ -98,6 +100,36 @@
   {% include "footer.html" %}
 
 <script type="text/javascript" src="/files/js/jquery-1.9.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+var str=location.href.toLowerCase();
+$(".nav_menu li a").each(function() {
+if (str.indexOf(this.href.toLowerCase()) > -1) {
+ $("li.active").removeClass("active");
+$(this).parent().addClass("active");
+}
+ });
+ })
+
+
+</script>
+
+<script>
+  $(document).ready(function(){
+var str=location.href.toLowerCase();
+$(".pagination li a").each(function() {
+if (str.indexOf(this.href.toLowerCase()) > -1) {
+ $("li.current").removeClass("current");
+$(this).parent().addClass("current");
+}
+ });
+ })
+
+
+</script>
+{% block extra_js %}
+  
+{% endblock extra_js %}
  <script type="text/javascript" src="/files/js/jquery.nivo.slider.js"></script>
   <script type="text/javascript">
     $(window).load(function() {

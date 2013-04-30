@@ -10,15 +10,14 @@
   <h3 class="o-title ">Noticias</h3>
 
   {% for obj in objetos.object_list %}
-    <div class="listnews-box">
-    <div class="newslist-pic" >
+    <div class="listnews-box">   
     {% thumbnail obj.foto "150x100" crop="10%" as im %}
-      <img src="/files/{{im}}">
-    {% endthumbnail %}
-    </div>
+      <img class="newslist-pic" src="/files/{{im}}">
+    {% endthumbnail %}  
      <div class="listnews-content">
      <h3 class="titulo-list-news"><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></h3>
      <div class="res-news">{{obj.contenido|safe|striptags|truncatewords:20}}</div>
+     <div class="read_more"><a href="{{obj.get_absolute_url}}" class="tiny button">Leer mas</a></div>
      </div>
   </div>
   {% empty %}
@@ -31,7 +30,7 @@
       <li class="arrow unavailable"><a href="?page={{ objetos.previous_page_number }}">&laquo;</a></li>
     {% endif %}
     {% for numero in objetos.paginator.page_range %}
-      <li class="current"><a href="?page={{numero}}">{{numero}}</a></li>
+      <li class="{%if numero == 1 %}current{%endif%}"><a href="?page={{numero}}">{{numero}}</a></li>
     {% endfor %}
     {% if objetos.has_next %}
       <li class="arrow"><a href="?page={{ objetos.next_page_number }}">&raquo;</a></li>
@@ -41,7 +40,7 @@
 </div>
 
   <div class="large-4 columns">
-    <h3 class="sidebox-title ">Publicaciones</h3>
+    <h3 class="o-title">Publicaciones</h3>
     {% for obj in publicaciones %}
       <div class="block-news">
       <span class="feeds-title">{{obj.titulo}}</span>
@@ -57,7 +56,7 @@
   </div>
 
   <div class="large-4 columns">
-    <h3 class="sidebox-title ">Eventos</h3>
+    <h3 class="o-title">Eventos</h3>
     {% for obj in eventos %}
        <div class="block-news">
       <span class="feeds-title">{{obj.titulo}}</span>
@@ -73,5 +72,4 @@
 </div>
 
 </div>
-
 {% endblock contenido %} 

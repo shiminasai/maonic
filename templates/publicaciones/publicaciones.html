@@ -1,4 +1,13 @@
 {% extends "base2.html" %}
+{% block extra_js %}
+<script>
+  $(document).ready(function(){
+    $('#id_tag').change(function(){
+      $("#botoncito").attr('disabled',false);
+        });
+  });
+</script>
+{% endblock extra_js %}
 {% load thumbnail %}
 {% block contenido %}
   
@@ -20,7 +29,11 @@
   {% empty %}
     <p>No hay publicaciones</p>
   {% endfor %}
+<<<<<<< HEAD
   
+=======
+  <div class="contenedor-paginador">
+>>>>>>> 6e44275d0846a7285362bfcd7c2b45ef27f17508
   <div class="pagination-centered paginacion">
   <ul class="pagination">
     {% if objetos.has_previous %}
@@ -35,13 +48,18 @@
   </ul>
 </div>
 </div>
+</div>
 <div class="large-4 columns">
   <h3 class="o-title ">Buscar publicaciones</h3>
   <div class="sidebar-drop">
 
   <form action="/publicaciones/filtrar/" method="POST">{%csrf_token%}
     {{form.as_p}}
+<<<<<<< HEAD
     <input type="submit" name="boton">
+=======
+     <input id="botoncito"  class="tiny button" disabled= "true" type="submit" name="boton" value="Buscar">
+>>>>>>> 6e44275d0846a7285362bfcd7c2b45ef27f17508
   </form>
 
   </div>

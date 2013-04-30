@@ -129,19 +129,23 @@ ul.login-top { }
           box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);}
 .titulo-pub{ font-size: 14px; width: 180px; float: left; padding: 5px;}
 .fecha-pub{ padding-left: 5px; color: #cfc41d; font-size: 12px;}
-.descarga-pub{}
+.descarga-pub a{font-size: 13px; color: #fff;}
+.descarga-pub a:hover{font-size: 13px; color: #000;}
 .paginacion{ display: inline-block;}
 .sidebar-pub{width: 290px; padding-bottom: 10px; float: left;}
 .img-sidebar{ float: left; -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.55);
           -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.55);
           box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);}
-.side-title{ color: #6f5c3b; margin: 10px; float: left; }
-.side-fecha{ color: #6f5c3b; margin: 10px;  }
+.side-title{ color: #6f5c3b; margin: 10px; float: left;  width: 120px;}
+.side-fecha{ color: #6f5c3b; margin: 10px; float: left; width: 100px;  }
 .icon-descargar{ background: url(/files/images/descargar.png) no-repeat; 
                  width: 13px; height: 13px; float: left;  margin-top: 10px; }
 .down-text{ margin: 10px; margin-top: 10px; float: left; color: #50972f;}
 .down-text a{color: #50972f; font-weight: bold;} 
-.sidebar-drop{ width: 220px; margin-bottom: 10px; }                
+.sidebar-drop{ width: 220px; margin-bottom: 10px; } 
+.contenedor-paginador{ float: left; clear: left;}
+input.tiny{ background: #885736; border:none;} 
+input.tiny:hover{ background:#91582b; }              
 /*Publicaciones*/ 
 
 
@@ -212,13 +216,62 @@ ul.login-top { }
 .sidebar-news{ background: #000; height: 300px;}
 .newslist-pic{ margin:10px;  float: left;
              border: solid 2px #605a4c;}
-.titulo-list-news { background: #1c7c10; padding: 8px;  margin-left: 10px; 
+.titulo-list-news { background: #91582b; padding: 8px;  margin-left: 10px; 
                 color: #fff; font-size: 13px; float: left; width: 420px;   }
-
+.titulo-list-news a{color: #fff; }
 .res-news{ font-size: 12px; margin-left: 10px; text-align: justify;  float: left; width: 420px;} 
-
+.read_more{ float: left; margin-top: 10px; margin-left: 10px;}
 .paginador{ float: left; margin:20px 0 10px 0; text-align:center;}
+.tiny{ background: #cbb498; border:none;} 
+.tiny:hover{ background:#91582b; }   
 /* lista de  noticias*/ 
+
+/*paginador lista*/
+.pagination {
+display: block;
+height: 1.5em;
+margin-bottom: 0.5em;
+margin-left: 10em;}
+
+/* Pagination */
+  .pagination li {
+    display: block;
+    float: left;
+    height: 1.5em;
+    color: #222222;
+    font-size: 0.875em;
+    margin-left: 0.3125em; }
+    .pagination li a {
+      display: block;
+      padding: 0.0625em 0.4375em 0.0625em;
+      color: #999999; }
+    .pagination li:hover a,
+    .pagination li a:focus {
+      background: #e6e6e6; }
+    .pagination li.unavailable a {
+      cursor: default;
+      color: #999999; }
+    .pagination li.unavailable:hover a, .pagination li.unavailable a:focus {
+      background: transparent; }
+    .pagination li.current a {
+      background: #2ba6cb;
+      color: white;
+      font-weight: bold;
+      cursor: default; }
+      .pagination li.current a:hover, .pagination li.current a:focus {
+        background: #2ba6cb; }
+
+.pagination-centered {
+  text-align: center; }
+  .pagination-centered ul > li {
+    float: none;
+    display: inline-block; }
+/* Paginador Lista*/
+ 
+
+
+
+
 
 
 /*sidebar*/
@@ -232,17 +285,18 @@ ul.login-top { }
 .feeds-title{color: #3c2a20; font-size: 14px; font-weight: bold; margin-top: 5px; margin-bottom: 10px;}
 .feeds-title a{color: #3c2a20;}
 .feeds-title a:hover{ color: #91582b;}
-.resumen-news{ font-size: 12px;}
+.resumen-news{ font-size: 12px; margin-left: 10px;}
 .date-ticker{ color: #97c00c; font-size: 12px;}
 /*sidebar*/
 
 /*footer*/
-.footer-content{ width: 100%; background:#cdd13e; border-top: solid 2px #b2b344;  }
-#footer-menu {margin-top: 20px; }
+.text-footer{ text-align: center; font-size: 13px; font-family: 'Open Sans', sans-serif; font-weight: bold;}
+.footer-content{ width: 100%; background:#cdd13e; border-top: solid 2px #b2b344; padding-bottom: 20px;  }
+#footer-menu {margin-top: 20px; margin-bottom: 10px; text-align: center; }
 #footer-menu li{ display: inline; text-align: center; padding: 12px; 
-                 font-size: 12px; font-family: 'Open Sans', sans-serif;
+                 font-size: 12px; font-family: 'Open Sans', sans-serif;  text-decoration: underline;
                  }
-#footer-menu li a{color: #424534; }
+#footer-menu li a{color: #442e21; }
 
 
 
