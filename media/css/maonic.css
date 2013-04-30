@@ -73,7 +73,7 @@ img{
     /*padding-bottom: 22px;*/
     height: 88px;
     width: 960px;
-    background: url(/files/images/center_top.png) no-repeat;
+    
     color: #444;
     font-size: 13px;
 }
@@ -219,14 +219,14 @@ img{
     color: #3d3d3d;
 }
 .contenido{
-    background: #eee;
+   
 }
 .ajustado{
     padding: 15px;
 background: url(/files/images/noise.jpg);
 }
 .full{    padding: 15px;
-background: url(/files/images/noise.jpg);
+
 }
 
 #recuadro{
