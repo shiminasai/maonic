@@ -2,9 +2,13 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from .models import Noticias
+from publicaciones.models import Publicacion
+from eventos.models import Evento
 
 
 def lista_noticias(request):
+    publicaciones = Publicacion.objects.order_by('-id')[:4]
+    eventos = Evento.objects.order_by('-id')[:4]
     noticia = Noticias.objects.all()
 
     paginator = Paginator(noticia, 5)
@@ -19,7 +23,7 @@ def lista_noticias(request):
     except  (EmptyPage, InvalidPage):
         objetos = paginator.page(paginator.num_pages)
 
-    return render_to_response('noticias/lista_noticias.html', locals(), 
+    return render_to_response('noticias/lista-noticias.html', locals(), 
                                         context_instance=RequestContext(request))
 
 def detalle_noticia(request, slug):
