@@ -176,6 +176,9 @@ input.tiny:hover{ background:#91582b; }
                   -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
                    box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45); }
 .mas-eventos{float: left;} 
+.fecha-descripcion h3 { float: left; font-size: 11px; margin-left:20px; margin-top:12px;}
+.event-news{ float: left; font-size: 13px; margin-left: 18px; clear: left;}
+.ubicacion-text{float: left; clear: left; margin-left: 18px; font-size: 13px; margin-bottom: 10px;}
 
 .title-bg {
   width: 190px;

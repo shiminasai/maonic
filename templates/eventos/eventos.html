@@ -20,7 +20,13 @@
       <h3 class="titulo-evento">{{obj.titulo}}</h3>
     </div>
     <div class="event-content">
-      <h3 class="resumen-news">{{obj.descripcion|safe}}</h3>
+      <div class="fecha-descripcion">
+        <div class="calendar-icon"></div><h3>Fecha de inicio: </h3>
+        <h3>Fecha de Terminacion:</h3>
+      </div>
+      
+      <h3 class="event-news">Descripcion:{{obj.descripcion|safe}}</h3>
+      <div class="ubicacion-text">Ubicacion:</div>
     </div>
   </div>
   {% empty %}
