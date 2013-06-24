@@ -1,25 +1,31 @@
 {% extends "base2.html" %}
-
-{% load thumbnail %}
+{% load magicembed_tags %}
 {% block contenido %}
-    <!-- Content -->
-  
 <div class="row">
 <div class="large-12 columns">
 <div class="large-8 columns">
   <h3 class="o-title ">Videos</h3>
 
-  {% for obj in objetos.object_list %}
-     <div class="listnews-content">
-     <h3 class="titulo-list-news"><a href="#">{{obj.nombre}}</a></h3>
-     <div class="res-news">{{obj.url}}</div>
-     </div>
+  {% for obj in objetos %}
+    <div class="event-box">
+    <div class="event-content">
+      <h3 class="titulo-evento">{{obj.nombre}}</h3>
+    </div>
+    <div class="event-content">
+      
+          <div class="play-icon"><a data-reveal-id="videoModal-{{obj.id}}" href="">
+            <img src="{{STATIC_URL}}img/play.png">
+          </a></div>
+          <a data-reveal-id="videoModal-{{obj.id}}" href=""><img src="{{ obj.url|magicthumbnail}}" alt=""></a>
+        
+    </div>
   </div>
   {% empty %}
-    <p>No existe videos</p>
+    <p>No existen videos</p>
   {% endfor %}
   
-<div class="pagination-centered paginacion">
+
+  <div class="pagination-centered paginacion">
   <ul class="pagination">
     {% if objetos.has_previous %}
       <li class="arrow unavailable"><a href="?page={{ objetos.previous_page_number }}">&laquo;</a></li>
@@ -31,40 +37,36 @@
       <li class="arrow"><a href="?page={{ objetos.next_page_number }}">&raquo;</a></li>
     {% endif %}
   </ul>
-</div> <br> <br>
+</div>
+</div>
+<div class="large-4 columns">
+  <h3 class="sidebox-title ">Noticias</h3>
+  {% for obj in ultimas_noticias %}
+    <div class="block-news">
+  <span class="feeds-title"><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></span>
+  <div class="resumen-news">{{obj.contenido|safe|striptags|truncatewords:12}}</div>
+  <span class="date-ticker">{{obj.fecha|date:"M/j/Y"}}</span>
+</div>
+  {% empty %}
+    <p>No exiten noticias</p>
+  {% endfor %}
+
+</div>
 </div>
 
-  <div class="large-4 columns">
-    <h3 class="o-title">Publicaciones</h3>
-    {% for obj in publicaciones %}
-      <div class="block-news">
-      <span class="feeds-title">{{obj.titulo}}</span>
-      <div class="resumen-news">{{obj.fecha|date:"M/j/Y"}}</div>
-      {% if obj.archivo %}
-        <span class="date-ticker"><a href="/files/{{obj.archivo}}">descargar</a></span>
-      {% endif %}
-    </div>
-    {% empty %}
-      <p>No hay publicaciones</p>
-    {% endfor %}
+{% for obj in objetos %}
+  <div id="videoModal-{{obj.id}}" class="reveal-modal medium">
+  <h2>{{obj.nombre}}</h2>
+  <div class="flex-video">
+    
+      {{ obj.url|magicembed:"640x480" }}  
 
   </div>
 
-  <div class="large-4 columns">
-    <h3 class="o-title">Eventos</h3>
-    {% for obj in eventos %}
-       <div class="block-news">
-      <span class="feeds-title">{{obj.titulo}}</span>
-      <div class="resumen-news">{{obj.descripcion|safe|striptags|truncatewords:10}}</div>
-      <span class="date-ticker">{{obj.fecha_inicio|date:"M/j/Y"}}</span>
-    </div>
-    {% empty %}
-      <p>No existen eventos</p>
-    {% endfor %}
-   
-  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+{% endfor %}
 
 </div>
 
-</div>
 {% endblock contenido %} 
