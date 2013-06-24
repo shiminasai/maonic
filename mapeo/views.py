@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.core.exceptions import ViewDoesNotExist, ValidationError
 from forms import ProductoresForm, AsociacionesForm
 from django.views.generic.simple import direct_to_template
-from noticias.models import Noticias
+from noticias.models import Noticias, Portada
 from publicaciones.models import Publicacion
 from eventos.models import Evento
 
@@ -27,6 +27,9 @@ def index(request):
     noticias = Noticias.objects.order_by('-id')[:4]
     publicaciones = Publicacion.objects.order_by('-id')[:4]
     eventos = Evento.objects.order_by('-id')[:4]
+
+    noti_foto = Portada.objects.all()[0]
+    fotos_portada = noti_foto._fotos_traer()
 
     return direct_to_template(request, 'index.html', locals())
 

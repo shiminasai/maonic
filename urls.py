@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^$', 'maonic.mapeo.views.index'),
     (r'^noticias/', include('maonic.noticias.urls')),
     (r'^publicaciones/', include('maonic.publicaciones.urls')),
+    (r'^videos/', include('maonic.videos.urls')),
     (r'^eventos/', include('maonic.eventos.urls')),
     # Uncomment the admin/doc line below to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -26,7 +27,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^maonic/$', direct_to_template, {'template': 'maonic.html'}),
     (r'^tagging_autocomplete/', include('tagging_autocomplete.urls')),
-    (r'^prueba/$', direct_to_template, {'template': 'noticias/lista-noticias.html'}),
+    #(r'^prueba/$', direct_to_template, {'template': 'noticias/lista-noticias.html'}),
 )
 
 if settings.DEBUG:

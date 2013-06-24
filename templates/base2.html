@@ -14,6 +14,8 @@
   <script src="/files/js/vendor/custom.modernizr.js"></script>
 
 </head>
+{% load thumbnail %}
+{% load cropping %}
 <body>
    <!-- Header principal -->
 <div class="top_header">
@@ -21,8 +23,18 @@
     <div class="large-12 columns top-content">
       
       <ul class="login-top">
-        <li>iniciar sesion</li>|
-        <li>manual de usuario</li>
+        <div class="sign">
+            {% if user.is_authenticated %}
+            <span>Bienvenido</span> {{ user.username }}&nbsp;<img class="separator" src="/files/images/separador.png" alt="separador">
+            <a href="/admin" title="Salir de Administración" >Administración</a>&nbsp;<img class="separator" src="/files/images/separador.png" alt="separador">
+            <a href="/files/docs/ManualUsuario_MAONIC.pdf" title="" >Manual de usuario</a>&nbsp;<img class="separator" src="/files/images/separador.png" alt="separador">
+            <a href="/files/docs/ManualAdministrador_MAONIC.pdf" title="" >Manual de administración</a>&nbsp;<img class="separator" src="/files/images/separador.png" alt="separador"><a href="/logout" title="Salir" >Salir</a>
+            {% else %}
+            <li><a href="/accounts/login/">Iniciar Sesi&oacute;n</a></li>|
+            <img class="separator" src="/files/images/separador.png" alt="separador">
+            <li><a href="/files/docs/ManualUsuario_MAONIC.pdf" title="" >Manual de usuario</a></li>&nbsp;<img class="separator" src="/files/images/separador.png" alt="separador">
+            {% endif %}
+        </div>
       </ul>
     </div>
     </div>
@@ -51,6 +63,7 @@
       <li class="active"><a href="/maonic">Acerca de Maonic</a></li>
       <li><a href="/noticias/lista/">Noticias</a></li>
       <li><a href="/publicaciones/lista/">Publicaciones</a></li>
+      <li><a href="/videos/lista/">Videos</a></li>
       <li><a href="/eventos/lista/">Eventos</a></li>
       <li class="has-dropdown"><a href="#">Sistema de Mapeo y Monitoreo</a>
 
@@ -85,12 +98,13 @@
     </div>
     
     <div id="slider" class="nivoSlider">
-                <img src="/files/images/maonic3.jpg" alt="" />
-                <a href="#"><img src="/files/images/maonic3.jpg"  alt=""/></a>
-                <img src="http://placehold.it/1500x300"/>
-                <img src="/files/images/maonic10.jpg" alt="" />
-            </div>
-            
+    {% for obj in fotos_portada %}
+        {# <img src="/files/{{ obj.foto }}" width="1500px" heigth="300px" alt=""> #}
+        <img src="{% cropped_thumbnail obj "cropping" scale=0.5 %}">
+    {% empty %}
+      <p>no hay fotos que mostrar</p>
+    {% endfor %}
+    </div>       
   </div>
 
   {% block contenido %}
