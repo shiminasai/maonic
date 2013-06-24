@@ -37,7 +37,7 @@ STATIC_URL = '/files/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/files/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -62,6 +62,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+    'maonic.context.globales',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,6 +79,10 @@ TEMPLATE_DIRS = (
         PROJECT_ROOT + '/templates',
 )
 
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -92,6 +97,7 @@ INSTALLED_APPS = (
     'maonic.noticias',
     'maonic.eventos',
     'maonic.publicaciones',
+    'maonic.videos',
 #    'maonic.monitoreo',
 #    'registration',
     'maonic.lugar',
@@ -99,6 +105,8 @@ INSTALLED_APPS = (
     'smart_selects',
     'ckeditor',
     'sorl.thumbnail',
+    'easy_thumbnails',
+    'image_cropping',
     'tagging',
     'tagging_autocomplete',
     #app del monitoreo

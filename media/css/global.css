@@ -642,5 +642,23 @@ dl {
       background: #111111;
       padding: 0 15px;
       height: 40px; }
-    
 
+/* lo del login*/
+.sign{
+    float: right;
+    line-height: 32px;
+    font-size: 15px;
+    margin-right: 10px;
+}
+.sign a{
+    color: #424534;
+    font-weight:bold;
+    font-size: 11px;    
+}
+.sign a:hover{
+    text-decoration: underline;
+}
+.sign span{
+    color: #424534;
+    font-size: 11px;
+}
