@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'maonic.noticias',
     'maonic.eventos',
     'maonic.publicaciones',
+    'maonic.videos',
 #    'maonic.monitoreo',
 #    'registration',
     'maonic.lugar',
