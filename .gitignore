@@ -9,6 +9,7 @@ media/publicaciones/
 media/eventos/
 media/uploads/
 media/cache/
+media/fotoPortadas/
 *.db
 *.pl
 *.sql
