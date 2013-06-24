@@ -41,7 +41,7 @@ ul.login-top { }
 .content-news{ border-bottom: solid 1px #875634; margin-bottom: 40px;}
 .news-date{ font-size: 12px; font-weight: bold; font-family: 'Open Sans', sans-serif; 
             color: #91582b; margin-bottom: 10px; float: left; }
-.more-text{ font-size: 14px; margin-top: 20px;  margin-right: 15px; 
+.more-text{ font-size: 14px; margin-top: 20px;  margin-right: 15px; margin-bottom: 15px;
             font-family: 'Open Sans', sans-serif; color:#46351d; float: right;}            
 /*Content News*/        
 .c-title{color: #875634; font-size: 16px;
@@ -214,14 +214,14 @@ input.tiny:hover{ background:#91582b; }
 /*lista de noticias*/ 
 .listnews-box{ background: #ede4cd; -webkit-border-radius: 8px;
             border-radius: 8px; border: solid 1px #e8e4e3; 
-            margin-bottom: 10px; float: left;  }
+            margin-bottom: 25px; float: left;  }
 .listnews-content{ margin: 2px; }
 .sidebar-news{ background: #000; height: 300px;}
 .newslist-pic{ margin:10px;  float: left;
              border: solid 2px #605a4c;}
-.titulo-list-news { background: #91582b; padding: 8px;  margin-left: 10px; 
+.titulo-list-news {  padding: 8px;  color: #222222; 
                 color: #fff; font-size: 13px; float: left; width: 420px;   }
-.titulo-list-news a{color: #fff; }
+.titulo-list-news a{color: #222222; }
 .res-news{ font-size: 12px; margin-left: 10px; text-align: justify;  float: left; width: 420px;} 
 .read_more{ float: left; margin-top: 10px; margin-left: 10px;}
 .paginador{ float: left; margin:20px 0 10px 0; text-align:center;}
