@@ -112,7 +112,7 @@
         {# <img src="/files/{{ obj.foto }}" width="1500px" heigth="300px" alt=""> #}
         <img src="{% cropped_thumbnail obj "cropping" scale=5%}">
     {% empty %}
-      <p>no hay fotos que mostrar</p>
+      <img src="http://placehold.it/1500x300">
     {% endfor %}
     </div>       
   </div>
