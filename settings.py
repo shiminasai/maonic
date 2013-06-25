@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'image_cropping',
     'tagging',
     'tagging_autocomplete',
+    'magicembed',
     #app del monitoreo
     'maonic.encuestas',
     'maonic.organizacion',
