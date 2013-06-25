@@ -223,7 +223,21 @@ img{
 }
 .ajustado{
     padding: 15px;
-background: url(/files/images/noise.jpg);
+     background:white;
+    -webkit-box-shadow: 2px 2px 5px #A0A0A0;
+    -moz-box-shadow: 2px 2px 5px #A0A0A0;
+    box-shadow: 2px 2px 5px #A0A0A0;
+    border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    padding:20px;
+    font-size:12px;
+    text-align:left;
+    color:#5e5e5e;
+    line-height:1.4;
+    margin-bottom: 10px;
 }
 .full{    padding: 15px;
 
