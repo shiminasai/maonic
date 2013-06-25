@@ -1,4 +1,4 @@
-body{background: url( /files/images/bg.png) repeat;
+body{background: url( /files/images/bg.png)repeat;
      font-family: 'Open Sans', sans-serif;}
 
 
@@ -102,20 +102,18 @@ ul.login-top { }
 
 /*Publicaciones*/  
 
-.box-pub{ background: #f8f1e9;  margin-bottom: 30px; float: left;
-          border: solid 1px #735a32;
-          -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
-          -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
-          box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);}
+.box-pub{   margin-bottom: 10px; float: left;
+         }
 
 
-.box-pub-content{ width: 270px; height: 110px;  float: left; margin: 20px; background: #ecddcc;
-                  border: solid 1px #946d46; }
+.box-pub-content{ width: 270px; height: 120px;  float: left; margin: 5px;
+                  background: rgb(247, 233, 218);
+                  border: solid 1px rgb(236, 230, 224);}
 
 .pub-photo{ padding: 10px; float: left;}
 .text-pub{ float: left; font-size: 12px;  color:#875733; 
            font-family: 'Open Sans', sans-serif; margin-top: 15px;
-           font-weight: bold; width: 90px;}
+           font-weight: bold; width: 120px;}
 
 .date-pub{ float: left; font-size: 10px;  color:#a89471; 
            font-family: 'Open Sans', sans-serif; margin-top: 15px;
@@ -172,11 +170,9 @@ input.tiny:hover{ background:#91582b; }
             border-radius: 12px; border: solid 1px #e8e4e3; width: 190px;}
 .eventos-box{float: left; margin-bottom: 10px; margin-top: 5px;}
 
-.box-event-front { background: #f8f1e9;  margin-bottom: 30px; float: left;
-                   border: solid 1px #735a32; padding-bottom: 10px;  height: 300px; 
-                  -webkit-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
-                  -moz-box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45);
-                   box-shadow: 2px 1px 4px rgba(50, 50, 51, 0.45); }
+.box-event-front {  margin-bottom: 30px; float: left;
+                    padding-bottom: 10px;  height: 300px; 
+                  }
 .mas-eventos{float: left;} 
 .fecha-descripcion h3 { float: left; font-size: 11px; margin-left:20px; margin-top:12px;}
 .event-news{ float: left; font-size: 13px; margin-left: 18px; clear: left;}
@@ -186,7 +182,7 @@ input.tiny:hover{ background:#91582b; }
   width: 190px;
   background-color: #fff;
   position: relative;
-  border: 2px solid #885736;
+  border: 1px solid #885736;
 }
 
 .title-bg:after, .title-bg:before {

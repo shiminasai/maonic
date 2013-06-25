@@ -102,9 +102,9 @@
           {% thumbnail obj.foto "100x70" crop="center" as im %}
            <div class="pub-photo"><img src="/files/{{im}}"></div>
           {% endthumbnail %}
-           <span class="text-pub">{{obj.titulo|truncatewords:1}}</span>
+           <span class="text-pub">{{obj.titulo|truncatewords:4}}</span>
            <span class="date-pub">{{obj.fecha|date:"F t Y"}}</span>
-           <a href="{{obj.get_absolute_url}}" class="tiny button boton-pub">Ver [+]</a>
+           <a href="{{obj.get_absolute_url}}" class="tiny button boton-pub">descargar [+]</a>
          </div>
         {% empty %}
           <p>No existe publicación!</p>
