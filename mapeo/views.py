@@ -28,9 +28,6 @@ def index(request):
     publicaciones = Publicacion.objects.order_by('-id')[:4]
     eventos = Evento.objects.order_by('-id')[:4]
 
-    noti_foto = Portada.objects.all()[0]
-    fotos_portada = noti_foto._fotos_traer()
-
     return direct_to_template(request, 'index.html', locals())
 
 model_dict = {
