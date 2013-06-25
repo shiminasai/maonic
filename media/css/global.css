@@ -1,4 +1,6 @@
-body{background: url( /files/images/bg.png) repeat;}
+body{background: url( /files/images/bg.png) repeat;
+     font-family: 'Open Sans', sans-serif;}
+
 
 .top_header{background: #cdd13e;  width: 100%; height: 33px;}
 .box_foto{ width: 220px; background: #000; height: 150px;  }
@@ -45,18 +47,18 @@ ul.login-top { }
             font-family: 'Open Sans', sans-serif; color:#46351d; float: right;}            
 /*Content News*/        
 .c-title{color: #875634; font-size: 16px;
-    margin-top: 2em; font-family: 'Open Sans', sans-serif; font-size: 16px;
+    margin-top: 2em; font-family: 'Lato', sans-serif; font-size: 16px;
     margin-bottom: 2em;
      font-weight: bold; border-bottom: dashed 1px #875634;}
 
 .o-title{color: #875634; font-size: 16px;
-    margin-top: 2em; font-family: 'Open Sans', sans-serif; font-size: 16px;
+    margin-top: 2em; font-family: 'Lato', sans-serif; font-size: 16px;
     margin-bottom: 2em;
      font-weight: bold; border-bottom: solid 1px #875634;}
      
 /*Modulos de sistema*/
 
-.h-title a{ font-family: 'Open Sans', sans-serif; font-size: 15px; 
+.h-title a{ font-family: 'Lato', sans-serif; font-size: 15px; 
           font-weight: bold;color: #484035; margin-top: 30px; float: left;}
 .h-title a:hover{color: #6f5c3b;}          
 .text-modulos{float: left; margin-left: 1em; font-size: 13px; margin-bottom: 20px; text-align:left; height: 40px;}          
@@ -220,7 +222,8 @@ input.tiny:hover{ background:#91582b; }
 .newslist-pic{ margin:10px;  float: left;
              border: solid 2px #605a4c;}
 .titulo-list-news {  padding: 8px;  color: #222222; 
-                color: #fff; font-size: 13px; float: left; width: 420px;   }
+                     color: #fff; font-size: 14px; float: left; width: 420px; 
+                     font-family: 'Lato', sans-serif;  font-weight: bold;  }
 .titulo-list-news a{color: #222222; }
 .res-news{ font-size: 12px; margin-left: 10px; text-align: justify;  float: left; width: 420px;} 
 .read_more{ float: left; margin-top: 10px; margin-left: 10px;}
@@ -280,20 +283,21 @@ margin-left: 10em;}
 /*sidebar*/
 
 .sidebox-title{ background: #735a32; color: #fff; font-size: 16px; padding-left: 15px;
-                margin-top: 2em; font-family: 'Open Sans', sans-serif; font-size: 16px;
+                margin-top: 2em; font-family: 'Lato', sans-serif; sans-serif; font-size: 16px;
                 margin-bottom: 2em; -webkit-border-radius: 9px;
                 -moz-border-radius: 9px;border-radius: 9px;} 
 
 .block-news{ border-bottom: dashed 1px #d0bfaf; padding-bottom: 10px; padding-left: 10px;}
-.feeds-title{color: #3c2a20; font-size: 14px; font-weight: bold; margin-top: 5px; margin-bottom: 10px;}
+.feeds-title{color: #3c2a20; font-size: 14px; font-weight: bold; margin-top: 5px; 
+             margin-bottom: 10px;font-family: 'Lato', sans-serif;}
 .feeds-title a{color: #3c2a20;}
 .feeds-title a:hover{ color: #91582b;}
-.resumen-news{ font-size: 12px; margin-left: 10px;}
-.date-ticker{ color: #97c00c; font-size: 12px;}
+.resumen-news{ font-size: 12px; margin: 5px 0 5px 0;}
+.date-ticker{ color: rgb(90, 104, 42); font-size: 12px;}
 /*sidebar*/
 
 /*footer*/
-.text-footer{ text-align: center; font-size: 13px; font-family: 'Open Sans', sans-serif; font-weight: bold;}
+.text-footer{ text-align: center; font-size: 12px; font-family: 'Open Sans', sans-serif; font-weight: bold;}
 .footer-content{ width: 100%; background:#cdd13e; border-top: solid 2px #b2b344; padding-bottom: 20px;  }
 #footer-menu {margin-top: 20px; margin-bottom: 10px; text-align: center; }
 #footer-menu li{ display: inline; text-align: center; padding: 12px; 
@@ -662,3 +666,9 @@ dl {
     color: #424534;
     font-size: 11px;
 }
+.box-video{  background: #fff;  margin: 18px; -webkit-border-radius: 8px;
+border-radius: 8px;
+border: solid 1px rgb(232, 228, 227);}
+.video-content{ margin-left:1em; margin-top: 10px; margin-right: 10px; 
+                border-bottom: #ecf0f1 solid 1px; padding-left: 20px;}
+.box-video h3{ font-size: 15px; color: #2c3e50;}
