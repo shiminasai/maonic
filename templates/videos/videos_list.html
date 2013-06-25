@@ -5,22 +5,19 @@
 <div class="large-12 columns">
 <div class="large-8 columns">
   <h3 class="o-title ">Videos</h3>
-
+<div class="box-video">
   {% for obj in objetos.object_list  %}
-    <div class="event-box">
-    <div class="event-content">
-      <h3 class="titulo-evento">{{obj.nombre}}</h3>
-    </div>
-    <div class="event-content">
+    
+    <div class="video-content">
       
-        {{ obj.url|magicembed:"600x380" }}  
-        
+        {{ obj.url|magicembed:"480x280" }}  
+        <h3 class="">{{obj.nombre}}</h3>
     </div>
-  </div>
+ 
   {% empty %}
     <p>No existen videos</p>
   {% endfor %}
-  
+   </div>
 
   <div class="pagination-centered paginacion">
   <ul class="pagination">
