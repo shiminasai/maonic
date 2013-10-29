@@ -95,7 +95,7 @@
   <div class="row">
 
     <div class="large-8 columns">
-      <h3 class="c-title small-3">Publicaciones</h3>
+      <h3 class="c-title small-3"><a href="/publicaciones/lista/">Publicaciones</a></h3>
        <div class="box-pub">
         {% for obj in publicaciones %}
           <div class="box-pub-content">
@@ -104,7 +104,7 @@
           {% endthumbnail %}
            <span class="text-pub">{{obj.titulo|truncatewords:4}}</span>
            <span class="date-pub">{{obj.fecha|date:"F t Y"}}</span>
-           <a href="{{obj.get_absolute_url}}" class="tiny button boton-pub">descargar [+]</a>
+           <a href="/files/{{obj.archivo}}" class="tiny button boton-pub">descargar [+]</a>
          </div>
         {% empty %}
           <p>No existe publicación!</p>
@@ -113,7 +113,7 @@
     </div>
   
     <div class="large-4 columns">
-    <h3 class="c-title small-3">Eventos</h3>
+    <h3 class="c-title small-3"><a href="/eventos/lista/">Eventos</a></h3>
 
       <div class="box-event-front">
       {% for obj in eventos %}
@@ -129,8 +129,6 @@
           <p>No existen eventos</p>
       {% endfor %}
         
-
-        <div class="more-text"><a href="/eventos/lista">Eventos</a><div class="icon-plus"></div></div>
        </div>
 
       </div>
