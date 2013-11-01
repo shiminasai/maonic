@@ -71,6 +71,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'maonic.urls'
@@ -93,6 +94,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.humanize',
+    'django.contrib.flatpages',
     'maonic.mapeo',
     'maonic.noticias',
     'maonic.eventos',
