@@ -26,6 +26,8 @@
 </head>
 {% load thumbnail %}
 {% load cropping %}
+{% load flatpages %}
+{% get_flatpages as flatpages %}
 <body>
    <!-- Header principal -->
 <div class="top_header">
@@ -69,8 +71,15 @@
     <!-- Left Nav Section -->
     <div class="home-button"></div>
     <ul class="nav_menu">
-      
-      <li class=""><a href="/maonic">Acerca de Maonic</a></li>
+
+
+      <li class="has-dropdown"><a href="#">Acerca de MAONIC</a>
+        <ul class="dropdown">
+          {% for page in flatpages %}
+            <li><label><a href="{{page.url}}">{{page.title}}</a></label></li>
+          {% endfor %}
+        </ul>
+      </li>
       <li><a href="/noticias/lista/">Noticias</a></li>
       <li><a href="/publicaciones/lista/">Publicaciones</a></li>
       <li><a href="/videos/lista/">Videos</a></li>

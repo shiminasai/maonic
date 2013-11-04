@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block extratitle %}{{flatpage.title}}{% endblock %}
+
+{% block top %}
+<div class="nombre_modulo">
+   {{flatpage.title}}
+</div>
+{% endblock %}
+
+{% block contenido %}
+<div class="full">
+    <div id="recuadro">
+        {{flatpage.content|safe}}
+    </div>
+</div>
+{% endblock %}
