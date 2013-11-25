@@ -7,10 +7,10 @@ from .forms import TagForm
 
 
 def lista_publicaciones(request):
-    publicaciones = Publicacion.objects.order_by('-id')
+    publicaciones = Publicacion.objects.order_by('-fecha')
     form = TagForm()
 
-    ultimas_publicaciones = Publicacion.objects.order_by('-id')[:4]
+    ultimas_publicaciones = Publicacion.objects.order_by('-fecha')[:4]
     
     paginator = Paginator(publicaciones, 6)
 
@@ -34,7 +34,7 @@ def lista_filtrada(request):
 
     form = TagForm()
 
-    ultimas_publicaciones = Publicacion.objects.order_by('-id')[:4]
+    ultimas_publicaciones = Publicacion.objects.order_by('-fecha')[:4]
     paginator = Paginator(publicaciones, 6)
 
     try:

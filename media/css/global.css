@@ -121,7 +121,7 @@ ul.login-top { }
            font-family: 'Open Sans', sans-serif; margin-top: 15px;
            font-weight: bold;} 
 .boton-pub{ float: left; margin-top: 3em; }                          
-.pubpage-box{ width: 180px; margin: 12px; float: left; font-family: 'Open Sans', sans-serif;
+.pubpage-box{ width: 180px; margin: 13px; float: left; font-family: 'Open Sans', sans-serif;
               -webkit-box-shadow: 2px 2px 4px rgba(50, 50, 50, 0.55);
               -moz-box-shadow:    2px 2px 4px rgba(50, 50, 50, 0.55);
               box-shadow:         2px 2px 4px rgba(50, 50, 50, 0.55);}
