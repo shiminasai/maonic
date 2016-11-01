@@ -26,7 +26,7 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r'^accounts/', include('registration.backends.default.urls')),
     (r'^maonic/$', direct_to_template, {'template': 'maonic.html'}),
-    (r'^tagging_autocomplete/', include('tagging_autocomplete.urls')),
+    #(r'^tagging_autocomplete/', include('tagging_autocomplete.urls')),
     #(r'^prueba/$', direct_to_template, {'template': 'noticias/lista-noticias.html'}),
 )
 

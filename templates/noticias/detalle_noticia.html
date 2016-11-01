@@ -1,40 +1,210 @@
 {% extends "base2.html" %}
 
 {% load thumbnail %}
-
 {% block contenido %}
+<style type="text/css">
+	.entry-content p{
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 16px;
+	}
+</style>
 
-<div class="row">
-<div class="large-12 columns">
-<div class="large-8 columns">
-  <h3 class="o-title ">{{detalle.titulo}}</h3>
-  <div class="content-news">
-    <span class="news-date">{{detalle.fecha}}</span>
-    {% thumbnail detalle.foto "620x250" crop="20%" as im %}
-    <img src="/files/{{im}}">
-    {% endthumbnail %}
-    <div class="news-text">
-      {{detalle.contenido|safe}}
-    </div>
-  </div>
-  
-  
-</div>
-<div class="large-4 columns">
-  <h3 class="sidebox-title ">Noticias</h3>
-{% for obj in ultimas %}
-  <div class="block-news">
-  <div class="feeds-title"><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></div>
-  <div class="resumen-news">{{obj.contenido|striptags|safe|truncatewords:15}}</div>
-  <span class="date-ticker">{{obj.fecha}}</span>
-</div>
-{% empty %}
-  <p>No hay ultimas noticias</p>
-{% endfor %}
-<div class="more-text"><a href="/noticias/lista/">Más noticias</a><div class="icon-plus"></div></div>
-</div>
-</div>
+		 <section id="page-title">
 
-</div>
-  
+						<div class="container clearfix">
+								<h1>Noticias</h1>
+								<ol class="breadcrumb">
+										<li><a href="/">Inicio</a></li>
+										<li><a href="/">Noticia</a></li>
+										<li class="active">{{detalle.titulo}}</li>
+								</ol>
+						</div>
+
+				</section><!-- #page-title end -->
+
+		<!-- Content
+		============================================= -->
+		<section id="content">
+
+			<div class="content-wrap">
+
+
+				<div class="container clearfix">
+					<!-- Post Content
+                    ============================================= -->
+                    <div class="postcontent nobottommargin clearfix">
+
+                        <div class="single-post nobottommargin">
+
+                            <!-- Single Post
+                            ============================================= -->
+                            <div class="entry clearfix">
+
+                                <!-- Entry Title
+                                ============================================= -->
+                                <div class="entry-title">
+                                    <h2>{{detalle.titulo}}</h2>
+                                </div><!-- .entry-title end -->
+
+                                <!-- Entry Meta
+                                ============================================= -->
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> {{detalle.fecha}}</li>
+                                    <li><a href="#"><i class="icon-user"></i> {{detalle.autor}}</a></li>
+                                
+                                </ul><!-- .entry-meta end -->
+
+                                <!-- Entry Image
+                                ============================================= -->
+                                
+                                <div class="entry-image">
+                                {% if detalle.foto %}
+
+	                                {% thumbnail detalle.foto "620x250" crop="20%" as im %}
+										<img src="/files/{{im}}">
+									{% endthumbnail %}
+								{% else %}
+
+                                    <img src="/files/new/images/blog/full/1.jpg" alt="Blog Single">
+                                 {% endif %}
+                                </div><!-- .entry-image end -->
+
+                                <!-- Entry Content
+                                ============================================= -->
+                                <div class="entry-content notopmargin">
+
+									{{detalle.contenido|safe}}
+
+                                </div>
+                            </div><!-- .entry end -->
+
+
+									<div class="si-share noborder clearfix">
+                                        <span>Compartir esta noticia:</span>
+                                        <div>
+                                            <a href="#" class="social-icon si-borderless si-facebook">
+                                                <i class="icon-facebook"></i>
+                                                <i class="icon-facebook"></i>
+                                            </a>
+                                            <a href="#" class="social-icon si-borderless si-twitter">
+                                                <i class="icon-twitter"></i>
+                                                <i class="icon-twitter"></i>
+                                            </a>
+                                            
+                                            <a href="#" class="social-icon si-borderless si-gplus">
+                                                <i class="icon-gplus"></i>
+                                                <i class="icon-gplus"></i>
+                                            </a>
+                                           
+                                        </div>
+                                    </div>
+                        </div>
+
+                    </div><!-- .postcontent end -->
+
+                    <!-- Sidebar
+                    ============================================= -->
+                    <div class="sidebar nobottommargin col_last clearfix">
+                        <div class="sidebar-widgets-wrap">
+
+                            <div class="widget widget-twitter-feed clearfix">
+
+                                <h4>Noticias</h4>
+                                <div id="post-list-footer">
+
+                                    <div class="spost clearfix">
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">Elaboración de Compost Mineralizado y Biomineral</a></h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li>10 de Julio 2016</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="spost clearfix">
+                                   
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">Urgente: Gobierno devela “Uso intensivo de Agroquímicos en la producción de Hortalizas, Raíces y Tubérculos.</a></h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li>10 de Julio 2016</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="spost clearfix">
+                                        
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">Pilotaje en la certificación orgánica</a></h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li>10 de Julio 2016</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="spost clearfix">
+
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">Producción más ecológica</a></h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li>10 de Julio 2016</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="spost clearfix">
+                                        <div class="entry-c">
+                                            <div class="entry-title">
+                                                <h4><a href="#">Taller práctico de elaboración de abonos orgánicos</a></h4>
+                                            </div>
+                                            <ul class="entry-meta">
+                                                <li>10 de Julio 2016</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            
+
+
+
+                            <div class="widget clearfix">
+
+                                <h4>Tag Relacionados</h4>
+                                <div class="tagcloud">
+                                    <a href="#">abonos</a>
+                                    <a href="#">agroecología</a>
+                                    <a href="#">fincas</a>
+                                    <a href="#">historia</a>
+                                    <a href="#">orgánicos</a>
+                                    <a href="#">producción</a>
+                                    <a href="#">soberanía alimentaria</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div><!-- .sidebar end -->
+	
+
+
+					<div class="clear"></div>
+
+
+				</div>
+
+
+			</div>
+
+		</section><!-- #content end -->
+	
 {% endblock contenido %}

@@ -1,0 +1,67 @@
+//
+// import
+// --------------------------------------------------------------------------
+@import configuracion.sass
+
+.fancy-title h4, .fancy-title h5, .fancy-title h6
+	color: map-get($color, cafe)
+	background-color: transparent
+
+.fancy-title.title-border:before
+	border-top: 1px solid map-get($color, verde)	
+.entry-meta li
+	color: map-get($color, verde)
+
+.noticias
+	margin-bottom: 20px !important
+
+.btn-maonic
+	text-transform: uppercase
+	color: map-get($color, cafe)
+	border-color: map-get($color, cafe)
+	margin-top: 30px
+	float: right
+.fancy-title h4
+	background-color: white
+.monitoreo
+	background-color: map-get($color, amarillo)
+	padding: 25px
+	.fancy-title h4
+		background-color: map-get($color, amarillo)
+	.nobottommargin
+		text-align: center
+		p
+			color: #333
+		span[class*='fa fa-']
+			font-size: 120px
+			margin-bottom: 30px
+		.prueba
+			display: block
+			&:hover
+				color: map-get($color, verde)
+			h3
+				font-weight: 700
+				text-transform: uppercase
+				letter-spacing: 1px
+				font-size: 15px
+				line-height: 26px
+				margin-bottom: 10px
+	
+.evento
+	display: block
+	.entry-image .fa
+		font-size: 55px
+		color: #333
+.spost
+	border-top: 1px dashed map-get($color, verde)
+
+.backfooter
+	background-image: url('../images/backfooter.png')
+	background-size: cover
+	background-position: top
+	
+	#copyrights
+		background-color: transparent
+#footer
+	background-color: transparent
+	border-top: 0px

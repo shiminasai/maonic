@@ -109,8 +109,8 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'easy_thumbnails',
     'image_cropping',
-    'tagging',
-    'tagging_autocomplete',
+    # 'tagging',
+    # 'tagging_autocomplete',
     'magicembed',
     #app del monitoreo
     'maonic.encuestas',

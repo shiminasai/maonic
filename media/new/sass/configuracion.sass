@@ -1,0 +1,72 @@
+// ==========================================================================
+// Variables
+// ==========================================================================
+
+//
+// Colores
+// --------------------------------------------------------------------------
+
+$color: ('gris': #1d1d1b,'grisoscuro': #2d2d2d, 'verde': #96bd1f, "cafe": #745c38, 'ctexto': #525252, 'blanco': #fff, 'amarillo': #eff0a4)
+
+
+//
+// Fuentes
+// --------------------------------------------------------------------------
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700')
+$font-parrafo: Lato, sans-serif
+$font-titulo: Raleway, sans-serif
+$font-item: Crete Round, serif
+$font-texto: Roboto, sans-serif
+
+//
+// Mixins
+// --------------------------------------------------------------------------
+=size($width, $height)
+	width: $width
+	height: $height
+
+=border-radius($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius: $radius
+	border-radius: $radius
+
+=border-radius-custom($topleft: $cradio, $topright: $cradio, $bottomright: $cradio, $bottomleft: $cradio)
+	-webkit-border-radius: $topleft $topright $bottomright $bottomleft
+	-moz-border-radius: $topleft $topright $bottomright $bottomleft
+	border-radius: $topleft $topright $bottomright $bottomleft
+
+
+=box-shadow($shadow)
+	-webkit-box-shadow: $shadow // iOS <4.3 & Android <4.1
+	-moz-box-shadow: $shadow
+	box-shadow: $shadow
+
+=transition($transition)
+	-webkit-transition: $transition
+	-o-transition: $transition
+	transition: $transition
+
+
+=transition-transform($transition)
+	-webkit-transition: -webkit-transform $transition
+	-moz-transition: -moz-transform $transition
+	-o-transition: -o-transform $transition
+	transition: transform $transition
+
+//
+// Puntos de quiebre
+// --------------------------------------------------------------------------
+
+
+$breakpoints: ("small": (max-width: 710px), "medium": (max-width: 800px), "large": (max-width: 1000px), "extralarge": (max-width: 1200px))
+
+=respond-to($breakpoint)
+	$raw-query: map-get($breakpoints, $breakpoint)
+
+	@if $raw-query
+		$query: if(type-of($raw-query) == "string", unquote($raw-query), inspect($raw-query))
+
+		@media #{$query}
+			@content
+	@else
+		@error "No se ha encontrado un valor para `#{$breakpoint}`. " + "Por favor, asegúrate que está definido en el mapa `$breakpoints`."
