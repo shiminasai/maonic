@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
 {% block extratitle %}{{flatpage.title}}{% endblock %}
 
@@ -9,9 +9,30 @@
 {% endblock %}
 
 {% block contenido %}
-<div class="full">
-    <div id="recuadro">
-        {{flatpage.content|safe}}
-    </div>
-</div>
+    <section id="page-title">
+
+
+
+    </section><!-- #page-title end -->
+    <div class="border-1"></div>
+    <div class="border-2"></div>
+
+    <!-- Content
+    ============================================= -->
+    <section id="content">
+
+      <div class="content-wrap">
+
+
+        <div class="container clearfix">
+
+			 {{flatpage.content|safe}}
+
+        </div>
+
+
+      </div>
+
+    </section><!-- #content end -->
+
 {% endblock %}

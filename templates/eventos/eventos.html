@@ -1,40 +1,126 @@
 {% extends "base2.html" %}
 
 {% load thumbnail %}
-
 {% block contenido %}
+    <section id="page-title">
 
-<div class="row">
-<div class="large-12 columns">
-<div class="large-8 columns">
-  <h3 class="o-title ">Eventos</h3>
 
-  {% for obj in objetos.object_list %}
-    <div class="event-box">
-    <div class="event-pic">
-      {% thumbnail obj.foto "187x130" crop="10%" as im %}
-        <img class="pic-evento" src="/files/{{im}}">
-      {% endthumbnail %}
-    </div>
-    <div class="event-content">
-      <h3 class="titulo-evento">{{obj.titulo}}</h3>
-    </div>
-    <div class="event-content">
-      <div class="fecha-descripcion">
-        <div class="calendar-icon"></div><h3>Fecha de inicio: {{obj.fecha_inicio|date:"j / m / Y"}}</h3>
-        <h3>Fecha de Terminacion: {{obj.fecha_final|date:"j / m / Y"}}</h3>
-      </div>
-      
-      <h3 class="event-news">Descripcion:{{obj.descripcion|safe}}</h3>
-      <div class="ubicacion-text">Ubicacion: {{obj.ubicacion}}</div>
-    </div>
-  </div>
-  {% empty %}
-    <p>No existen eventos</p>
-  {% endfor %}
-  
 
-  <div class="pagination-centered paginacion">
+    </section><!-- #page-title end -->
+    <div class="border-1"></div>
+    <div class="border-2"></div>
+
+    <!-- Content
+    ============================================= -->
+    <section id="content">
+
+      <div class="content-wrap">
+
+
+        <div class="container clearfix">
+
+          <div class="col_two_third nobottommargin  lista-noticias">
+
+            <div class="fancy-title title-border">
+              <h4>Eventos</h4>
+            </div>
+            <div class="row">
+            {% for obj in objetos.object_list %}
+
+                <div class="spost evento block-event">
+                    <div class="clearfix">
+                        <div class="encabezado-event">
+                            <div class="entry-image">
+                                <span class="fa fa-calendar"></span>
+                            </div>
+                            <div class="entry-c">
+                                <div class="entry-title main-event">
+                                    <h4>{{obj.titulo}}</h4>
+                                </div>
+                                <ul class="entry-meta">
+                                    <li>Fecha de inicio: {{obj.fecha_inicio|date:"d F Y"}}</li>
+                                    <li>Fecha de Terminación: {{obj.fecha_final|date:"d F Y"}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="event-descrip">
+                            {{obj.descripcion|safe|striptags|linebreaks}}
+                        </div>
+                        <div class="ubicacion pull-right">
+                            Ubicacion: {{obj.ubicacion}}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No existe noticias</p>
+            {% endfor %}
+            </div>
+                <div class="clear"></div>
+
+
+          </div>
+
+          <div class="hidden-xs col_one_third nobottommargin col_last">
+            <div class="row">
+                <div class="fancy-title title-border">
+                  <h4>Últimas Noticias</h4>
+                </div>
+                <div class="list-publi" id="post-list-footer">
+
+                   {% for obj in ultimas_noticias %}
+
+
+
+                        <div class="spost clearfix">
+                            <div class="entry-c">
+                                <div class="entry-title">
+                                    <h4><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></h4>
+                                </div>
+                                <ul class="entry-meta">
+                                    <li>{{obj.fecha}}</li>
+                                    
+                                </ul>
+                            </div>
+                            <a href="{{obj.get_absolute_url}}" class="more-link">Leer Nota...</a>
+                        </div>
+                    {% empty %}
+                        <p>No existe Noticias!</p>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="space-row"></div>
+            <div class="row">
+                <div class="fancy-title title-border">
+                  <h4>Publicaciones</h4>
+                </div>
+                <div class="list-publi" id="post-list-footer">
+
+                    {% for obj in publicaciones %}
+                        <div class="spost clearfix">
+                            <div class="entry-c">
+                                <div class="entry-title">
+                                    <h4><a href="/files/{{obj.archivo}}">{{obj.titulo|truncatewords:4}}</a></h4>
+                                </div>
+                                <ul class="entry-meta">
+                                    <li>{{obj.fecha|date:"d F Y"}}</li>
+                                    
+                                </ul>
+                            </div>
+                            <a href="/files/{{obj.archivo}}" class="more-link">Descargar</a>
+                        </div>
+                    {% empty %}
+                        <p>No existe publicación!</p>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+
+          </div>
+
+          <div class="clear"></div>
+                <div class="pagination-centered paginacion">
   <ul class="pagination">
     {% if objetos.has_previous %}
       <li class="arrow unavailable"><a href="?page={{ objetos.previous_page_number }}">&laquo;</a></li>
@@ -47,22 +133,23 @@
     {% endif %}
   </ul>
 </div>
-</div>
-<div class="large-4 columns">
-  <h3 class="sidebox-title ">Noticias</h3>
-  {% for obj in ultimas_noticias %}
-    <div class="block-news">
-  <span class="feeds-title"><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></span>
-  <div class="resumen-news">{{obj.contenido|safe|striptags|truncatewords:12}}</div>
-  <span class="date-ticker">{{obj.fecha|date:"M/j/Y"}}</span>
-</div>
-  {% empty %}
-    <p>No exiten noticias</p>
-  {% endfor %}
+        </div>
 
-</div>
-</div>
 
-</div>
+      </div>
 
-{% endblock contenido %}
+    </section><!-- #content end -->
+
+    
+
+{% endblock contenido %} 
+
+
+
+
+
+
+
+
+
+

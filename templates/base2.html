@@ -10,7 +10,7 @@
   ============================================= -->
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="/files/new/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="/files/new/style.css" type="text/css" />
+  <link rel="stylesheet" href="/files/new/css/style.css" type="text/css" />
   <link rel="stylesheet" href="/files/new/css/main.css" type="text/css" />
   <link rel="stylesheet" href="/files/new/css/dark.css" type="text/css" />
   <link rel="stylesheet" href="/files/new/css/font-icons.css" type="text/css" />
@@ -30,15 +30,6 @@
   ============================================= -->
   <script type="text/javascript" src="/files/new/js/jquery.js"></script>
   <script type="text/javascript" src="/files/new/js/plugins.js"></script>
-
-  <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
-  <script type="text/javascript" src="/files/new/include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-  <script type="text/javascript" src="/files/new/include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-
-  <!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
-  <link rel="stylesheet" type="text/css" href="/files/new/include/rs-plugin/css/settings.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="/files/new/include/rs-plugin/css/layers.css">
-  <link rel="stylesheet" type="text/css" href="/files/new/include/rs-plugin/css/navigation.css">
 
   <!-- Document Title
   ============================================= -->
@@ -97,32 +88,32 @@
                     <!-- Logo
                     ============================================= -->
                     <div id="logo">
-                        <a href="index.html" class="standard-logo" >
+                        <a href="/" class="standard-logo" >
                         <img src="/files/new/images/logo.png" alt="Canvas Logo">
                         </a>
-                        <a href="index.html" class="retina-logo" >
+                        <a href="/" class="retina-logo" >
                             <img src="/files/new/images/logo@2x.png" alt="Canvas Logo">
                         </a>
                     </div><!-- #logo end -->
-                    <div class="titulo-logo">
-                        
-                    </div>
+                    <nav class="nav navbar-nav">
+                       <li class="titulo-logo hidden-md hidden-sm hidden-xs">Movimiento de Productoras y Productores<br>Agroecológico y Orgánicos de Nicaragua. </li> 
+                    </nav>
 
                     <!-- Primary Navigation
                     ============================================= -->
                     <nav id="primary-menu">
 
                         <ul>
-                            <li class=""><a href="#"><div>QUIENES SOMOS</div></a></li>
-                            <li class=""><a href="#"><div>NOTICIAS</div></a></li>
-                            <li class=""><a href="#"><div>PUBICACIONES</div></a></li>
-                            <li class=""><a href="#"><div>VIDEOS</div></a></li>
-                            <li class=""><a href="#"><div>EVENTOS</div></a></li>
-                            <li class=""><a href="index.html"><div>SISTEMAS</div></a>
+                            <li class=""><a href="/acerca/"><div>QUIENES SOMOS</div></a></li>
+                            <li class=""><a href="/noticias/lista/"><div>NOTICIAS</div></a></li>
+                            <li class=""><a href="/publicaciones/lista/"><div>PUBICACIONES</div></a></li>
+                            <li class=""><a href="/videos/lista/"><div>VIDEOS</div></a></li>
+                            <li class=""><a href="/eventos/lista/"><div>EVENTOS</div></a></li>
+                            <li class=""><a href="#"><div>SISTEMAS</div></a>
                                 <ul>
-                                    <li><a href="index-corporate.html"><div>MAPEO NACIONAL</div></a></li>
-                                    <li><a href="index-portfolio.html"><div>MONITOREO</div></a></li>
-                                    <li><a href="index-blog.html"><div>RED DE APRENDIZAJE</div></a>
+                                    <li><a href="/mapeo/seleccion/"><div>MAPEO NACIONAL</div></a></li>
+                                    <li><a href="/monitoreo/index/"><div>MONITOREO</div></a></li>
+                                    <li><a href="http://www.ruta.org/rediao/"><div>RED DE APRENDIZAJE</div></a>
                                 </ul>
                             </li>
 
@@ -135,7 +126,7 @@
                         <div id="top-search">
                             <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                             <form action="search.html" method="get">
-                                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+                                <input type="text" name="q" class="form-control" value="" placeholder="Buscar">
                             </form>
                         </div><!-- #top-search end -->
 
@@ -146,6 +137,7 @@
             </div>
 
         </header><!-- #header end -->
+
         <!-- Content y slider
             ============================================= -->
           {% block contenido %}
@@ -154,166 +146,31 @@
     <!-- Footer
     ============================================= -->
     <footer id="footer" class="backfooter">
-
-     <!--  <div class="container">
-
-        Footer Widgets
-        =============================================
-        <div class="footer-widgets-wrap clearfix">
-
-          <div class="col_two_third">
-
-            <div class="col_one_third">
-
-              <div class="widget clearfix">
-
-                <img src="/files/new/images/footer-widget-logo.png" alt="" class="footer-logo">
-
-                <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
-
-                <div style="background: url('/files/new/images/world-map.png') no-repeat center center; background-size: 100%;">
-                  <address>
-                    <strong>Headquarters:</strong><br>
-                    795 Folsom Ave, Suite 600<br>
-                    San Francisco, CA 94107<br>
-                  </address>
-                  <abbr title="Phone Number"><strong>Phone:</strong></abbr> (91) 8547 632521<br>
-                  <abbr title="Fax"><strong>Fax:</strong></abbr> (91) 11 4752 1433<br>
-                  <abbr title="Email Address"><strong>Email:</strong></abbr> info@canvas.com
-                </div>
-
-              </div>
-
+        <div class="container">
+            <div class="title-sponsor">
+                Apoyo técnico y financiero de:
             </div>
+            <ul class="sponsor-logos">
+                <li><img src="/files/new/images/sponsor.png"></li>
+                <li><img src="/files/new/images/sponsor3.png"></li>
+                <li><img src="/files/new/images/sponsor1.png"></li>
+                <li><img src="/files/new/images/sponsor2.png"></li>
+            </ul>
+        </div>
 
-            <div class="col_one_third">
-
-              <div class="widget widget_links clearfix">
-
-                <h4>Blogroll</h4>
-
-                <ul>
-                  <li><a href="http://codex.wordpress.org/">Documentation</a></li>
-                  <li><a href="http://wordpress.org/support/forum/requests-and-feedback">Feedback</a></li>
-                  <li><a href="http://wordpress.org/extend/plugins/">Plugins</a></li>
-                  <li><a href="http://wordpress.org/support/">Support Forums</a></li>
-                  <li><a href="http://wordpress.org/extend/themes/">Themes</a></li>
-                  <li><a href="http://wordpress.org/news/">WordPress Blog</a></li>
-                  <li><a href="http://planet.wordpress.org/">WordPress Planet</a></li>
-                </ul>
-
-              </div>
-
-            </div>
-
-            <div class="col_one_third col_last">
-
-              <div class="widget clearfix">
-                <h4>Recent Posts</h4>
-
-                <div id="post-list-footer">
-                  <div class="spost clearfix">
-                    <div class="entry-c">
-                      <div class="entry-title">
-                        <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-                      </div>
-                      <ul class="entry-meta">
-                        <li>10th July 2014</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="spost clearfix">
-                    <div class="entry-c">
-                      <div class="entry-title">
-                        <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-                      </div>
-                      <ul class="entry-meta">
-                        <li>10th July 2014</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="spost clearfix">
-                    <div class="entry-c">
-                      <div class="entry-title">
-                        <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-                      </div>
-                      <ul class="entry-meta">
-                        <li>10th July 2014</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col_one_third col_last">
-
-            <div class="widget clearfix" style="margin-bottom: -20px;">
-
-              <div class="row">
-
-                <div class="col-md-6 bottommargin-sm">
-                  <div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-                  <h5 class="nobottommargin">Total Downloads</h5>
-                </div>
-
-                <div class="col-md-6 bottommargin-sm">
-                  <div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
-                  <h5 class="nobottommargin">Clients</h5>
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="widget clearfix" style="margin-bottom: -20px;">
-
-              <div class="row">
-
-                <div class="col-md-6 clearfix bottommargin-sm">
-                  <a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
-                    <i class="icon-facebook"></i>
-                    <i class="icon-facebook"></i>
-                  </a>
-                  <a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-                </div>
-                <div class="col-md-6 clearfix">
-                  <a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-                    <i class="icon-rss"></i>
-                    <i class="icon-rss"></i>
-                  </a>
-                  <a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div> footer-widgets-wrap end 
-
-      </div>-->
 
       <!-- Copyrights
       ============================================= -->
       <div id="copyrights">
 
-        <div class="container clearfix">
-
-          <div class="col_half">
-            Copyrights &copy; 2016 Maonic, Nicaragua. Todos los derechos reservados.<br>
-            <div class="copyright-links">Desarrollado por <a href="http://www.simas.org.ni">SIMAS</a> bajo la plataforma <a href="http://www.djangoproject.com/">Django</a> | <a href="/admin">Admin</a> </div>
-          </div>
-
-          <div class="col_half col_last tleft">
-            <div class="fleft clearfix">
+        <div class="container-fluid clearfix">
+            <div class="row hfotter">
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                    <div class="socialmedia">
+                        <div class="title-social">
+                            Siguenos
+                        </div>
+                        <div class="sociales">
                             <a href="#" class="social-icon si-small si-borderless si-facebook">
                                 <i class="icon-facebook"></i>
                                 <i class="icon-facebook"></i>
@@ -328,39 +185,36 @@
                                 <i class="icon-gplus"></i>
                                 <i class="icon-gplus"></i>
                             </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-pinterest">
-                                <i class="icon-pinterest"></i>
-                                <i class="icon-pinterest"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-vimeo">
-                                <i class="icon-vimeo"></i>
-                                <i class="icon-vimeo"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-github">
-                                <i class="icon-github"></i>
-                                <i class="icon-github"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-yahoo">
-                                <i class="icon-yahoo"></i>
-                                <i class="icon-yahoo"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-linkedin">
-                                <i class="icon-linkedin"></i>
-                                <i class="icon-linkedin"></i>
-                            </a>
                         </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="row contacto bleft">
+                        
+                            <div class="title">
+                                    Contacto
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-7">
+                                
+                                <span class="fa fa-home"></span>
+                                <p class="direccion">Reparto Las Palmas, Costad Norte Edificio Julia Pasos, 3&#189; Carretera Sur Managua, Nicaragua.</p>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-5">
+                                <div><span  class="fa fa-phone"></span><div class="telefonos">(+505) 8755-7079 <br> (+505) 8670-9092</div></div>
+                            
+                                <div><span class="fa fa-envelope"></span>maonic2016@gmail.com</div>
+                            </div>
+                       
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="desarrollo bleft">
+                        <div class="copyright-links">Desarrollado por <a href="http://www.simas.org.ni">SIMAS</a> bajo la plataforma <br> <a href="http://www.djangoproject.com/">Django</a> | <a href="/admin">Admin</a> </div>
+                        <div> Copyrights &copy; 2016 Maonic, Nicaragua. <br> Todos los derechos reservados.</div>
+                    </div>
+                </div>
+            </div>
 
-                    
-
-            <div class="clear"></div>
-
-            <i class="icon-envelope2"></i> info@maonic.com <span class="middot">&middot;</span> <i class="icon-phone3"></i> +505 22682302 <span class="middot">&middot;</span> <i class="icon-phone"></i> +505 86709092
-          </div>
 
         </div>
 
@@ -377,7 +231,7 @@
   <!-- Footer Scripts
   ============================================= -->
   <script type="text/javascript" src="/files/new/js/functions.js"></script>
-
+  <script src="/files/new/js/social.js"></script>
 </body>
 </html>
 

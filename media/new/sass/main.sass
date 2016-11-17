@@ -46,7 +46,23 @@
 				font-size: 15px
 				line-height: 26px
 				margin-bottom: 10px
-	
+.publicaciones
+	.entry-image
+		margin-bottom: 0px
+	.descargar
+		background: #eee
+		color: #333
+		width: 100%
+		font-weight: bold
+		margin-bottom: 10px
+		span[class*='fa fa-']:before
+			padding-right: 5px
+		&:hover
+			color: map-get($color, verde)
+
+	.entry-title
+		font-weight: bold
+		font-family: $font-titulo
 .evento
 	display: block
 	.entry-image .fa
@@ -55,13 +71,142 @@
 .spost
 	border-top: 1px dashed map-get($color, verde)
 
+
+
+
+
+
+
 .backfooter
 	background-image: url('../images/backfooter.png')
 	background-size: cover
 	background-position: top
+	@include respond-to ('small')
+		background-image: none
+		background-color: map-get($color, verde)
 	
 	#copyrights
 		background-color: transparent
+		color: white
+		@include respond-to ('small')
+			background-color: map-get($color, verde)
+		.social-icon
+			color: white
+		.title-social
+			padding-left: 20px
 #footer
 	background-color: transparent
 	border-top: 0px
+.title-sponsor
+	font-family: $font-titulo
+	font-weight: bold
+	letter-spacing: 1px
+	margin-bottom: 10px
+.sponsor-logos
+	li
+		list-style: none
+		display: inline-block
+		padding-right: 10px
+.alingbottom
+	margin-top: 60px
+#copyrights
+	padding: 70px 0 20px 0
+	a
+		color: white
+		border-bottom: 0px
+		&:first-child
+			margin: 3px 0px
+			font-weight: bold
+	span.fa.fa-phone, span.fa.fa-home
+		position: absolute
+		margin-top: 18px
+		font-size: 20px
+	span.fa.fa-envelope
+		margin-right: 10px
+.telefonos, .direccion
+	display: inline-block
+	margin-left: 25px
+	margin-bottom: 0px
+.bleft
+	border-left: 1px white solid
+	margin-top: 0px
+	@include respond-to ('small')
+		border-left: 0px white solid
+		
+.contacto, .desarrollo
+	padding: 0px 10px
+	display: table-cell
+	vertical-align: bottom
+	@include respond-to ('small')
+		padding: 10px 10px
+.noticias .ipost.clearfix
+	@include respond-to ('extralarge')
+		margin-bottom: 20px
+#page-title
+	background: url('../images/Banner.jpg')	no-repeat
+	background-size: cover
+
+.border-1
+	height: 12px
+	background-color: map-get($color, verde)
+	margin: 4px 0px
+.border-2
+	height: 9px
+	background-color: map-get($color, cafe)
+.lista-noticias div[class*='col-'] 
+	height: 450px
+.list-publi
+	margin-bottom: 20px
+	.entry-meta li
+		color: #999
+.credito-foto
+	color: map-get($color, cafe)
+	font-style: oblique
+	font-family: $font-parrafo
+	font-size: 16px
+	padding: 2px 0px
+.entry-meta li a
+	color: map-get($color, verde)
+.tagcloud a
+	color: map-get($color, cafe)
+	border-color: map-get($color, cafe)
+.main-event h4
+	font-size: 16px !important
+.ubicacion
+	font-family: $font-item
+	color: map-get($color, verde)
+.event-descrip
+	font-family: $font-parrafo
+	font-size: 16px
+.encabezado-event
+	margin-bottom: 10px
+.event-descrip, .ubicacion
+	padding-right: 20px
+.block-event
+	background: #eee
+	border-top: 0px solid blue
+	padding: 20px
+	@include border-radius (10px)
+	&:first-child
+		padding-top: 20px
+.slider-caption p
+	font-size: 30px
+	font-weight: bold
+li.titulo-logo
+	height: 100px
+	padding-top: 30px
+	font-family: $font-titulo
+	font-size: 14px
+	font-weight: bold
+	text-align: left
+	display: inline
+#header.sticky-header:not(.static-sticky)  li.titulo-logo
+	padding-top: 10px
+	font-size: 13px
+body.top-search-open li.titulo-logo
+	opacity: 0
+#header.sticky-header:not(.static-sticky) #top-search form input
+	font-size: 20px
+	height: 60%
+.swiper_wrapper
+	height: 400px

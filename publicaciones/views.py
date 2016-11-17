@@ -4,13 +4,17 @@ from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from .models import Publicacion
 from tagging.models import Tag, TaggedItem
 from .forms import TagForm
-
+from noticias.models import Noticias
+from eventos.models import Evento
 
 def lista_publicaciones(request):
     publicaciones = Publicacion.objects.order_by('-fecha')
+    ultimas_noticias = Noticias.objects.order_by('-id')[:4]
+    eventos = Evento.objects.order_by('-id')[:4]
     form = TagForm()
 
     ultimas_publicaciones = Publicacion.objects.order_by('-fecha')[:4]
+
     
     paginator = Paginator(publicaciones, 6)
 

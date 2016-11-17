@@ -6,23 +6,33 @@
 
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/1.jpg');">
+					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/slide1.jpg');">
 						<div class="container clearfix">
+							<div class="slider-caption slider-caption-center">
+								
+								<p data-caption-animate="fadeInUp" data-caption-delay="200">Movimiento de Productoras y Productores Agroecológico y Orgánicos de Nicaragua.</p>
+							</div>
 						</div>
 					</div>
-					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/2.jpg');">
+					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/slide2.jpg');">
 						<div class="container clearfix">
+							<div class="slider-caption slider-caption-center">
+								
+								<p data-caption-animate="fadeInUp" data-caption-delay="200">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+							</div>
 						</div>
 					</div>
-					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/3.jpg');">
+					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/slide3.jpg'); background-position: center top;">
 						<div class="container clearfix">
+							<div class="slider-caption">
+								<p data-caption-animate="fadeInUp" data-caption-delay="200">You'll be surprised to see the Final Results of your Creation &amp; would crave for more.</p>
+							</div>
 						</div>
 					</div>
-
 				</div>
 				<div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
 				<div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
-				<div id="slide-number"><div id="slide-number-current"></div><span>/</span><div id="slide-number-total"></div></div>
+				<div class="swiper-pagination"></div>
 			</div>
 
 			<script>
@@ -31,6 +41,10 @@
 						paginationClickable: false,
 						slidesPerView: 1,
 						grabCursor: true,
+						autoplay: 5000,
+						autoplayDisableOnInteraction: false,
+						speed: 650,
+						loop: true,
 						onSwiperCreated: function(swiper){
 							$('[data-caption-animate]').each(function(){
 								var $toAnimateElement = $(this);
@@ -45,25 +59,32 @@
 									}, toAnimateDelayTime);
 								}
 							});
+							SEMICOLON.slider.swiperSliderMenu();
 						},
 						onSlideChangeStart: function(swiper){
-							$('#slide-number-current').html(swiper.activeIndex + 1);
+							$('#slide-number-current').html(swiper.activeLoopIndex + 1);
 							$('[data-caption-animate]').each(function(){
 								var $toAnimateElement = $(this);
 								var elementAnimation = $toAnimateElement.attr('data-caption-animate');
 								$toAnimateElement.removeClass('animated').removeClass(elementAnimation).addClass('not-animated');
 							});
+							SEMICOLON.slider.swiperSliderMenu();
 						},
 						onSlideChangeEnd: function(swiper){
-							$('#slider .swiper-slide').each(function(){
+							$('#slider').find('.swiper-slide').each(function(){
 								if($(this).find('video').length > 0) { $(this).find('video').get(0).pause(); }
+								if($(this).find('.yt-bg-player').length > 0) { $(this).find('.yt-bg-player').pauseYTP(); }
 							});
-							$('#slider .swiper-slide:not(".swiper-slide-active")').each(function(){
+							$('#slider').find('.swiper-slide:not(".swiper-slide-active")').each(function(){
 								if($(this).find('video').length > 0) {
 									if($(this).find('video').get(0).currentTime != 0 ) $(this).find('video').get(0).currentTime = 0;
 								}
+								if($(this).find('.yt-bg-player').length > 0) {
+									$(this).find('.yt-bg-player').getPlayer().seekTo( $(this).find('.yt-bg-player').attr('data-start') );
+								}
 							});
-							if( $('#slider .swiper-slide.swiper-slide-active').find('video').length > 0 ) { $('#slider .swiper-slide.swiper-slide-active').find('video').get(0).play(); }
+							if( $('#slider').find('.swiper-slide.swiper-slide-active').find('video').length > 0 ) { $('#slider').find('.swiper-slide.swiper-slide-active').find('video').get(0).play(); }
+							if( $('#slider').find('.swiper-slide.swiper-slide-active').find('.yt-bg-player').length > 0 ) { $('#slider').find('.swiper-slide.swiper-slide-active').find('.yt-bg-player').playYTP(); }
 
 							$('#slider .swiper-slide.swiper-slide-active [data-caption-animate]').each(function(){
 								var $toAnimateElement = $(this);
@@ -90,9 +111,6 @@
 						e.preventDefault();
 						swiperSlider.swipeNext();
 					});
-
-					$('#slide-number-current').html(swiperSlider.activeIndex + 1);
-					$('#slide-number-total').html(swiperSlider.slides.length);
 				});
 			</script>
 
@@ -106,14 +124,14 @@
 
 				<div class="container clearfix">
 
-					<div class="section notopmargin notoppadding nobottommargin nobg">
+					<div class="section notopmargin notoppadding nobottommargin nobg noticias">
 
 						<div class="fancy-title title-border">
 							<h4>Noticias recientes</h4>
 						</div>
 						<div class="row">
 							{% for obj in noticias %}
-							<div class="col-lg-3 nobottommargin">
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 nobottommargin">
 								<div class="ipost clearfix">
 									<div class="entry-image">
 									{% if obj.foto %}
@@ -140,7 +158,7 @@
 									</ul>
 									<div class="entry-content">
 										<p>{{obj.contenido|safe|striptags|truncatewords:20}}
-											<a href="{{obj.get_absolute_url}}">Continuar</a>
+											<!-- <a href="{{obj.get_absolute_url}}">Continuar</a> -->
 										</p>
 									</div>
 								</div>
@@ -149,7 +167,7 @@
 	            				<p>No existe noticias</p>
 							{% endfor %}
 						</div>
-						<a href="/noticias" class="btn btn-maonic">
+						<a href="/noticias/lista/" class="btn btn-maonic">
 							Ver más noticias
 						</a>
 						<div class="clear"></div>
@@ -166,7 +184,7 @@
 						</div>
 						<div class="row">
 		                    <div class="col_one_third nobottommargin">
-		                        <a href="#" class="prueba" data-animate="fadeIn">
+		                        <a href="/mapeo/seleccion/" class="prueba">
 									<div><span class="fa fa-map-marker"></span></div>
 		                            <h3>Modulo de Mapeo Nacional</h3>
 		                            <p>Encuentra todos los actores relacionados a la producción de productos orgánicos en nuestro país.</p>
@@ -174,7 +192,7 @@
 		                    </div>
 
 		                    <div class="col_one_third nobottommargin">
-		                        <a href="#" class="prueba" data-animate="fadeIn">
+		                        <a href="/monitoreo/index/" class="prueba">
 									<div><span class="fa fa-pie-chart"></span></div>
 		                            <h3>Modulo de Monitoreo</h3>
 		                            <p>Encuentra todos los indicadores de producción, comercialización e inversión de productores.</p>
@@ -182,7 +200,7 @@
 		                    </div>
 
 		                    <div class="col_one_third nobottommargin col_last">
-		                        <a href="#" class="prueba" data-animate="fadeIn">
+		                        <a href="http://www.ruta.org/rediao/" class="prueba">
 									<div><span class="fa fa-users"></span></div>
 		                            <h3>Red de aprendizaje</h3>
 		                            <p>Espacio para la interacción e intercambio de experiencias y conocimientos en el sector de la agricultura orgánica y agroecológica.</p>
@@ -202,68 +220,36 @@
 
 				<div class="container clearfix">
 
-					<div class="col_two_third nobottommargin">
+					<div class="col_two_third nobottommargin publicaciones">
 
 						<div class="fancy-title title-border">
 							<h4>Últimas publicaciones</h4>
 						</div>
+						{% for obj in publicaciones %}
+							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 nobottommargin">
+								<div class="ipost clearfix">
+									<div class="entry-image">
+										{% thumbnail obj.foto "100x70" crop="center" as im %}
+											<a href="#"><img class="image_fade" src="/files/{{im}}" alt="Image"></a>
+										{% endthumbnail %}
+									</div>
+									
+	                                <a href="/files/{{obj.archivo}}" class="descargar btn"><span class="fa fa-download"> Descargar</span></a>
+	                                <div class="entry-title">
+										{{obj.titulo|truncatewords:4}}
+									</div>
 
-						<div class="col-lg-4 nobottommargin">
-							<div class="ipost clearfix">
-								<div class="entry-image">
-									<a href="#"><img class="image_fade" src="/files/new/images/portfolio/masonry/2/3.jpg" alt="Image"></a>
-								</div>
-								<div class="publicacion-overlay">
-                                    <a href="#" class="add-to-cart"><i class="icon-download"></i><span> Descargar</span></a>
-                                </div>
-
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-								</ul>
-								<br>
-								<div class="entry-title">
-									<h6><a href="blog-single.html">Manual técnico agroecológico</a></h6>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar3"></i>{{obj.fecha|date:"d F Y"}}</li>
+									</ul>
+									<br>
+									
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-4 nobottommargin">
-							<div class="ipost clearfix">
-								<div class="entry-image">
-									<a href="#"><img class="image_fade" src="/files/new/images/portfolio/masonry/2/3.jpg" alt="Image"></a>
-								</div>
-								<div class="publicacion-overlay">
-                                    <a href="#" class="add-to-cart"><i class="icon-download"></i><span> Descargar</span></a>
-                                </div>
+				        {% empty %}
+				          <p>No existe publicación!</p>
+				        {% endfor %}
 
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-								</ul>
-								<br>
-								<div class="entry-title">
-									<h6><a href="blog-single.html">Ley 765, reglamento y normativa</a></h6>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 nobottommargin">
-							<div class="ipost clearfix">
-								<div class="entry-image">
-									<a href="#"><img class="image_fade" src="/files/new/images/portfolio/masonry/2/3.jpg" alt="Image"></a>
-								</div>
-								<div class="publicacion-overlay">
-                                    <a href="#" class="add-to-cart"><i class="icon-download"></i><span> Descargar</span></a>
-                                </div>
-
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i> 10th Feb 2014</li>
-								</ul>
-								<br>
-								<div class="entry-title">
-									<h6><a href="blog-single.html">Producción agroecológica y orgánica... Parte 1</a></h6>
-								</div>
-							</div>
-						</div>
-
-						<div class="clear"></div>
 
 					</div>
 
@@ -273,67 +259,26 @@
 							<h4>Eventos</h4>
 						</div>
 						<div id="post-list-footer">
-							<a class="spost evento" href="noticias/">
-	                            <div class="clearfix">
-	                                <div class="entry-image">
-	                                    <span class="fa fa-calendar"></span>
-	                                </div>
-	                                <div class="entry-c">
-	                                    <div class="entry-title">
-	                                        <h4>Elaboración de Compost Mineralizado y Biomineral</h4>
-	                                    </div>
-	                                    <ul class="entry-meta">
-	                                        <li>10 de Julio 2016</li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-                            </a>
-                            <a class="spost evento" href="noticias/">
-	                            <div class="clearfix">
-	                                <div class="entry-image">
-	                                    <span class="fa fa-calendar"></span>
-	                                </div>
-	                                <div class="entry-c">
-	                                    <div class="entry-title">
-	                                        <h4>Elaboración de Compost Mineralizado y Biomineral</h4>
-	                                    </div>
-	                                    <ul class="entry-meta">
-	                                        <li>10 de Julio 2016</li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-                            </a>
-                            <a class="spost evento" href="noticias/">
-	                            <div class="clearfix">
-	                                <div class="entry-image">
-	                                    <span class="fa fa-calendar"></span>
-	                                </div>
-	                                <div class="entry-c">
-	                                    <div class="entry-title">
-	                                        <h4>Elaboración de Compost Mineralizado y Biomineral</h4>
-	                                    </div>
-	                                    <ul class="entry-meta">
-	                                        <li>10 de Julio 2016</li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-                            </a>
-                            <a class="spost evento" href="noticias/">
-	                            <div class="clearfix">
-	                                <div class="entry-image">
-	                                    <span class="fa fa-calendar"></span>
-	                                </div>
-	                                <div class="entry-c">
-	                                    <div class="entry-title">
-	                                        <h4>Elaboración de Compost Mineralizado y Biomineral</h4>
-	                                    </div>
-	                                    <ul class="entry-meta">
-	                                        <li>10 de Julio 2016</li>
-	                                    </ul>
-	                                </div>
-	                            </div>
-                            </a>
-
+							{% for obj in eventos %}
+								<a class="spost evento" href="eventos/lista">
+		                            <div class="clearfix">
+		                                <div class="entry-image">
+		                                    <span class="fa fa-calendar"></span>
+		                                </div>
+		                                <div class="entry-c">
+		                                    <div class="entry-title">
+		                                        <h4>{{obj.titulo}}</h4>
+		                                    </div>
+		                                    <ul class="entry-meta">
+		                                        <li>{{obj.fecha_inicio|date:"d F Y"}}</li>
+		                                    </ul>
+		                                </div>
+		                            </div>
+	                            </a>
+	                        {% empty %}
+					          <p>No existen eventos</p>
+					      	{% endfor %}
+    
                         </div>
 
 

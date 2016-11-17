@@ -1,6 +1,8 @@
 {% extends "base2.html" %}
 
 {% load thumbnail %}
+
+
 {% block contenido %}
 <style type="text/css">
 	.entry-content p{
@@ -9,19 +11,13 @@
 	}
 </style>
 
-		 <section id="page-title">
+    <section id="page-title">
 
-						<div class="container clearfix">
-								<h1>Noticias</h1>
-								<ol class="breadcrumb">
-										<li><a href="/">Inicio</a></li>
-										<li><a href="/">Noticia</a></li>
-										<li class="active">{{detalle.titulo}}</li>
-								</ol>
-						</div>
 
-				</section><!-- #page-title end -->
 
+    </section><!-- #page-title end -->
+    <div class="border-1"></div>
+    <div class="border-2"></div>
 		<!-- Content
 		============================================= -->
 		<section id="content">
@@ -62,12 +58,16 @@
 
 	                                {% thumbnail detalle.foto "620x250" crop="20%" as im %}
 										<img src="/files/{{im}}">
+                                        <div class="credito-foto">
+                                            Este es el credito de la foto
+                                        </div>
 									{% endthumbnail %}
 								{% else %}
 
                                     <img src="/files/new/images/blog/full/1.jpg" alt="Blog Single">
                                  {% endif %}
                                 </div><!-- .entry-image end -->
+
 
                                 <!-- Entry Content
                                 ============================================= -->
@@ -82,16 +82,16 @@
 									<div class="si-share noborder clearfix">
                                         <span>Compartir esta noticia:</span>
                                         <div>
-                                            <a href="#" class="social-icon si-borderless si-facebook">
+                                            <a href="http://www.facebook.com/sharer.php?u=http://maonic.org{{request.path}}" title="Facebook share" target="_blank" class="social-icon si-borderless si-facebook">
                                                 <i class="icon-facebook"></i>
                                                 <i class="icon-facebook"></i>
                                             </a>
-                                            <a href="#" class="social-icon si-borderless si-twitter">
+                                            <a href="http://twitter.com/share?url=http://maonic.org{{request.path}}&amp;text={{object.titulo}}" title="Twitter share" target="_blank" class="social-icon si-borderless si-twitter">
                                                 <i class="icon-twitter"></i>
                                                 <i class="icon-twitter"></i>
                                             </a>
                                             
-                                            <a href="#" class="social-icon si-borderless si-gplus">
+                                            <a href="https://plus.google.com/share?url=http://maonic.org{{request.path}}" title="Google Plus Share" target="_blank" class="social-icon si-borderless si-gplus">
                                                 <i class="icon-gplus"></i>
                                                 <i class="icon-gplus"></i>
                                             </a>
@@ -108,8 +108,9 @@
                         <div class="sidebar-widgets-wrap">
 
                             <div class="widget widget-twitter-feed clearfix">
-
-                                <h4>Noticias</h4>
+                                <div class="fancy-title title-border">
+                                  <h4>Noticias</h4>
+                                </div>
                                 <div id="post-list-footer">
 
                                     <div class="spost clearfix">
@@ -177,8 +178,9 @@
 
 
                             <div class="widget clearfix">
-
-                                <h4>Tag Relacionados</h4>
+                                <div class="fancy-title title-border">
+                                  <h4>Tag Relacionados</h4>
+                                </div>
                                 <div class="tagcloud">
                                     <a href="#">abonos</a>
                                     <a href="#">agroecología</a>
