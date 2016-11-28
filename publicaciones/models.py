@@ -4,6 +4,7 @@ from sorl.thumbnail import ImageField
 import utils
 from django.template.defaultfilters import slugify
 from tagging_autocomplete.models import TagAutocompleteField
+from tagging.fields import TagField
 
 from south.modelsinspector import add_introspection_rules
 add_introspection_rules([], ["tagging_autocomplete\.models\.TagAutocompleteField"])
@@ -17,7 +18,7 @@ class Publicacion(models.Model):
 	fecha = models.DateField()
 	foto = ImageField(upload_to=utils.get_file_path, blank=True, null=True)
 	archivo = models.FileField(upload_to=utils.get_file_path, blank=True, null=True)
-	categoria= TagAutocompleteField(help_text='Separar elementos con "," ', 
+	categoria= TagField(help_text='Separar elementos con "," ', 
                                     null=True, blank=True)
 	fileDir = 'publicaciones/'
 

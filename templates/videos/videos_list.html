@@ -8,7 +8,9 @@
   });
 </script>
 {% endblock extra_js %}
+
 {% load thumbnail %}
+{% load magicembed_tags %}
 
 {% block contenido %}
     <section id="page-title">
@@ -34,17 +36,17 @@
               <h4>Videos</h4>
             </div>
             <div id="post-list-footer">
-                <!-- for obj in objetos.object_list 
+                {% for obj in objetos.object_list %}
     
                       <div class="video-content">
                         
-                          obj.url|magicembed:"480x280" 
+                          {{obj.url|magicembed:"480x280"}} 
                           <h3 class="">{{obj.nombre}}</h3>
                       </div>
                    
-                    empty 
+                {% empty %} 
                       <p>No existen videos</p>
-                    endfor -->
+                {% endfor %}
 
             </div>
                 <div class="clear"></div>

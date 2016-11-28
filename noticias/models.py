@@ -52,7 +52,7 @@ class FotosPortadas(models.Model):
     nombre = models.CharField(max_length=200)
     foto = models.ImageField(upload_to=get_file_path, blank=True, null=True)
 
-    cropping = ImageRatioField('foto', '950x260')
+    cropping = ImageRatioField('foto', '1500x410')
 
     fileDir = 'fotoPortadas/'
 
