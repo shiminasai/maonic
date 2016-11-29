@@ -1,11 +1,23 @@
 {% extends "base2.html" %}
 
 {% load thumbnail %}
+{% load cropping %}
+
 {% block contenido %}
 		<section id="slider" class="slider-parallax swiper_wrapper clearfix">
 
 			<div class="swiper-container swiper-parent">
 				<div class="swiper-wrapper">
+				{% for obj in fotos_portada %}
+					<div class="swiper-slide dark" style="background-image: url('{% cropped_thumbnail obj "cropping" scale=5%}');">
+						<div class="container clearfix">
+							<div class="slider-caption slider-caption-center">
+								
+								<p data-caption-animate="fadeInUp" data-caption-delay="200">{{obj.nombre}}</p>
+							</div>
+						</div>
+					</div>
+				{% empty %}
 					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/slide1.jpg');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
@@ -14,21 +26,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/slide2.jpg');">
-						<div class="container clearfix">
-							<div class="slider-caption slider-caption-center">
-								
-								<p data-caption-animate="fadeInUp" data-caption-delay="200">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/slide3.jpg'); background-position: center top;">
-						<div class="container clearfix">
-							<div class="slider-caption">
-								<p data-caption-animate="fadeInUp" data-caption-delay="200">You'll be surprised to see the Final Results of your Creation &amp; would crave for more.</p>
-							</div>
-						</div>
-					</div>
+				{% endfor %}
 				</div>
 				<div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
 				<div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
