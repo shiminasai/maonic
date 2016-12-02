@@ -32,16 +32,15 @@
           <div class="col_two_third nobottommargin  lista-noticias">
 
             <div class="fancy-title title-border">
-              <h4>Galerias</h4>
+              <h4>Galeria</h4>
             </div>
             <div id="post-list-footer">
             {% for obj in objetos.object_list %}
             {{obj.titulo}} <br>
             {{obj.descripcion|safe}} <br> <br>
               {% for x in obj.fotogalerias_set.all %}
-                <img class="image_fade" src="/files/{{x.foto}}" alt="Image">
+              <img class="image_fade" src="/files/{{x.foto}}" alt="Image"> <br>
               {% endfor %}
-
             {% endfor %}
             </div>
             <div class="clear"></div>
