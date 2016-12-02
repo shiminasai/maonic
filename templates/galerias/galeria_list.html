@@ -1,6 +1,17 @@
 {% extends "base2.html" %}
+{% block extra_js %}
+<script>
+  $(document).ready(function(){
+    $('#id_tag').change(function(){
+      $("#botoncito").attr('disabled',false);
+        });
+  });
+</script>
+{% endblock extra_js %}
 
 {% load thumbnail %}
+{% load magicembed_tags %}
+
 {% block contenido %}
     <section id="page-title">
 
@@ -22,42 +33,20 @@
           <div class="col_two_third nobottommargin  lista-noticias">
 
             <div class="fancy-title title-border">
-              <h4>Últimas Noticias</h4>
+              <h4>Galeria</h4>
             </div>
-            <div class="row">
-            {% for obj in objetos.object_list %}
-                <div class="col-sm-6 col-lg-6">
-                    <div class="ipost clearfix">
-                        <div class="entry-image">
-                            {% if obj.foto %}
-                            {% thumbnail obj.foto "400x250" crop="center" as im %}
-                            <a href="{{obj.get_absolute_url}}">
-                                <img class="image_fade" src="/files/{{im}}" alt="Image">
-                            </a>
-                            {%endthumbnail%}
-                            {% else %}
-                            <a href="{{obj.get_absolute_url}}">
-                                <img class="image_fade" src="/files/new/images/noticia.png" alt="Image">
-                            </a>
-                            {% endif %}
-                        </div>
-                        <div class="entry-title">
-                            <h3><a href="{{obj.get_absolute_url}}">{{obj.titulo|truncatewords:10}}</a></h3>
-                        </div>
-                        <ul class="entry-meta clearfix">
-                            <li><i class="icon-calendar3"></i> {{obj.fecha}} </li>
+            <div id="post-list-footer">
+            {% for obj in objetos.fotogalerias_set.all %}
+              {% for algo in  obj.foto %}
+                {% thumbnail algo.foto "480x280" crop="center" as im %}
+                  <a href="#">
+                      <img class="image_fade" src="/files/{{im}}" alt="Image">
+                  </a>
+                {%endthumbnail%}
+              {% else %}
+                <p>No existe galerias</p>
+              {% endfor %}
 
-                            <li><i class="icon-user"></i> {{obj.autor}} </li>
-
-                        </ul>
-                        <div class="entry-content">
-                            <p>{{obj.contenido|safe|striptags|truncatewords:20}}</p>
-
-                        </div>
-                    </div>
-                </div>
-                {% empty %}
-                <p>No existe noticias</p>
             {% endfor %}
             </div>
                 <div class="clear"></div>
@@ -68,25 +57,25 @@
           <div class="hidden-xs col_one_third nobottommargin col_last">
             <div class="row">
                 <div class="fancy-title title-border">
-                  <h4>Publicaciones</h4>
+                  <h4>Últimas Noticias</h4>
                 </div>
                 <div class="list-publi" id="post-list-footer">
 
-                    {% for obj in publicaciones %}
+                   {% for obj in ultimas_noticias %}
                         <div class="spost clearfix">
                             <div class="entry-c">
                                 <div class="entry-title">
-                                    <h4><a href="/files/{{obj.archivo}}">{{obj.titulo|truncatewords:4}}</a></h4>
+                                    <h4><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></h4>
                                 </div>
                                 <ul class="entry-meta">
-                                    <li>{{obj.fecha|date:"d F Y"}}</li>
+                                    <li>{{obj.fecha}}</li>
                                     
                                 </ul>
                             </div>
-                            <a href="/files/{{obj.archivo}}" class="more-link">Descargar</a>
+                            <a href="{{obj.get_absolute_url}}" class="more-link">Leer Nota...</a>
                         </div>
                     {% empty %}
-                        <p>No existe publicación!</p>
+                        <p>No existe Noticias!</p>
                     {% endfor %}
 
                 </div>
@@ -122,7 +111,7 @@
           </div>
 
           <div class="clear"></div>
-            <div class="paginacion">
+              <div class="paginacion">
                   <ul class="pagination">
                     {% if objetos.has_previous %}
                       <li class="arrow unavailable"><a href="?page={{ objetos.previous_page_number }}">&laquo;</a></li>
@@ -144,4 +133,4 @@
 
     
 
-{% endblock contenido %} 
+{% endblock contenido %}
