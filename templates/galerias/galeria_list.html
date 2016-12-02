@@ -10,7 +10,6 @@
 {% endblock extra_js %}
 
 {% load thumbnail %}
-{% load magicembed_tags %}
 
 {% block contenido %}
     <section id="page-title">
@@ -33,23 +32,19 @@
           <div class="col_two_third nobottommargin  lista-noticias">
 
             <div class="fancy-title title-border">
-              <h4>Galeria</h4>
+              <h4>Galerias</h4>
             </div>
             <div id="post-list-footer">
-            {% for obj in objetos.fotogalerias_set.all %}
-              {% for algo in  obj.foto %}
-                {% thumbnail algo.foto "480x280" crop="center" as im %}
-                  <a href="#">
-                      <img class="image_fade" src="/files/{{im}}" alt="Image">
-                  </a>
-                {%endthumbnail%}
-              {% else %}
-                <p>No existe galerias</p>
+            {% for obj in objetos.object_list %}
+            {{obj.titulo}} <br>
+            {{obj.descripcion|safe}} <br> <br>
+              {% for x in obj.fotogalerias_set.all %}
+                <img class="image_fade" src="/files/{{x.foto}}" alt="Image">
               {% endfor %}
 
             {% endfor %}
             </div>
-                <div class="clear"></div>
+            <div class="clear"></div>
 
 
           </div>
