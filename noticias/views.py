@@ -41,7 +41,7 @@ def lista_galerias(request):
     noticia = Noticias.objects.order_by('-id')[:4]
     galerias = Galeria.objects.all()
 
-    paginator = Paginator(galerias, 7)
+    paginator = Paginator(galerias, 3)
 
     try:
         page = int(request.GET.get('page', '1'))

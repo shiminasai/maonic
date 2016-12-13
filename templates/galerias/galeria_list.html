@@ -48,15 +48,16 @@
 							
 							<div class="galeria">
 					            <div class="masonry-thumbs col-5" data-big="1" data-lightbox="gallery">
-					            	{% for x in obj.fotogalerias_set.all %}
-									<a href="/files/{{x.foto}}" data-lightbox="gallery-item">
-									<!-- imagen real -->
-
-										<img class="image_fade" src="/files/{{x.foto}}" alt="{{x.titulo}}">
-										<!-- cropear en 400x300  -->
-									</a>
+				            	{% for x in obj.fotogalerias_set.all %}
+								<a href="/files/{{x.foto}}" data-lightbox="gallery-item">
+								<!-- imagen real -->
+									{% thumbnail x.foto "400x300" crop="center" as im %}
+										<img class="image_fade" src="/files/{{im}}" alt="{{x.titulo}}">
+									{%endthumbnail%}
 									
-									{% endfor %}
+									<!-- cropear en 400x300  -->
+								</a>
+								{% endfor %}
 								</div>
 							</div>
 
