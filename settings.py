@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'image_cropping',
     'tagging',
+    'django_google_cse',
     #'tagging_autocomplete',
     'magicembed',
     #app del monitoreo
@@ -176,3 +177,5 @@ CKEDITOR_CONFIGS = {
         'uiColor': '#EEe',
     }
 }
+
+CX_CODE = '008303288612978745529:5u_2euwnjfk'

@@ -30,7 +30,7 @@ def lista_noticias(request):
 def detalle_noticia(request, slug):
     detalle = get_object_or_404(Noticias, slug=slug)
     
-    ultimas = Noticias.objects.all().order_by('-id')[:5]
+    ultimas = Noticias.objects.all().exclude(id=detalle.id).order_by('-id')[:7]
 
     return render_to_response('noticias/detalle_noticia.html', {'detalle':detalle, 'ultimas':ultimas},
                                     context_instance=RequestContext(request))

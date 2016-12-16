@@ -112,62 +112,18 @@
                                   <h4>Noticias</h4>
                                 </div>
                                 <div id="post-list-footer">
-
+                                {% for obj in ultimas %}
                                     <div class="spost clearfix">
                                         <div class="entry-c">
                                             <div class="entry-title">
-                                                <h4><a href="#">Elaboración de Compost Mineralizado y Biomineral</a></h4>
+                                                <h4><a href="{{obj.get_absolute_url}}">{{obj.titulo}}</a></h4>
                                             </div>
                                             <ul class="entry-meta">
-                                                <li>10 de Julio 2016</li>
+                                                <li>{{obj.fecha}}</li>
                                             </ul>
                                         </div>
                                     </div>
-
-                                    <div class="spost clearfix">
-                                   
-                                        <div class="entry-c">
-                                            <div class="entry-title">
-                                                <h4><a href="#">Urgente: Gobierno devela “Uso intensivo de Agroquímicos en la producción de Hortalizas, Raíces y Tubérculos.</a></h4>
-                                            </div>
-                                            <ul class="entry-meta">
-                                                <li>10 de Julio 2016</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="spost clearfix">
-                                        
-                                        <div class="entry-c">
-                                            <div class="entry-title">
-                                                <h4><a href="#">Pilotaje en la certificación orgánica</a></h4>
-                                            </div>
-                                            <ul class="entry-meta">
-                                                <li>10 de Julio 2016</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="spost clearfix">
-
-                                        <div class="entry-c">
-                                            <div class="entry-title">
-                                                <h4><a href="#">Producción más ecológica</a></h4>
-                                            </div>
-                                            <ul class="entry-meta">
-                                                <li>10 de Julio 2016</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="spost clearfix">
-                                        <div class="entry-c">
-                                            <div class="entry-title">
-                                                <h4><a href="#">Taller práctico de elaboración de abonos orgánicos</a></h4>
-                                            </div>
-                                            <ul class="entry-meta">
-                                                <li>10 de Julio 2016</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                {% endfor %}
 
                                 </div>
 
