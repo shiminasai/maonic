@@ -20,8 +20,7 @@ from autocomplete_admin import FkAutocompleteAdmin
 #Organizacion
 class OrganizacionGremialInline(admin.TabularInline):
     model = OrganizacionGremial
-    fields = ['socio', 'nombre', 'desde_socio','beneficio', 'miembro_gremial', 
-              'desde_miembro','capacitacion', 'desde_capacitacion']
+    fields = ['socio',]
     extra = 1
     max_num = 1
 
@@ -172,10 +171,9 @@ class EncuestaAdmin(FkAutocompleteAdmin):
                             }
     inlines = [OrganizacionGremialInline,TenenciaInline,UsoTierraInline,AnimalesCantidadInline,
                AnimalesFincaInline,CultivosFincaInline,OpcionesManejoInline,UsoSemillaInline,
-               SueloInline,ManejoSueloInline,InversionesInline,IngresoFamiliarInline,
-               OtrosIngresosInline,TipoCasaInline,DetalleCasaInline,PropiedadesInline,
-               InfraestructuraInline,HerramientasInline,TransporteInline,CreditoInline,
-               SeguridadInline,VulnerableInline,RiesgosInline,CertificacionInline
+               InversionesInline,IngresoFamiliarInline,
+               OtrosIngresosInline,PropiedadesInline,
+               InfraestructuraInline,HerramientasInline,TransporteInline,
               ]
     list_display = ('productor','departamentos','finca','fecha',)
     #list_filter = ['productor__departamento__municipio']

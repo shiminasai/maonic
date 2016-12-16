@@ -62,13 +62,13 @@ class OrganizacionGremial(models.Model):
 #*** Tipo tenencia de parcela y solar ***
 #----------------------------------------
 
-CHOICE_TENENCIA = ((1,"Propia con escritura pública"),
-                   (2,"Propia por herencia"),
-                   (3,"Propias con promesa de venta"),
-                   (4,"Propias con titulo de reforma agraria"),
+CHOICE_TENENCIA = ((1,"Escritura pública"),
+                   (2,"-------"),
+                   (3,"Promesa de venta"),
+                   (4,"-------"),
                    (5,"Arrendada"),
                    (6,"Sin documento"),
-                   (7,"Escritura posesoria"))
+                   (7,"Prestamo"))
                    
                    
 CHOICE_DUENO = ((1,"Hombre"),
