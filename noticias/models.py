@@ -7,17 +7,22 @@ from maonic.utils import get_file_path
 from sorl.thumbnail import ImageField
 from django.contrib.auth.models import User
 from image_cropping import ImageRatioField
+from tagging.fields import TagField
 
 # crear modelos para las noticias.
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([], ["tagging_autocomplete\.models\.TagAutocompleteField"])
 
 class Noticias(models.Model):
     titulo = models.CharField(max_length=200, help_text="Titulo de la noticia")
     slug = models.SlugField(max_length=200, editable=False)
     fecha = models.DateField()
     foto = ImageField(upload_to=get_file_path, blank=True, null=True)
+    credito_foto = models.CharField(max_length=250, null=True, blank=True)
     contenido = RichTextField()
     destacado = models.BooleanField()
-    
+    categoria= TagField(help_text='Separar elementos con "," ',
+                                    null=True, blank=True)
 
     fileDir = 'noticias/'
 

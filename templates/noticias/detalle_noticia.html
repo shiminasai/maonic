@@ -1,7 +1,7 @@
 {% extends "base2.html" %}
 
 {% load thumbnail %}
-
+{% load tagging_tags %}
 
 {% block contenido %}
 <style type="text/css">
@@ -47,19 +47,19 @@
                                 <ul class="entry-meta clearfix">
                                     <li><i class="icon-calendar3"></i> {{detalle.fecha}}</li>
                                     <li><a href="#"><i class="icon-user"></i> {{detalle.autor}}</a></li>
-                                
+
                                 </ul><!-- .entry-meta end -->
 
                                 <!-- Entry Image
                                 ============================================= -->
-                                
+
                                 <div class="entry-image">
                                 {% if detalle.foto %}
 
 	                                {% thumbnail detalle.foto "620x250" crop="20%" as im %}
 										<img src="/files/{{im}}">
                                         <div class="credito-foto">
-                                            Este es el credito de la foto
+                                            {{detalle.credito_foto}}
                                         </div>
 									{% endthumbnail %}
 								{% else %}
@@ -90,12 +90,12 @@
                                                 <i class="icon-twitter"></i>
                                                 <i class="icon-twitter"></i>
                                             </a>
-                                            
+
                                             <a href="https://plus.google.com/share?url=http://maonic.org{{request.path}}" title="Google Plus Share" target="_blank" class="social-icon si-borderless si-gplus">
                                                 <i class="icon-gplus"></i>
                                                 <i class="icon-gplus"></i>
                                             </a>
-                                           
+
                                         </div>
                                     </div>
                         </div>
@@ -129,22 +129,19 @@
 
                             </div>
 
-                            
+
 
 
 
                             <div class="widget clearfix">
                                 <div class="fancy-title title-border">
                                   <h4>Tag Relacionados</h4>
+                                  {% tags_for_object detalle as tag_cloud %}
                                 </div>
                                 <div class="tagcloud">
-                                    <a href="#">abonos</a>
-                                    <a href="#">agroecología</a>
-                                    <a href="#">fincas</a>
-                                    <a href="#">historia</a>
-                                    <a href="#">orgánicos</a>
-                                    <a href="#">producción</a>
-                                    <a href="#">soberanía alimentaria</a>
+                                {% for obj in  tag_cloud %}
+                                    <a href="#">{{obj}}</a>
+                                {% endfor %}
                                 </div>
 
                             </div>
@@ -152,7 +149,7 @@
                         </div>
 
                     </div><!-- .sidebar end -->
-	
+
 
 
 					<div class="clear"></div>
@@ -164,5 +161,5 @@
 			</div>
 
 		</section><!-- #content end -->
-	
+
 {% endblock contenido %}
