@@ -10,7 +10,7 @@ from galerias.models import Galeria
 def lista_noticias(request):
     publicaciones = Publicacion.objects.order_by('-id')[:4]
     eventos = Evento.objects.order_by('-id')[:4]
-    noticia = Noticias.objects.all()
+    noticia = Noticias.objects.order_by('-id')
 
     paginator = Paginator(noticia, 5)
 
@@ -24,19 +24,19 @@ def lista_noticias(request):
     except  (EmptyPage, InvalidPage):
         objetos = paginator.page(paginator.num_pages)
 
-    return render_to_response('noticias/lista-noticias.html', locals(), 
+    return render_to_response('noticias/lista-noticias.html', locals(),
                                         context_instance=RequestContext(request))
 
 def detalle_noticia(request, slug):
     detalle = get_object_or_404(Noticias, slug=slug)
-    
+
     ultimas = Noticias.objects.all().exclude(id=detalle.id).order_by('-id')[:7]
 
     return render_to_response('noticias/detalle_noticia.html', {'detalle':detalle, 'ultimas':ultimas},
                                     context_instance=RequestContext(request))
 
 def lista_galerias(request):
-    
+
     eventos = Evento.objects.order_by('-id')[:4]
     noticia = Noticias.objects.order_by('-id')[:4]
     galerias = Galeria.objects.all()
@@ -53,5 +53,5 @@ def lista_galerias(request):
     except  (EmptyPage, InvalidPage):
         objetos = paginator.page(paginator.num_pages)
 
-    return render_to_response('galerias/galeria_list.html', locals(), 
+    return render_to_response('galerias/galeria_list.html', locals(),
                             context_instance=RequestContext(request))
