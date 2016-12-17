@@ -12,7 +12,7 @@
 					<div class="swiper-slide dark" style="background-image: url('{% cropped_thumbnail obj "cropping" scale=5%}');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
-								
+
 								<p data-caption-animate="fadeInUp" data-caption-delay="200">{{obj.nombre}}</p>
 							</div>
 						</div>
@@ -21,7 +21,7 @@
 					<div class="swiper-slide dark" style="background-image: url('/files/new/images/slider/slide1.jpg');">
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
-								
+
 								<p data-caption-animate="fadeInUp" data-caption-delay="200">Movimiento de Productoras y Productores Agroecológico y Orgánicos de Nicaragua.</p>
 							</div>
 						</div>
@@ -143,16 +143,16 @@
 											<img class="image_fade" src="/files/new/images/noticia.png" alt="Image">
 										</a>
 									{% endif %}
-									
+
 									</div>
 									<div class="entry-title">
 										<h3><a href="{{obj.get_absolute_url}}">{{obj.titulo|truncatewords:10}}</a></h3>
 									</div>
 									<ul class="entry-meta clearfix">
 										<li><i class="icon-calendar3"></i> {{obj.fecha}} </li>
-									
+
 										<li><i class="icon-user"></i> {{obj.autor}} </li>
-										
+
 									</ul>
 									<div class="entry-content">
 										<p>{{obj.contenido|safe|striptags|truncatewords:20}}
@@ -227,11 +227,11 @@
 							<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 nobottommargin">
 								<div class="ipost clearfix">
 									<div class="entry-image">
-										{% thumbnail obj.foto "100x70" crop="center" as im %}
+										{% thumbnail obj.foto "218x153" crop="center" as im %}
 											<a href="#"><img class="image_fade" src="/files/{{im}}" alt="Image"></a>
 										{% endthumbnail %}
 									</div>
-									
+
 	                                <a href="/files/{{obj.archivo}}" class="descargar btn"><span class="fa fa-download"> Descargar</span></a>
 	                                <div class="entry-title">
 										{{obj.titulo|truncatewords:4}}
@@ -241,7 +241,7 @@
 										<li><i class="icon-calendar3"></i>{{obj.fecha|date:"d F Y"}}</li>
 									</ul>
 									<br>
-									
+
 								</div>
 							</div>
 				        {% empty %}
@@ -276,7 +276,7 @@
 	                        {% empty %}
 					          <p>No existen eventos</p>
 					      	{% endfor %}
-    
+
                         </div>
 
 
@@ -311,7 +311,7 @@
                 {%endthumbnail%}
                 <h2 class="title-news"><a href="{{obj.get_absolute_url}}">{{obj.titulo|truncatewords:8}}</a></h2>
         <div class="news-tfront">{{obj.contenido|safe|striptags|truncatewords:20}}</div>
-       
+
                 </div>
             </div>
           {% empty %}
@@ -319,11 +319,11 @@
           {% endfor %}
 
             </div>
-        
+
 
         </div>
-            
-    </div> 
+
+    </div>
 
 
   <div class="row">
@@ -366,9 +366,9 @@
           <a href="http://www.ruta.org/rediao/"><div class="boton-ir"></div></a>
         </div>
       </div>
- 
+
     </div>
-    
+
   <ul class="lista-modulo">
           <li><span class="cantidades">{{familias}}</span>  Familias productoras</li>
           <li><span class="cantidades">{{cooperativas}}</span> Cooperativas</li>
@@ -376,8 +376,8 @@
           <li><span class="cantidades">{{org_publicas}}</span> Organizaciones Públicas</li>
         </ul>
   </div>
-      
-</div> 
+
+</div>
 
 <div class="pubmain">
   <div class="row">
@@ -399,7 +399,7 @@
         {% endfor %}
        </div>
     </div>
-  
+
     <div class="large-4 columns">
     <h3 class="c-title small-3"><a href="/eventos/lista/">Eventos</a></h3>
 
@@ -416,11 +416,11 @@
       {% empty %}
           <p>No existen eventos</p>
       {% endfor %}
-        
+
        </div>
 
       </div>
 
   </div>
 </div>
-{% endblock contenido %} 
+{% endblock contenido %}
