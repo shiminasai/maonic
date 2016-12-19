@@ -591,7 +591,7 @@ var SEMICOLON = SEMICOLON || {};
 				if( !animationOut ) { animationOut = 'fadeOut'; }
 				if( !durationIn ) { durationIn = 1500; }
 				if( !durationOut ) { durationOut = 800; }
-				if( !loaderStyleHtml ) { loaderStyleHtml = '<div class="css3-spinner-bounce1"></div><div class="css3-spinner-bounce2"></div><div class="css3-spinner-bounce3"></div>'; }
+				
 
 				if( !loaderTimeOut ) {
 					loaderTimeOut = false;

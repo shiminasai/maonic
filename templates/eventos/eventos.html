@@ -37,12 +37,14 @@
                                 <div class="entry-title main-event">
                                     <h4>{{obj.titulo}}</h4>
                                 </div>
+
                                 <ul class="entry-meta">
                                     <li>Fecha de inicio: {{obj.fecha_inicio|date:"d F Y"}}</li>
                                     <li>Fecha de Terminación: {{obj.fecha_final|date:"d F Y"}}</li>
                                 </ul>
                             </div>
                         </div>
+                        <img src="{{obj.foto}}" alt="">
                         <div class="event-descrip">
                             {{obj.descripcion|safe|striptags|linebreaks}}
                         </div>

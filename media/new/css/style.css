@@ -2893,7 +2893,6 @@ body.side-panel-open:not(.device-xxs):not(.device-xs):not(.device-sm) .body-over
 	top: 0;
 	left: 15px;
 	z-index: 20;
-	max-width: 550px;
 	color: #EEE;
 	font-size: 22px;
 	font-weight: 300;
@@ -2930,7 +2929,6 @@ body.side-panel-open:not(.device-xxs):not(.device-xs):not(.device-sm) .body-over
 
 .slider-caption.slider-caption-center {
 	position: relative;
-	max-width: 800px;
 	text-align: center;
 	margin: 0 auto;
 	left: 0;

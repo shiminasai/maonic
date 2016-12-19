@@ -2,7 +2,11 @@
 
 {% load thumbnail %}
 {% load cropping %}
-
+{% block extra_js %}
+	<script type="text/javascript">
+		
+	</script>
+{% endblock extra_js %}
 {% block contenido %}
 		<section id="slider" class="slider-parallax swiper_wrapper clearfix">
 
@@ -13,7 +17,9 @@
 						<div class="container clearfix">
 							<div class="slider-caption slider-caption-center">
 
-								<p class="fondo-slide" data-caption-animate="fadeInUp" data-caption-delay="200">{{obj.nombre}}</p>
+								<p  data-caption-animate="fadeInUp" data-caption-delay="200">
+									<p class="fondo-slide">{{obj.nombre}}</p>
+								</p>
 							</div>
 						</div>
 					</div>
