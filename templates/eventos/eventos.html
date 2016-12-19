@@ -2,6 +2,12 @@
 
 {% load thumbnail %}
 {% block contenido %}
+<style type="text/css">
+    .img-event{
+        margin-top: 20px;
+    }
+</style>
+
     <section id="page-title">
 
 
@@ -44,7 +50,14 @@
                                 </ul>
                             </div>
                         </div>
-                        <img src="{{obj.foto}}" alt="">
+                        {% if obj.foto %}
+                            
+                                <div class="img-event">
+                                    <img class="center-block" src="/files/{{obj.foto}}" alt="">
+                                </div>
+                            
+                        {% endif %}
+                        
                         <div class="event-descrip">
                             {{obj.descripcion|safe|striptags|linebreaks}}
                         </div>

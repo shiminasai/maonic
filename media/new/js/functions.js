@@ -570,6 +570,60 @@ var SEMICOLON = SEMICOLON || {};
 			});
 		},
 
+		pageTransition: function(){
+			if( !$body.hasClass('no-transition') ){
+				var animationIn = $body.attr('data-animation-in'),
+					animationOut = $body.attr('data-animation-out'),
+					durationIn = $body.attr('data-speed-in'),
+					durationOut = $body.attr('data-speed-out'),
+					loaderTimeOut = $body.attr('data-loader-timeout'),
+					loaderStyle = $body.attr('data-loader'),
+					loaderColor = $body.attr('data-loader-color'),
+					loaderStyleHtml = $body.attr('data-loader-html'),
+					loaderBgStyle = '',
+					loaderBorderStyle = '',
+					loaderBgClass = '',
+					loaderBorderClass = '',
+					loaderBgClass2 = '',
+					loaderBorderClass2 = '';
+
+				if( !animationIn ) { animationIn = 'fadeIn'; }
+				if( !animationOut ) { animationOut = 'fadeOut'; }
+				if( !durationIn ) { durationIn = 800; }
+				if( !durationOut ) { durationOut =0; }
+				
+
+				if( !loaderTimeOut ) {
+					loaderTimeOut = false;
+				} else {
+					loaderTimeOut = Number(loaderTimeOut);
+				}
+
+
+
+
+				$wrapper.animsition({
+					inClass : animationIn,
+					outClass : animationOut,
+					inDuration : Number(durationIn),
+					outDuration : Number(durationOut),
+					linkElement : '#primary-menu ul li a:not([target="_blank"]):not([href*=#]):not([data-lightbox])',
+					loading : true,
+					loadingParentElement : 'body',
+					loadingClass : 'css3-spinner',
+					loadingHtml : loaderStyleHtml,
+					unSupportCss : [
+									 'animation-duration',
+									 '-webkit-animation-duration',
+									 '-o-animation-duration'
+								   ],
+					overlay : false,
+					overlayClass : 'animsition-overlay-slide',
+					overlayParentElement : 'body',
+					timeOut: loaderTimeOut
+				});
+			}
+		},
 
 		topScrollOffset: function() {
 			var topOffsetScroll = 0;
