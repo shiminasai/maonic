@@ -9,6 +9,13 @@
 {% endblock %}
 
 {% block contenido %}
+<style type="text/css">
+    .quienes-somos {
+      font-size: 16px !important;
+      font-family: 'Roboto', sans-serif !important;
+
+    }
+</style>
     <section id="page-title">
 
 
@@ -25,9 +32,9 @@
 
 
         <div class="container clearfix">
-
-			 {{flatpage.content|safe}}
-
+            <div class="quienes-somos">
+    			{{flatpage.content|safe}}
+            </div> 
         </div>
 
 
